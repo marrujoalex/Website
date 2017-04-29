@@ -106,6 +106,7 @@ a {
     text-align: center;
     width: 100%;
     cursor: pointer;
+    overflow: visible;
 }
 
 .next-page {
@@ -132,6 +133,7 @@ a {
     width: 48px;
     height: 48px;
     top: calc(50% - 48px);
+    overflow: visible;
 }
 
 .back img {
