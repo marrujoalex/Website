@@ -15,6 +15,10 @@
         }
     </style>
     <style media="(min-width: 801px)">
+        #openkitten {
+            margin-top: 82px;
+        }
+
         #openkitten .page-image {
             background: url(background-openkitten.svg) no-repeat center;
             height: 60%;
@@ -39,18 +43,6 @@
     </style>
     <link rel="stylesheet" type="text/css" media="(max-width: 800px)" href="small-style.css" />
     <style media="(max-width: 800px)">
-        .page .header {
-            display: none;
-        }
-
-        #openkitten .header {
-            position: fixed;
-            display: block;
-            z-index: 5;
-            background-color: #F7F7F7;
-            opacity: 1;
-        }
-
         .page .page-image {
             margin-top: 50px;
         }
@@ -97,10 +89,10 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <span class="project">OpenKitten</span><div class="right"><a href="https://github.com/OpenKitten/">github</a><a href="docs.html">docs</a><a href="tutorials.html">tutorials</a></div>
+    </div>
     <div class="page" id="openkitten">
-        <div class="header">
-            <span class="project">OpenKitten</span><div class="right"><a href="https://github.com/OpenKitten/">github</a><a href="docs.html">docs</a><a href="tutorials.html">tutorials</a></div>
-        </div>
         <div class="page-image"></div>
         <p class="page-image-sub">"OpenKitten is a collection of Swift libraries<br />
             made for and by Swift enthousiasts"</p>
@@ -113,16 +105,13 @@
         </a>
     </div>
     <div class="page" id="mongokitten">
-        <div class="header">
-            <span class="project">MongoKitten</span><div class="right"><a href="https://github.com/OpenKitten/MongoKitten/">github</a><a href="http://docs.openkitten.org/">docs</a><a href="http://docs.openkitten.org/tutorials/tutorials/">tutorials</a></div>
-        </div>
         <div class="page-image">
             <p class="page-image-sub">"MongoKitten is a <a href="features.html">feature rich</a>, <a href="performance.html">performant</a> and <a href="easy.html">easy to use</a><br />
                 client-side MongoDB driver for Swift."</p>
         </div>
 
         <div class="button">
-            <a href="mongokitten.html">Learn more</a>
+            <a href="https://github.com/OpenKitten/MongoKitten/">Learn more</a>
         </div>
 
         <a href="#meow">
@@ -133,16 +122,13 @@
         </a>
     </div>
     <div class="page" id="meow">
-        <div class="header">
-            <span class="project">Meow</span><div class="right"><a href="https://github.com/OpenKitten/Meow/">github</a><a href="#">docs</a><a href="#">tutorials</a></div>
-        </div>
         <div class="page-image">
             <p class="page-image-sub">"Meow is an extremely intuitive and transparent<br />
                 MongoDB persistence framework for Swift."</p>
         </div>
 
         <div class="button">
-            <a href="meow.html">Learn more</a>
+            <a href="https://github.com/OpenKitten/Meow/">Learn more</a>
         </div>
     </div>
     <div id="paginator">

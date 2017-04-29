@@ -27,7 +27,8 @@ html, body {
     width: 100%;
     font-family: 'Alegreya Sans SC', sans-serif;
     border-bottom: 1px solid rgba(160,160,160,0.25);
-    opacity: 0.8;
+    background-color: #f7f7f7;
+    position: absolute;
 }
 
 .header span, .header a {
@@ -37,11 +38,12 @@ html, body {
 }
 
 .right {
-    float: right;
+    position: absolute;
+    right: 48px;
 }
 
-.header .right span, .header .right a {
-    margin-right: 48px;
+.header .right span:not(first-child), .header .right a:not(first-child) {
+    margin-left: 48px;
 }
 
 .project {
@@ -49,7 +51,6 @@ html, body {
 }
 
 .page {
-    padding-bottom: 41px;
     height: calc(100% - 41px);
     float: left;
     border-bottom: 1px solid rgba(160,160,160,0.13);
