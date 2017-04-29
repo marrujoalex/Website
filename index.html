@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <title>OpenKitten</title>
+    <link rel="stylesheet" type="text/css" media="(min-width: 801px)" href="style.css" />
+    <style media="(min-width: 1200px) and (max-width: 1500px)">
+        .page-image {
+            background-position-y: 70px !important;
+        }
+
+        .button {
+            margin-top: -50px;
+        }
+    </style>
+    <style media="(min-width: 801px)">
+        #mongokitten:target ~ #paginator a:first-child, #meow:target ~ #paginator a:first-child {
+            background: url(bullet-not-selected.svg) no-repeat center;
+        }
+
+        #mongokitten:target ~ #paginator #mongokitten-page, #meow:target ~ #paginator #meow-page {
+            background: url(bullet-selected.svg) no-repeat center;
+        }
+
+        #openkitten .page-image {
+            background: url(background-openkitten.svg) no-repeat center;
+            height: 60%;
+        }
+
+        #openkitten .page-image-sub {
+            height: 12.5%;
+        }
+
+        #mongokitten .page-image {
+            background: url(background-mongokitten.svg) no-repeat center;
+        }
+
+        #meow .page-image {
+            background: url(background-meow.svg) no-repeat center;
+            background-size: 100% 100% !important;
+        }
+
+        #meow .page-image .page-image-sub {
+            padding-bottom: 16px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" media="(max-width: 800px)" href="small-style.css" />
+    <style media="(max-width: 800px)">
+        .page .header {
+            display: none;
+        }
+
+        #openkitten .header {
+            position: fixed;
+            display: block;
+            z-index: 5;
+            background-color: #F7F7F7;
+            opacity: 1;
+        }
+
+        .page .page-image {
+            margin-top: 50px;
+        }
+
+        #mongokitten:target ~ #paginator a:first-child, #meow:target ~ #paginator a:first-child {
+            background: url(bullet-not-selected.svg) no-repeat center;
+        }
+
+        #mongokitten:target ~ #paginator #mongokitten-page, #meow:target ~ #paginator #meow-page {
+            background: url(bullet-selected.svg) no-repeat center;
+        }
+
+        #openkitten .page-image {
+            background: url(background-openkitten.svg) no-repeat center;
+            background-size: 100% 100% !important;
+            height: 50%;
+        }
+
+        #openkitten .page-image-sub {
+            height: 12.5%;
+        }
+
+        #mongokitten .page-image {
+            background: url(background-mongokitten.svg) no-repeat center;
+            background-size: 100% 100% !important;
+            height: 50%;
+        }
+
+        #mongokitten > br {
+            display: none;
+        }
+
+        #meow .page-image {
+            background: url(background-meow.svg) no-repeat center;
+            background-size: 100% 100% !important;
+            height: 50%;
+        }
+
+        #meow .page-image .page-image-sub {
+            padding-bottom: 16px;
+            background-color: #F7F7F7;
+        }
+
+        .button {
+            margin-top: 50px;
+        }
+
+        .next {
+            padding-top: 0px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page" id="openkitten">
+        <div class="header">
+            <span class="project">OpenKitten</span><div class="right"><a href="https://github.com/OpenKitten/">github</a><a href="docs.html">docs</a><a href="tutorials.html">tutorials</a></div>
+        </div>
+        <div class="page-image"></div>
+        <p class="page-image-sub">"OpenKitten is a collection of Swift libraries<br />
+            made for and by Swift enthousiasts"</p>
+
+        <a href="#mongokitten">
+            <div class="next">
+                <span class="next-page">Explore</span><br />
+                <img src="next.svg" />
+            </div>
+        </a>
+    </div>
+    <div class="page" id="mongokitten">
+        <div class="header">
+            <span class="project">MongoKitten</span><div class="right"><a href="https://github.com/OpenKitten/MongoKitten/">github</a><a href="http://docs.openkitten.org/">docs</a><a href="http://docs.openkitten.org/tutorials/tutorials/">tutorials</a></div>
+        </div>
+        <div class="page-image">
+            <p class="page-image-sub">"MongoKitten is a <a href="features.html">feature rich</a>, <a href="performance.html">performant</a> and <a href="easy.html">easy to use</a><br />
+                client-side MongoDB driver for Swift."</p>
+        </div>
+
+        <div class="button">
+            <a href="mongokitten.html">Learn more</a>
+        </div>
+
+        <a href="#meow">
+            <div class="next">
+                <span class="next-page">More high-level?</span><br />
+                <img src="next.svg" />
+            </div>
+        </a>
+    </div>
+    <div class="page" id="meow">
+        <div class="header">
+            <span class="project">Meow</span><div class="right"><a href="https://github.com/OpenKitten/Meow/">github</a><a href="#">docs</a><a href="#">tutorials</a></div>
+        </div>
+        <div class="page-image">
+            <p class="page-image-sub">"Meow is an extremely intuitive and transparent<br />
+                MongoDB persistence framework for Swift."</p>
+        </div>
+
+        <div class="button">
+            <a href="meow.html">Learn more</a>
+        </div>
+    </div>
+    <div id="paginator">
+        <a href="#openkitten" id="openkitten-page"></a><a href="#mongokitten" id="mongokitten-page"></a><a href="#meow" id="meow-page"></a>
+    </div>
+</body>
+</html>

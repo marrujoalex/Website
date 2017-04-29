@@ -1,0 +1,282 @@
+@font-face {
+    font-family: "Alegreya Sans SC";
+    src: url("fonts/AlegreyaSansSC-Medium.ttf") format("truetype");
+}
+
+html, body {
+    background-color: #F7F7F7;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family:"Helvetica Neue", Helvetica;
+    font-weight: 200;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: rgba(0,0,0,0.75) !important;
+}
+
+.header {
+    height: 82px;
+    width: 100%;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    border-bottom: 1px solid rgba(160,160,160,0.25);
+    opacity: 0.8;
+}
+
+.header span, .header a {
+    float: left;
+    font-size: 40px;
+    line-height: 82px;
+}
+
+.right {
+    float: right;
+}
+
+.header .right span, .header .right a {
+    margin-right: 48px;
+}
+
+.project {
+    padding-left: 48px;
+}
+
+.page {
+    padding-bottom: 41px;
+    height: calc(100% - 41px);
+    float: left;
+    border-bottom: 1px solid rgba(160,160,160,0.13);
+    text-align: center;
+    width: 100%;
+}
+
+.page > .page-image {
+    height: 70%;
+}
+
+.page > .page-image img {
+    position: static;
+}
+
+.page-image-sub {
+    font-size: 32px;
+    background-color: #F7F7F7;
+}
+
+.button {
+    text-transform: uppercase;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    background: url("./button.svg");
+    width: 320px;
+    height: 58px;
+    line-height: 58px;
+    font-size: 24px;
+    background-color: #F7F7F7;
+    border-radius: 65px;
+}
+
+.button {
+    width: 320px;
+    height: 58px;
+    margin-left: calc(50% - 155px);
+}
+
+.button a {
+    width: 100%;
+    height: 100%;
+    float: left;
+    border-radius: 65px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.next {
+    margin-bottom: 0;
+    padding-top: 25px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.next-page {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 48px;
+}
+
+@keyframes next-hover {
+    from {
+        padding-top: 20px;
+        padding-bottom: 0px;
+    }
+    to {
+        padding-top: 0px;
+        padding-bottom: 20px;
+    }
+}
+
+.back {
+    position: fixed;
+    margin-left: 48px;
+    width: 48px;
+    height: 48px;
+    top: calc(50% - 48px);
+}
+
+.back img {
+    animation: 3s ease 0s infinite alternate back-hover;
+}
+
+.back .previous-page {
+    position: absolute;
+    line-height: 48px;
+    top: 16px;
+    left: 48px;
+}
+
+@keyframes back-hover {
+    from {
+        padding-left: 20px;
+        padding-right: 0px;
+    }
+    to {
+        padding-left: 0px;
+        padding-right: 20px;
+    }
+}
+
+.next img {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    animation: 3s ease 0s infinite alternate next-hover;
+}
+
+#paginator {
+    position: fixed;
+    left: 48px;
+    height: calc(3 * 24px);
+    width: 16px;
+    top: calc(50% - ((3 * 24px) / 2));
+    z-index: 2;
+}
+
+#performance {
+    overflow-y: scroll;
+}
+
+#performance .page-image {
+    background: url(performance.svg) no-repeat center;
+    background-size: 100% 100% !important;
+    background-position-y: 50px;
+    padding-bottom: 100px;
+}
+
+.page-image a {
+    color: #75cE75
+}
+
+#paginator a {
+    float: left;
+    height: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+#paginator a:first-child {
+    background: url(bullet-selected.svg) no-repeat center;
+}
+
+#paginator a:not(first-child) {
+    background: url(bullet-not-selected.svg) no-repeat center;
+}
+
+.features-3 {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    float: left;
+    margin-bottom: 80px;
+}
+
+.features-3 .feature {
+    width: calc(100% / 3);
+    float: left;
+    margin-top: 32px;
+}
+
+.features-3 .feature img {
+    height: 128px;
+    width: 128px;
+    float: left;
+    margin-left: calc(50% - 64px);
+    margin-right: calc(50% - 64px);
+    margin-bottom: 24px;
+}
+
+.features-3 .feature p {
+    font-family:"Helvetica Neue", Helvetica;
+    font-size: 22px;
+    width: 300px;
+    margin-left: calc(50% - 150px);
+    text-align: justify;
+}
+
+.code {
+    background: #FFFFFF;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.20);
+    border-radius: 10px 10px 0 0;
+    user-select: all !important;
+}
+
+.code .menu div:not(.title) {
+    width: 14px;
+    height: 14px;
+    border-radius: 14px 14px 14px 14px;
+    margin-left: 14px;
+    margin-top: 14px;
+    float: left;
+    color: #000;
+}
+
+.code .menu .red {
+    background: #FF6059;
+    border: 1px solid #F24941;
+}
+
+.code .menu .orange {
+    background: #FFBF2E;
+    border: 1px solid #DF9D1D;
+}
+
+.code .menu .green {
+    background: #2BCE42;
+    border: 1px solid #2DAC30;
+}
+
+.code .menu {
+    border-bottom: 1px solid rgba(160, 160, 160, 0.15);
+    height: 43px;
+}
+
+.code .content {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+    text-align: left;
+    float: left;
+    width: 100%;
+    height: 100%;
+    font-family: Menlo-Regular;
+    font-size: 16px;
+    color: #191919;
+}

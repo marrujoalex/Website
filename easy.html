@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <title>OpenKitten</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="styles/xcode.css">
+    <script src="highlight.pack.js"></script>
+    <style>
+        #easy-code {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+            float: left;
+            margin-bottom: 80px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<a href="index.html#mongokitten">
+    <div class="back">
+        <span class="previous-page">Back</span><br />
+        <img src="back.svg" />
+    </div>
+</a>
+<div class="page" id="easy">
+    <div class="header">
+        <span class="project">MongoKitten</span><div class="right"><a href="https://github.com/OpenKitten/MongoKitten/">github</a><a href="http://docs.openkitten.org/">docs</a><a href="http://docs.openkitten.org/tutorials/tutorials/">tutorials</a></div>
+    </div>
+    <div class="features-3">
+        <div class="feature" id="battle-tested">
+            <img src="tested.svg" />
+            <p>MongoKitten is used by many companies making it a battle-tested library to rely upon.</p>
+        </div>
+        <div class="feature" id="api-design">
+            <img src="api.svg" />
+            <p>The API is carefully designed and tweaked and has resulted in a simple yet elegant API.</p>
+        </div>
+        <div class="feature" id="query-builder">
+            <img src="easy.svg" />
+            <p>MongoKitten's query and aggregate builder help you express big queries in a simple and readable way.</p>
+        </div>
+    </div>
+    <div class="code" id="easy-code">
+        <div class="menu"><div class="red"></div><div class="orange"></div><div class="green"></div></div>
+        <pre class="content"><code class="swift">import MongoKitten
+
+// Connecting is only as complicated as it needs to be
+let database = try Database("mongodb://localhost/awesome-app")
+let users = database["users"]
+
+func getOpenKittenDevs() throws {
+    guard let joannis = try users.findOne("username" == "Joannis") else {
+        print("User 'Joannis' was not found")
+        return
+    }
+
+    print(String(joannis["github"]["organisation"])) // prints 'OpenKitten'
+
+    for contributor in try users.find("github.organisation" == "OpenKitten" && "username" != "Joannis") {
+        print(String(contributor["firstName"])) // Prints "@obbut" and "@lgaches"
+    }
+}
+
+try getOpenKittenDevs()
+        </code></pre>
+    </div>
+</div>
+<script>
+    hljs.configure({
+        tabReplace: '  ',
+    });
+
+    hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+
+<svg width="320px" height="59px" viewBox="560 754 320 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="4.64410041%" y1="-8.46459634%" x2="136.017784%" y2="124.5192%" id="linearGradient-1">
+            <stop stop-color="#20E2D7" offset="0%"></stop>
+            <stop stop-color="#F9FEA5" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="320" height="58" rx="29"></rect>
+        <mask id="mask-3" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="320" height="58" fill="white">
+            <use xlink:href="#path-2"></use>
+        </mask>
+    </defs>
+    <g id="Group-5" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(560.000000, 754.000000)">
+        <use id="Rectangle" stroke="url(#linearGradient-1)" mask="url(#mask-3)" stroke-width="4" xlink:href="#path-2"></use>
+    </g>
+</svg>

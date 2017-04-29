@@ -1,0 +1,19 @@
+
+<svg width="64px" height="97px" viewBox="224 0 64 97" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="4.64410041%" y1="-8.46459634%" x2="136.017784%" y2="124.5192%" id="linearGradient-1">
+            <stop stop-color="#20E2D7" offset="0%"></stop>
+            <stop stop-color="#F9FEA5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="noun_957679_cc" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(224.000000, 0.346788)">
+        <g id="Group" fill="url(#linearGradient-1)">
+            <g id="Shape">
+                <path d="M31.6,32 C14.2,32 0,46.2 0,63.6 C0,81 14.1,95.2 31.6,95.2 C49,95.2 63.2,81.1 63.2,63.6 C63.2,46.2 49,32 31.6,32 Z M38,79.2 L25.2,79.2 L27.4,62.6 C25.2,61.2 23.7,58.7 23.7,55.9 C23.7,51.6 27.2,48 31.6,48 C36,48 39.5,51.5 39.5,55.9 C39.5,58.7 38,61.2 35.8,62.6 L38,79.2 Z"></path>
+                <path d="M16.3,34.5 L16.3,19.1 C16.3,13.6 20.8,9.2 26.2,9.2 L38.4,9.2 C43.9,9.2 48.3,13.7 48.3,19.1 L48.3,34.5 C51.8,36.4 54.9,38.8 57.4,41.7 L57.4,19.1 C57.4,8.6 48.8,0 38.3,0 L26.1,0 C15.6,0 7,8.6 7,19.1 L7,41.7 C9.8,38.8 12.9,36.4 16.3,34.5 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>
