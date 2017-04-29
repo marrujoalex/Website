@@ -3,6 +3,10 @@
     src: url("fonts/AlegreyaSansSC-Medium.ttf") format("truetype");
 }
 
+* {
+    overflow-x: hidden;
+}
+
 html, body {
     background-color: #F7F7F7;
     width: 100%;
@@ -11,7 +15,6 @@ html, body {
     padding: 0;
     font-family:"Helvetica Neue", Helvetica;
     font-weight: 200;
-    overflow: hidden;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -159,15 +162,6 @@ a {
     animation: 3s ease 0s infinite alternate next-hover;
 }
 
-#paginator {
-    position: fixed;
-    left: 48px;
-    height: calc(3 * 24px);
-    width: 16px;
-    top: calc(50% - ((3 * 24px) / 2));
-    z-index: 2;
-}
-
 #performance {
     overflow-y: scroll;
 }
@@ -181,22 +175,6 @@ a {
 
 .page-image a {
     color: #75cE75
-}
-
-#paginator a {
-    float: left;
-    height: 16px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    width: 100%;
-}
-
-#paginator a:first-child {
-    background: url(bullet-selected.svg) no-repeat center;
-}
-
-#paginator a:not(first-child) {
-    background: url(bullet-not-selected.svg) no-repeat center;
 }
 
 .features-3 {
