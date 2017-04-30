@@ -5,18 +5,32 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <title>OpenKitten</title>
     <link rel="stylesheet" type="text/css" media="(min-width: 801px)" href="style.css" />
-    <style media="(min-width: 1200px) and (max-width: 1500px)">
-        .page-image {
-            background-position-y: 70px !important;
-        }
-
-        .button {
-            margin-top: -50px;
-        }
-    </style>
     <style media="(min-width: 801px)">
         #openkitten {
             margin-top: 82px;
+        }
+
+        .page {
+            padding-bottom: 41px;
+        }
+
+        .page .page-image {
+            height: calc(100% - 100px - 41px - 120px)
+        }
+
+        #openkitten p {
+            margin-top: -50px;
+        }
+
+        #mongokitten, #meow {
+            background: url(logo-extras.svg) no-repeat center;
+            background-size: 500px 500px;
+            background-position-y: center;
+            padding-top: 50px;
+        }
+
+        #mongokitten .page-image, #meow .page-image {
+            padding-top: 50px;
         }
 
         #openkitten .page-image {
@@ -30,21 +44,41 @@
 
         #mongokitten .page-image {
             background: url(background-mongokitten.svg) no-repeat center;
+            background-size: 500px 500px;
+            background-position-x: calc(50% - 175px);
+            background-position-y: calc(100% - (120px / 2) + 100px - (58px / 2));
+        }
+
+        #mongokitten {
+            padding-bottom: 50px;
         }
 
         #meow .page-image {
             background: url(background-meow.svg) no-repeat center;
-            background-size: 100% 100% !important;
+            background-size: 400px 400px;
+            background-position-y: calc(50% - 50px);
         }
 
         #meow .page-image .page-image-sub {
             padding-bottom: 16px;
+        }
+
+        #mongokitten .button {
+            margin-top: -75px;
+        }
+
+        #mongokitten a .next {
+            margin-top: 25px;
         }
     </style>
     <link rel="stylesheet" type="text/css" media="(max-width: 800px)" href="small-style.css" />
     <style media="(max-width: 800px)">
         .page .page-image {
             margin-top: 50px;
+        }
+
+        #mongokitten, #meow {
+            background: url(logo-extras.svg) no-repeat center;
         }
 
         #openkitten .page-image {
@@ -57,20 +91,20 @@
             height: 12.5%;
         }
 
-        #mongokitten .page-image {
-            background: url(background-mongokitten.svg) no-repeat center;
-            background-size: 100% 100% !important;
-            height: 50%;
-        }
-
         #mongokitten > br {
             display: none;
         }
 
+        #mongokitten .page-image {
+            background: url(background-mongokitten.svg) no-repeat center;
+            background-size: 600px 600px;
+            background-position-x: calc(50% - 300px + 75px);
+            background-position-y: calc(50% + 150px);
+        }
+
         #meow .page-image {
             background: url(background-meow.svg) no-repeat center;
-            background-size: 100% 100% !important;
-            height: 50%;
+            background-size: 600px 400px;
         }
 
         #meow .page-image .page-image-sub {
@@ -78,8 +112,8 @@
             background-color: #F7F7F7;
         }
 
-        .button {
-            margin-top: 50px;
+        #meow .button {
+            padding-top: 250px;
         }
 
         .next {
@@ -116,7 +150,7 @@
 
         <a href="#meow">
             <div class="next">
-                <span class="next-page">More high-level?</span><br />
+                <span class="next-page">Next</span><br />
                 <img src="next.svg" />
             </div>
         </a>
@@ -130,9 +164,6 @@
         <div class="button">
             <a href="https://github.com/OpenKitten/Meow/">Learn more</a>
         </div>
-    </div>
-    <div id="paginator">
-        <a href="#openkitten" id="openkitten-page"></a><a href="#mongokitten" id="mongokitten-page"></a><a href="#meow" id="meow-page"></a>
     </div>
 </body>
 </html>

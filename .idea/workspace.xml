@@ -18,21 +18,31 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-202">
-              <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+            <state relative-caret-position="750">
+              <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="293">
-              <caret line="52" column="7" lean-forward="false" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+              <caret line="66" column="21" lean-forward="false" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="small-style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/small-style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-294">
+              <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -49,43 +59,42 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.page-image-sub</find>
-      <find>color: rgba(0,0,0,0.75) !important;</find>
-      <find>page-image-sub</find>
-      <find />
-      <find>.page-im</find>
       <find>.page-image</find>
       <find>learn more</find>
       <find>span</find>
       <find>#pagina</find>
       <find>left</find>
-      <find>-sub</find>
       <find>&lt;i&gt;&lt;/i&gt;</find>
       <find>.pa</find>
       <find>8</find>
       <find>82</find>
       <find>height</find>
       <find>.page-i</find>
-      <find>.next</find>
       <find>.button</find>
       <find>overflow</find>
-      <find>#meow</find>
       <find>#meow-pa</find>
       <find>.ne</find>
       <find>.back</find>
       <find>pagi</find>
       <find>next {</find>
       <find>.ri</find>
-      <find>.right</find>
       <find>82px</find>
       <find>-bottom</find>
+      <find>.right</find>
+      <find>.header</find>
+      <find>#meow</find>
+      <find>.page</find>
+      <find>MORE</find>
+      <find>-sub</find>
+      <find>#mongokitten</find>
+      <find>70%</find>
+      <find>.next</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/background.svg" />
-        <option value="$PROJECT_DIR$/background-mongokitten.svg" />
         <option value="$PROJECT_DIR$/bullet-not-selected.svg" />
         <option value="$PROJECT_DIR$/bullet-selected.svg" />
         <option value="$PROJECT_DIR$/button.svg" />
@@ -96,7 +105,6 @@
         <option value="$PROJECT_DIR$/swift.svg" />
         <option value="$PROJECT_DIR$/database.svg" />
         <option value="$PROJECT_DIR$/secure.svg" />
-        <option value="$PROJECT_DIR$/background-meow.svg" />
         <option value="$PROJECT_DIR$/back.svg" />
         <option value="$PROJECT_DIR$/fast.svg" />
         <option value="$PROJECT_DIR$/performance.svg" />
@@ -107,8 +115,11 @@
         <option value="$PROJECT_DIR$/easy.html" />
         <option value="$PROJECT_DIR$/features.html" />
         <option value="$PROJECT_DIR$/small-style.css" />
-        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/logo-extras.svg" />
+        <option value="$PROJECT_DIR$/background-mongokitten.svg" />
+        <option value="$PROJECT_DIR$/background-meow.svg" />
         <option value="$PROJECT_DIR$/style.css" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -249,12 +260,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1493350596598</updated>
-      <workItem from="1493350598580" duration="38975000" />
+      <workItem from="1493350598580" duration="45864000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38975000" />
+    <option name="totallyTimeSpent" value="45864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -329,14 +340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/background-mongokitten.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="136" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/swift.svg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -373,14 +376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/background-meow.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="78" column="6" lean-forward="false" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -459,16 +454,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/small-style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="20" lean-forward="true" selection-start-line="64" selection-start-column="20" selection-end-line="65" selection-end-column="22" />
+        <state relative-caret-position="-294">
+          <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/logo-extras.svg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-202">
-          <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        <state relative-caret-position="921">
+          <caret line="66" column="6" lean-forward="false" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/background-meow.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="6" lean-forward="false" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/background-mongokitten.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -476,7 +487,15 @@
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
-          <caret line="52" column="7" lean-forward="false" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+          <caret line="66" column="21" lean-forward="false" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
           <folding />
         </state>
       </provider>
