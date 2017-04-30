@@ -79,6 +79,12 @@
 
         #mongokitten, #meow {
             background: url(logo-extras.svg) no-repeat center;
+            background-size: 500px 500px;
+            background-position-y: center;
+        }
+
+        .page .page-image {
+            height: calc(100% - 100px - 41px - 120px)
         }
 
         #openkitten .page-image {
@@ -87,24 +93,25 @@
             height: 50%;
         }
 
-        #openkitten .page-image-sub {
-            height: 12.5%;
-        }
-
-        #mongokitten > br {
+        .page-image-sub > br {
             display: none;
         }
 
         #mongokitten .page-image {
             background: url(background-mongokitten.svg) no-repeat center;
-            background-size: 600px 600px;
-            background-position-x: calc(50% - 300px + 75px);
-            background-position-y: calc(50% + 150px);
+            background-size: 500px 500px;
+            background-position-x: calc(50% - 175px);
+            background-position-y: calc(100% - (120px / 2) + 250px - (58px / 2));
+        }
+
+        #mongokitten {
+            padding-bottom: 50px;
         }
 
         #meow .page-image {
             background: url(background-meow.svg) no-repeat center;
-            background-size: 600px 400px;
+            background-size: 400px 400px;
+            background-position-y: 50%;
         }
 
         #meow .page-image .page-image-sub {
@@ -113,12 +120,23 @@
         }
 
         #meow .button {
-            padding-top: 250px;
+            margin-top: 50px;
+        }
+
+        #mongokitten .button {
+            margin-top: 75px;
         }
 
         .next {
             padding-top: 0px;
+        }
+
+        #openkitten .next {
             margin-top: 50px;
+        }
+
+        #mongokitten .next {
+            margin-top: 25px;
         }
     </style>
 </head>
