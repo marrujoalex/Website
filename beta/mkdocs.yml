@@ -1,0 +1,13 @@
+site_name: OpenKitten Docs
+theme: cinder
+pages:
+- Home: index.md
+- Leopard:
+  - Basics: 'leopard/index.md'
+  - 'Advanced routing': 'leopard/advanced-routing.md'
+  - 'Errors': 'leopard/errors.md'
+  - 'Configuration': 'leopard/config.md'
+  - 'Request & Response': 'leopard/request-response.md'
+  - 'Cookies & Sessions': 'leopard/cookies-sessions.md'
+  - Middlwares: 'leopard/middlewares.md'
+  - WebSocket: 'leopard/websocket.md'

@@ -1,0 +1,244 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Welcome to OpenKitten\n\n\nOpenKitten is a Server Side Swift ecosystem. It contains many libraries for creating backends and full stack swift applications.\n\n\nThe libraries\n\n\nThe libraries can be categorized into 3 categories.\n\n\nHTTP\n\n\nLeopard\n is a high performance web framework based on \nLynx\n.\n\n\nPuma\n is a \nLynx\n based HTTP client. Designed to work seamlessly with \nLeopard\n .\n\n\nLynx\n is the HTTP core, containing an HTTP server and all basic features of HTTP messages. It relies on \nSchrodigner\n to provide clean asynchronous data flows.\n\n\nMongoDB\n\n\nMongoKitten\n is the fastest MongoDB driver. It's also the only pure-swift MongoDB driver. It relies heavily upon \nBSON\n and assumes familiarity with \nBSON\n.\n\n\nMeow\n is a codable ORM based on \nMongoKitten\n. It's flexible and boilerplate-free, allowing your models to stay clean.\n\n\nUtility\n\n\nCheetah\n is a JSON library that supports Swift 4 codables. In addition to that, it shares an API that fits right in with Swift and other OpenKitten libraries.\n\n\nOcelot\n is a JWT library that also supports codables for decoding JWTs. It leans on \nCheetah\n for JSON data.\n\n\nSchrodigner\n is the promise library, used for asynchronous data flow.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#welcome-to-openkitten", 
+            "text": "OpenKitten is a Server Side Swift ecosystem. It contains many libraries for creating backends and full stack swift applications.", 
+            "title": "Welcome to OpenKitten"
+        }, 
+        {
+            "location": "/#the-libraries", 
+            "text": "The libraries can be categorized into 3 categories.", 
+            "title": "The libraries"
+        }, 
+        {
+            "location": "/#http", 
+            "text": "Leopard  is a high performance web framework based on  Lynx .  Puma  is a  Lynx  based HTTP client. Designed to work seamlessly with  Leopard  .  Lynx  is the HTTP core, containing an HTTP server and all basic features of HTTP messages. It relies on  Schrodigner  to provide clean asynchronous data flows.", 
+            "title": "HTTP"
+        }, 
+        {
+            "location": "/#mongodb", 
+            "text": "MongoKitten  is the fastest MongoDB driver. It's also the only pure-swift MongoDB driver. It relies heavily upon  BSON  and assumes familiarity with  BSON .  Meow  is a codable ORM based on  MongoKitten . It's flexible and boilerplate-free, allowing your models to stay clean.", 
+            "title": "MongoDB"
+        }, 
+        {
+            "location": "/#utility", 
+            "text": "Cheetah  is a JSON library that supports Swift 4 codables. In addition to that, it shares an API that fits right in with Swift and other OpenKitten libraries.  Ocelot  is a JWT library that also supports codables for decoding JWTs. It leans on  Cheetah  for JSON data.  Schrodigner  is the promise library, used for asynchronous data flow.", 
+            "title": "Utility"
+        }, 
+        {
+            "location": "/leopard/", 
+            "text": "Leopard basics\n\n\nLeopard is a high performance web framework, built 100% in Swift. It provides an easy to use sync and async API.\n\n\nThis guide will help you set up Leopard from your terminal. It assumed Swift 4 has been set up.\n\n\nSPM - Package.swift\n\n\nWhen creating a project using \nswift package init --type=executable\n, you'll notice that a set of files and directories have appeared in the current directory. One of these files is \nPackage.swift\n, the project definition.\n\n\nIn here, a basic template will be shown. Let's add Leopard to that using:\n\n\n.package(url: \nhttps://github.com/OpenKitten/Leopard.git\n, .revision(\nmaster\n)),\n\n\n\n\nAnd by adding \n\"Leopard\"\n to your target's dependencies.\n\n\n// swift-tools-version:4.0\n// The swift-tools-version declares the minimum version of Swift required to build this package.\n\nimport PackageDescription\n\nlet package = Package(\n    name: \nExample\n,\n    dependencies: [\n        .package(url: \nhttps://github.com/OpenKitten/Leopard.git\n, .revision(\nmaster\n)),\n    ],\n    targets: [\n        .target(\n            name: \nExample\n,\n            dependencies: [\nLeopard\n]),\n    ]\n)\n\n\n\n\nA basic (synchronous) HTTP server\n\n\nFirst you'll need to import the framework on top of your \nmain.swift\n, like so:\n\n\nimport Leopard\n\n\n\n\nThis includes all necessary classes, structs and functions to get started.\n\n\nIn Leopard, there are three APIs to chose from. The Synchronous, Asynchronous and combined API.\n\n\n// Create an HTTP server at port `80`\nlet server = try SyncWebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()\n\n\n\n\nThe above will start a webserver without routes. So let's put some routes in the place of the \nTODO:\n\n\nserver.get(\npath\n, \nto\n, \nroute\n) { request in\n  return \nHello world\n\n}\n\n\n\n\nThe following creates a \nGET /path/to/route\n handler that always returns \n\"Hello world\"\n.\n\n\nA basic asynchronous HTTP server\n\n\nAfter \nimport Leopard\n has been put on top of your \nmain.swift\n, you'll need to create an \nAsyncWebServer\n like so:\n\n\n// Create an HTTP server at port `80`\nlet server = try AsyncWebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()\n\n\n\n\nThis is almost identical to the sync webserver.\n\n\nBasic routes are more complex than sync routes and provide no benefit with plaintext requests.\n\n\nAsync requests always require a future to be returned as a response.\n\n\nserver.get(\npath\n, \nto\n, \nroute\n) { request in\n  return Future { \nHello world\n }\n}\n\n\n\n\nThe following also creates a \nGET /path/to/route\n handler that always returns \n\"Hello world\"\n.\n\n\nCombining Sync and Async\n\n\nFor basic (plain) operations, synchronous is slightly faster than async, due to the overhead of the futures. However, when you mix external sources like databases and API calls into the formula, asynchronous requests not only become much lighter, but they reduce the impact on simultaneous requests by not blocking the thread.\n\n\nFor this reason, we support synchronous and asynchronous requests in harmony, side by side.\n\n\n// Create an HTTP server at port `80`\nlet server = try WebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()\n\n\n\n\nTo create a synchronous route in place of the \nTODO:\n you simply select the \nsync\n scope getter.\n\n\nserver.sync.get(\npath\n, \nto\n, \nroute\n) { request in\n  return \nHello world\n\n}\n\n\n\n\nAnd when you need asynchronous behaviour for heavier operations:\n\n\nserver.async.get(\npath\n, \nto\n, \nroute\n) { request in\n  return Future { \nHello world\n }\n}", 
+            "title": "Basics"
+        }, 
+        {
+            "location": "/leopard/#leopard-basics", 
+            "text": "Leopard is a high performance web framework, built 100% in Swift. It provides an easy to use sync and async API.  This guide will help you set up Leopard from your terminal. It assumed Swift 4 has been set up.", 
+            "title": "Leopard basics"
+        }, 
+        {
+            "location": "/leopard/#spm-packageswift", 
+            "text": "When creating a project using  swift package init --type=executable , you'll notice that a set of files and directories have appeared in the current directory. One of these files is  Package.swift , the project definition.  In here, a basic template will be shown. Let's add Leopard to that using:  .package(url:  https://github.com/OpenKitten/Leopard.git , .revision( master )),  And by adding  \"Leopard\"  to your target's dependencies.  // swift-tools-version:4.0\n// The swift-tools-version declares the minimum version of Swift required to build this package.\n\nimport PackageDescription\n\nlet package = Package(\n    name:  Example ,\n    dependencies: [\n        .package(url:  https://github.com/OpenKitten/Leopard.git , .revision( master )),\n    ],\n    targets: [\n        .target(\n            name:  Example ,\n            dependencies: [ Leopard ]),\n    ]\n)", 
+            "title": "SPM - Package.swift"
+        }, 
+        {
+            "location": "/leopard/#a-basic-synchronous-http-server", 
+            "text": "First you'll need to import the framework on top of your  main.swift , like so:  import Leopard  This includes all necessary classes, structs and functions to get started.  In Leopard, there are three APIs to chose from. The Synchronous, Asynchronous and combined API.  // Create an HTTP server at port `80`\nlet server = try SyncWebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()  The above will start a webserver without routes. So let's put some routes in the place of the  TODO:  server.get( path ,  to ,  route ) { request in\n  return  Hello world \n}  The following creates a  GET /path/to/route  handler that always returns  \"Hello world\" .", 
+            "title": "A basic (synchronous) HTTP server"
+        }, 
+        {
+            "location": "/leopard/#a-basic-asynchronous-http-server", 
+            "text": "After  import Leopard  has been put on top of your  main.swift , you'll need to create an  AsyncWebServer  like so:  // Create an HTTP server at port `80`\nlet server = try AsyncWebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()  This is almost identical to the sync webserver.  Basic routes are more complex than sync routes and provide no benefit with plaintext requests.  Async requests always require a future to be returned as a response.  server.get( path ,  to ,  route ) { request in\n  return Future {  Hello world  }\n}  The following also creates a  GET /path/to/route  handler that always returns  \"Hello world\" .", 
+            "title": "A basic asynchronous HTTP server"
+        }, 
+        {
+            "location": "/leopard/#combining-sync-and-async", 
+            "text": "For basic (plain) operations, synchronous is slightly faster than async, due to the overhead of the futures. However, when you mix external sources like databases and API calls into the formula, asynchronous requests not only become much lighter, but they reduce the impact on simultaneous requests by not blocking the thread.  For this reason, we support synchronous and asynchronous requests in harmony, side by side.  // Create an HTTP server at port `80`\nlet server = try WebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()  To create a synchronous route in place of the  TODO:  you simply select the  sync  scope getter.  server.sync.get( path ,  to ,  route ) { request in\n  return  Hello world \n}  And when you need asynchronous behaviour for heavier operations:  server.async.get( path ,  to ,  route ) { request in\n  return Future {  Hello world  }\n}", 
+            "title": "Combining Sync and Async"
+        }, 
+        {
+            "location": "/leopard/advanced-routing/", 
+            "text": "Advanced routing\n\n\nRouting can become more complex the more your application grows, so grouping routes and handlers is an essential part of any web framework.\n\n\nWe also support middlewares with the requirement of them being asynchronous.\n\n\nGrouping\n\n\nCreating a group is similar to creating a route, only the route group get's returned.\n\n\nlet apiV1group = syncwebserver.grouped(\napi\n, \nv1\n)\n\n// GET `/api/v1/users`\napiV1Group.get(\nusers\n) { request in\n  ...\n}\n\n\n\n\nYou can chain groups indefinitely.\n\n\nlet api = syncwebserver.grouped(\napi\n)\n\n// `/api/v1/...`\nlet v1 = api.grouped(\nv1\n)\n\n// `/api/v2/...`\nlet v2 = api.grouped(\nv2\n)\n\n// `/api/v3/...`\nlet v3 = api.grouped(\nv3\n)\n\n\n\n\nTo improve the syntax, we also implement the \ngroup\n function with a trailing closure.\n\n\nsyncwebserver.group(\napi\n) { api in\n  api.group(\nv1\n) { v1 in\n    v1.get(\nusers\n) { request in\n      ...\n    }\n  }\n}", 
+            "title": "Advanced routing"
+        }, 
+        {
+            "location": "/leopard/advanced-routing/#advanced-routing", 
+            "text": "Routing can become more complex the more your application grows, so grouping routes and handlers is an essential part of any web framework.  We also support middlewares with the requirement of them being asynchronous.", 
+            "title": "Advanced routing"
+        }, 
+        {
+            "location": "/leopard/advanced-routing/#grouping", 
+            "text": "Creating a group is similar to creating a route, only the route group get's returned.  let apiV1group = syncwebserver.grouped( api ,  v1 )\n\n// GET `/api/v1/users`\napiV1Group.get( users ) { request in\n  ...\n}  You can chain groups indefinitely.  let api = syncwebserver.grouped( api )\n\n// `/api/v1/...`\nlet v1 = api.grouped( v1 )\n\n// `/api/v2/...`\nlet v2 = api.grouped( v2 )\n\n// `/api/v3/...`\nlet v3 = api.grouped( v3 )  To improve the syntax, we also implement the  group  function with a trailing closure.  syncwebserver.group( api ) { api in\n  api.group( v1 ) { v1 in\n    v1.get( users ) { request in\n      ...\n    }\n  }\n}", 
+            "title": "Grouping"
+        }, 
+        {
+            "location": "/leopard/errors/", 
+            "text": "Errors\n\n\nErrors are an important part of websites. They happen all the time. When authentication fails, the database connection drops or even when an unexpected condition triggers.\n\n\nLogging\n\n\nLogging is an important part of your code, since it tells you what's happening at different levels. One might read verbose messages reporting every login attempt or just the warnings indicating a potential brute force.\n\n\nErrors aren't easy to capture in a single \"mold\", everyone has their own method of organising errors.\n\n\nBy making your structs/classes \nEncodable\n, you enable the ability to log these entities to the currently selected logger/log destination.\n\n\nstruct LoginError : Error, Encodable {\n  let username: String\n}\n\nApplication.logger?.log(LoginError(username: \nJoannis\n), level: .warning)\n\n\n\n\nChangning the destination\n\n\nSetting the logger can be done on the static property \nlogger\n on \nApplication\n.\n\n\nApplication.logger = MyCustomLogger()", 
+            "title": "Errors"
+        }, 
+        {
+            "location": "/leopard/errors/#errors", 
+            "text": "Errors are an important part of websites. They happen all the time. When authentication fails, the database connection drops or even when an unexpected condition triggers.", 
+            "title": "Errors"
+        }, 
+        {
+            "location": "/leopard/errors/#logging", 
+            "text": "Logging is an important part of your code, since it tells you what's happening at different levels. One might read verbose messages reporting every login attempt or just the warnings indicating a potential brute force.  Errors aren't easy to capture in a single \"mold\", everyone has their own method of organising errors.  By making your structs/classes  Encodable , you enable the ability to log these entities to the currently selected logger/log destination.  struct LoginError : Error, Encodable {\n  let username: String\n}\n\nApplication.logger?.log(LoginError(username:  Joannis ), level: .warning)", 
+            "title": "Logging"
+        }, 
+        {
+            "location": "/leopard/errors/#changning-the-destination", 
+            "text": "Setting the logger can be done on the static property  logger  on  Application .  Application.logger = MyCustomLogger()", 
+            "title": "Changning the destination"
+        }, 
+        {
+            "location": "/leopard/config/", 
+            "text": "Configuration files\n\n\nConfiguration files in Leopard can be any format. However, only JSON is included by default. Your Config file needs to be a \nstruct\n conforming to the \nConfig\n protocol.\n\n\nFrom here, you can include other configuration related protocols, too. As your config file imports more configuration types, the more complex it gets and the more requirements there are to the file on the disk.\n\n\nHowever, there's nothing preventing embedded, referenced (class) or even multiple config files being used.\n\n\nLeopard Configuration\n\n\nLeopard comes with two default configuration file protocols.\n\n\nHTTPServerConfig\n is used for configuring the HTTP server's port and hostname.\n\n\nRoutingConfig\n allows customizing the token prefix for parameterized route compoenents.\n\n\nYou can inherit from both protocols, which would make you end up with the following:\n\n\nstruct ExampleConfig : Config, HTTPServerConfig RoutingConfig {\n    var routeParameterToken: String? = \n:\n\n    var port: UInt16 = 80\n    var hostname: String = \n0.0.0.0\n\n}", 
+            "title": "Configuration"
+        }, 
+        {
+            "location": "/leopard/config/#configuration-files", 
+            "text": "Configuration files in Leopard can be any format. However, only JSON is included by default. Your Config file needs to be a  struct  conforming to the  Config  protocol.  From here, you can include other configuration related protocols, too. As your config file imports more configuration types, the more complex it gets and the more requirements there are to the file on the disk.  However, there's nothing preventing embedded, referenced (class) or even multiple config files being used.", 
+            "title": "Configuration files"
+        }, 
+        {
+            "location": "/leopard/config/#leopard-configuration", 
+            "text": "Leopard comes with two default configuration file protocols.  HTTPServerConfig  is used for configuring the HTTP server's port and hostname.  RoutingConfig  allows customizing the token prefix for parameterized route compoenents.  You can inherit from both protocols, which would make you end up with the following:  struct ExampleConfig : Config, HTTPServerConfig RoutingConfig {\n    var routeParameterToken: String? =  : \n    var port: UInt16 = 80\n    var hostname: String =  0.0.0.0 \n}", 
+            "title": "Leopard Configuration"
+        }, 
+        {
+            "location": "/leopard/request-response/", 
+            "text": "Request \n Response\n\n\nRequest and response are at the heart of HTTP, therefore they are extremely important. They've got two things in common: Headers and Body.\n\n\nBoth Request and Response\n\n\nBoth Request and Response share similarities. One is the sender and the other the receiver. Requests get sent, responses get sent back.\n\n\nHeaders\n\n\nHeaders contain metadata such as the timestamp, name and MIME-type of a file. Or such as the cookies carried over from previous sessions.\n\n\nThey can be instantiated with a literal or using an empty initializer.\n\n\nlet emptyHeaders = Headers()\nlet emptyHeaders2: Headers = [:]\n\n\n\n\nHeaders can be read and written.\n\n\nlet headers = Headers()\n\nheaders[\nAuthorization\n] = \nbearer dasdwqjrnajdfnasdsiwq\n\nprint(String(headers[\nAuthorization\n]))\n\nlet otherHeaders: Headers = [\n  \nAuthorization\n: \nbearer dasdwqjrnajdfnasdsiwq\n\n]\n\n\n\n\nBody\n\n\nBodies are a blob of undefined information. It may contain any kind of data, including but not limited to HTML, plain text, CSS, images, videos.\n\n\nWriting to a body using a previously supported object is easy:\n\n\nlet testBody = try \ntest\n.makeBody()\n\n\n\n\nSome of the supported body types are:\n\n\nCheetah.JSONObject\n, \nCheetah.JSONArray\n, \nString\n, \nBody\n\n\nConverting from a body to an existing type is simple to implement:\n\n\nextension BodyRepresentable {\n  func convertToCustomType() throws -\n CustomType {\n    let buffer = try self.makeBody().buffer\n\n    return CustomType(from: buffer)\n  }\n}\n\nlet customEntity = try request.body.convertToCustomType()\n\n\n\n\nJSONObject is already implemented for you, so you can try to read that from a Body using:\n\n\nguard let object = request.jsonObject else {\n  ... // handle data isn't a JSONObject\n}\n\n\n\n\nBodyRepresentable\n\n\nThe other way around is useful, too. Converting your own type of data to a Body can be useful when you're writing your own templating tool, for example.\n\n\nextension CustomType : BodyRepresentable {\n  public func makeBody() throws -\n Body {\n    return Body(self.makeBytes()) // serialize this entity to binary\n  }\n}\n\n\n\n\nOnly Request\n\n\nRequests are unique in them carrying a method and a path. The path can contain query parameters in the URL. All of this allows for very specfic queries to be made.\n\n\nMethod\n\n\nMethod is an enum. It exists of a specific type of action.\n\n\nGET\n is used for fetching entities' their data.\n\n\nHEAD\n is used for fetching entities' their metadata.\n\n\nPOST\n is used to create entities\n\n\nPUT\n is used to replace created entities with a new entity\n\n\nPATCH\n is used to update part of an entity\n\n\nDELETE\n is used to delete an entity\n\n\nBesides this, custom methods are also possible, or less commonly used methods.\n\n\nPath\n\n\nThe path describes the requested URL. It doesn't have many features publically available yet.\n\n\nQuery parameters and Forms\n\n\nBoth query parameters and simple HTML forms use query encoding. This means that their API is equal.\n\n\nguard let query: Query = request.body?.query else {\n  // handle invalid body\n}\n\nguard let username: String = query[\nusername\n] else {\n  // handle invalid request\n}\n\n\n\n\nMultipart forms\n\n\nTODO: File uploading needs to be fixed before continueing documentation here\n\n\nOnly Response\n\n\nResponses are unique in their response status codes. They're used to indicate the successfull execution of a request, or it's failure.\n\n\nStatus code\n\n\nHTTP status codes indicate one of five things.\n\n\n\n\n1xx\n an informational response\n\n\n2xx\n The operation was successfull\n\n\n3xx\n Redirecting is necessary\n\n\n4xx\n A client-side error occurred\n\n\n5xx\n A server-side error occurred\n\n\n\n\nMore information on status codes is available here", 
+            "title": "Request & Response"
+        }, 
+        {
+            "location": "/leopard/request-response/#request-response", 
+            "text": "Request and response are at the heart of HTTP, therefore they are extremely important. They've got two things in common: Headers and Body.", 
+            "title": "Request &amp; Response"
+        }, 
+        {
+            "location": "/leopard/request-response/#both-request-and-response", 
+            "text": "Both Request and Response share similarities. One is the sender and the other the receiver. Requests get sent, responses get sent back.", 
+            "title": "Both Request and Response"
+        }, 
+        {
+            "location": "/leopard/request-response/#headers", 
+            "text": "Headers contain metadata such as the timestamp, name and MIME-type of a file. Or such as the cookies carried over from previous sessions.  They can be instantiated with a literal or using an empty initializer.  let emptyHeaders = Headers()\nlet emptyHeaders2: Headers = [:]  Headers can be read and written.  let headers = Headers()\n\nheaders[ Authorization ] =  bearer dasdwqjrnajdfnasdsiwq \nprint(String(headers[ Authorization ]))\n\nlet otherHeaders: Headers = [\n   Authorization :  bearer dasdwqjrnajdfnasdsiwq \n]", 
+            "title": "Headers"
+        }, 
+        {
+            "location": "/leopard/request-response/#body", 
+            "text": "Bodies are a blob of undefined information. It may contain any kind of data, including but not limited to HTML, plain text, CSS, images, videos.  Writing to a body using a previously supported object is easy:  let testBody = try  test .makeBody()  Some of the supported body types are:  Cheetah.JSONObject ,  Cheetah.JSONArray ,  String ,  Body  Converting from a body to an existing type is simple to implement:  extension BodyRepresentable {\n  func convertToCustomType() throws -  CustomType {\n    let buffer = try self.makeBody().buffer\n\n    return CustomType(from: buffer)\n  }\n}\n\nlet customEntity = try request.body.convertToCustomType()  JSONObject is already implemented for you, so you can try to read that from a Body using:  guard let object = request.jsonObject else {\n  ... // handle data isn't a JSONObject\n}", 
+            "title": "Body"
+        }, 
+        {
+            "location": "/leopard/request-response/#bodyrepresentable", 
+            "text": "The other way around is useful, too. Converting your own type of data to a Body can be useful when you're writing your own templating tool, for example.  extension CustomType : BodyRepresentable {\n  public func makeBody() throws -  Body {\n    return Body(self.makeBytes()) // serialize this entity to binary\n  }\n}", 
+            "title": "BodyRepresentable"
+        }, 
+        {
+            "location": "/leopard/request-response/#only-request", 
+            "text": "Requests are unique in them carrying a method and a path. The path can contain query parameters in the URL. All of this allows for very specfic queries to be made.", 
+            "title": "Only Request"
+        }, 
+        {
+            "location": "/leopard/request-response/#method", 
+            "text": "Method is an enum. It exists of a specific type of action.  GET  is used for fetching entities' their data.  HEAD  is used for fetching entities' their metadata.  POST  is used to create entities  PUT  is used to replace created entities with a new entity  PATCH  is used to update part of an entity  DELETE  is used to delete an entity  Besides this, custom methods are also possible, or less commonly used methods.", 
+            "title": "Method"
+        }, 
+        {
+            "location": "/leopard/request-response/#path", 
+            "text": "The path describes the requested URL. It doesn't have many features publically available yet.", 
+            "title": "Path"
+        }, 
+        {
+            "location": "/leopard/request-response/#query-parameters-and-forms", 
+            "text": "Both query parameters and simple HTML forms use query encoding. This means that their API is equal.  guard let query: Query = request.body?.query else {\n  // handle invalid body\n}\n\nguard let username: String = query[ username ] else {\n  // handle invalid request\n}", 
+            "title": "Query parameters and Forms"
+        }, 
+        {
+            "location": "/leopard/request-response/#multipart-forms", 
+            "text": "TODO: File uploading needs to be fixed before continueing documentation here", 
+            "title": "Multipart forms"
+        }, 
+        {
+            "location": "/leopard/request-response/#only-response", 
+            "text": "Responses are unique in their response status codes. They're used to indicate the successfull execution of a request, or it's failure.", 
+            "title": "Only Response"
+        }, 
+        {
+            "location": "/leopard/request-response/#status-code", 
+            "text": "HTTP status codes indicate one of five things.   1xx  an informational response  2xx  The operation was successfull  3xx  Redirecting is necessary  4xx  A client-side error occurred  5xx  A server-side error occurred   More information on status codes is available here", 
+            "title": "Status code"
+        }, 
+        {
+            "location": "/leopard/cookies-sessions/", 
+            "text": "Cookies \n Sessions\n\n\nCookies play an important role in persistence. They allow the server and client to share a storage that can be modified by either party.\n\n\nCookies are often used for managing sessions.\n\n\nReading a request's Cookies\n\n\nlet cookies = request.cookies\n\nguard let sessionToken = String(cookies[\nsession\n]) else {\n  ...\n}\n\n\n\n\nSessions\n\n\nTODO: Not implemented yet", 
+            "title": "Cookies & Sessions"
+        }, 
+        {
+            "location": "/leopard/cookies-sessions/#cookies-sessions", 
+            "text": "Cookies play an important role in persistence. They allow the server and client to share a storage that can be modified by either party.  Cookies are often used for managing sessions.", 
+            "title": "Cookies &amp; Sessions"
+        }, 
+        {
+            "location": "/leopard/cookies-sessions/#reading-a-requests-cookies", 
+            "text": "let cookies = request.cookies\n\nguard let sessionToken = String(cookies[ session ]) else {\n  ...\n}", 
+            "title": "Reading a request's Cookies"
+        }, 
+        {
+            "location": "/leopard/cookies-sessions/#sessions", 
+            "text": "TODO: Not implemented yet", 
+            "title": "Sessions"
+        }, 
+        {
+            "location": "/leopard/middlewares/", 
+            "text": "Middlewares\n\n\nLeopard middlewares are exclusively asynchronous, since Leopard's synchronous API is built on of the asynchronous one. This ensures quality between all middleware consumers.\n\n\nCreating a basic middleware\n\n\nThe following demonstrates the bearer token being compared against a hardcoded token. If this fails, an error is thrown.\n\n\nIf the bearer token is correct, the chain will be continued by calling \nhandle()\n.\n\n\nimport Leopard\n\nclass MyMiddleware : BasicMiddleware {\n  func handle(_ request: Request, chainingTo handle: (() -\n (Future\nResponseRepresentable\n))) throws -\n Future\nResponseRepresentable\n {\n    guard request.headers.bearer == \nmy-hardcoded-token\n else {\n      throw InvalidBearerError()\n    }\n\n    return handle()\n  }\n}\n\n\n\n\nComplex middlewares\n\n\nAlternatively you can create a normal, more complex Middleware which gives you direct control over the connection. This way you can implement protocol upgrades such as WebSocket. WebSocket, however, is included as part of Leopard.\n\n\nclass MyComplexMiddleware : Middlware {\n  func handle(_ request: Request, for remote: HTTPRemote, chainingTo handler: RequestHandler) {\n    guard request.headers.bearer == \nmy-hardcoded-token\n else {\n      remote.send(Response(status: .internalServerError))\n      return\n    }\n\n    handler(request, remote)\n  }\n}", 
+            "title": "Middlwares"
+        }, 
+        {
+            "location": "/leopard/middlewares/#middlewares", 
+            "text": "Leopard middlewares are exclusively asynchronous, since Leopard's synchronous API is built on of the asynchronous one. This ensures quality between all middleware consumers.", 
+            "title": "Middlewares"
+        }, 
+        {
+            "location": "/leopard/middlewares/#creating-a-basic-middleware", 
+            "text": "The following demonstrates the bearer token being compared against a hardcoded token. If this fails, an error is thrown.  If the bearer token is correct, the chain will be continued by calling  handle() .  import Leopard\n\nclass MyMiddleware : BasicMiddleware {\n  func handle(_ request: Request, chainingTo handle: (() -  (Future ResponseRepresentable ))) throws -  Future ResponseRepresentable  {\n    guard request.headers.bearer ==  my-hardcoded-token  else {\n      throw InvalidBearerError()\n    }\n\n    return handle()\n  }\n}", 
+            "title": "Creating a basic middleware"
+        }, 
+        {
+            "location": "/leopard/middlewares/#complex-middlewares", 
+            "text": "Alternatively you can create a normal, more complex Middleware which gives you direct control over the connection. This way you can implement protocol upgrades such as WebSocket. WebSocket, however, is included as part of Leopard.  class MyComplexMiddleware : Middlware {\n  func handle(_ request: Request, for remote: HTTPRemote, chainingTo handler: RequestHandler) {\n    guard request.headers.bearer ==  my-hardcoded-token  else {\n      remote.send(Response(status: .internalServerError))\n      return\n    }\n\n    handler(request, remote)\n  }\n}", 
+            "title": "Complex middlewares"
+        }, 
+        {
+            "location": "/leopard/websocket/", 
+            "text": "WebSocket\n\n\nWebSockets are useful when you want a real-time connection between client and server. WebSockets allow both parties to send each other information at any time. And support text as well as binary messages.\n\n\nCreating a websocket route\n\n\nThis example assumes you've got a variable \nrouter\n that is a \nWebSocketRouter\n.\n\n\nrouter.websocket(\napi\n, \nv1\n, \nwebsocket\n) { client in\n  // set up handlers\n}\n\n\n\n\nThe handler will be called only when a successful WebSocket connection has been instantiated at this route. It doesn't do anything yet and will disconnect almost immediately.\n\n\nAdding a listener\n\n\nrouter.websocket(\napi\n, \nv1\n, \nwebsocket\n) { client in\n  client.onText { message in\n    // echo the message back\n    try client.send(message)\n  }\n}\n\n\n\n\nTips and tricks\n\n\nThe above example will deallocate and close the connection almost immediately. A better idea is to use a global cache to store the WebSocket client in, so you can receive messages asynchronously and have a handle for sending events from other sessions/threads, too.", 
+            "title": "WebSocket"
+        }, 
+        {
+            "location": "/leopard/websocket/#websocket", 
+            "text": "WebSockets are useful when you want a real-time connection between client and server. WebSockets allow both parties to send each other information at any time. And support text as well as binary messages.", 
+            "title": "WebSocket"
+        }, 
+        {
+            "location": "/leopard/websocket/#creating-a-websocket-route", 
+            "text": "This example assumes you've got a variable  router  that is a  WebSocketRouter .  router.websocket( api ,  v1 ,  websocket ) { client in\n  // set up handlers\n}  The handler will be called only when a successful WebSocket connection has been instantiated at this route. It doesn't do anything yet and will disconnect almost immediately.", 
+            "title": "Creating a websocket route"
+        }, 
+        {
+            "location": "/leopard/websocket/#adding-a-listener", 
+            "text": "router.websocket( api ,  v1 ,  websocket ) { client in\n  client.onText { message in\n    // echo the message back\n    try client.send(message)\n  }\n}", 
+            "title": "Adding a listener"
+        }, 
+        {
+            "location": "/leopard/websocket/#tips-and-tricks", 
+            "text": "The above example will deallocate and close the connection almost immediately. A better idea is to use a global cache to store the WebSocket client in, so you can receive messages asynchronously and have a handle for sending events from other sessions/threads, too.", 
+            "title": "Tips and tricks"
+        }
+    ]
+}
