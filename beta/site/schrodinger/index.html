@@ -195,6 +195,10 @@
 
 <h1 id="schrodinger">Schrodinger</h1>
 <p>Schrodinger is a library built for asynchronous programming. It works around a couple of simple concepts.</p>
+<p>It can be included using:</p>
+<pre><code class="swift">.package(url: &quot;https://github.com/OpenKitten/Schrodinger.git&quot;, .revision(&quot;framework&quot;)),
+</code></pre>
+
 <h2 id="examples">Examples</h2>
 <h3 id="heavy-operations-on-a-separate-thread">Heavy operations on a separate thread</h3>
 <p>The following Future spawns a separate thread that handles these heavy operations.</p>
@@ -328,7 +332,8 @@ let model: Future&lt;Future&lt;ProfileModel&gt;&gt; = try future.map { data in
   return profile
 }
 
-let profile = try model.await().await()
+// NOTE: `until: DispatchTime.distantFuture` waits indefinitely
+let profile = try model.await(until: DispatchTime.distantFuture).await(until: DispatchTime.distantFuture)
 </code></pre>
 
 <p>Which can be simplified using <code>replace</code>.</p>
@@ -343,7 +348,7 @@ let model: Future&lt;ProfileModel&gt; = try future.replace { data in
   return profile
 }
 
-let profile = try model.await()
+let profile = try model.await(until: DispatchTime.distantFuture)
 </code></pre></div>
         
     </div>
