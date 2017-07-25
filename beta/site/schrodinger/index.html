@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>Basics - OpenKitten Docs</title>
+    <title>Schrodinger - OpenKitten Docs</title>
 
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -70,55 +70,55 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Leopard <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li class="active">
-    <a href="./">Basics</a>
+<li >
+    <a href="../leopard/">Basics</a>
 </li>
 
                         
                             
 <li >
-    <a href="advanced-routing/">Advanced routing</a>
+    <a href="../leopard/advanced-routing/">Advanced routing</a>
 </li>
 
                         
                             
 <li >
-    <a href="errors/">Errors</a>
+    <a href="../leopard/errors/">Errors</a>
 </li>
 
                         
                             
 <li >
-    <a href="config/">Configuration</a>
+    <a href="../leopard/config/">Configuration</a>
 </li>
 
                         
                             
 <li >
-    <a href="request-response/">Request & Response</a>
+    <a href="../leopard/request-response/">Request & Response</a>
 </li>
 
                         
                             
 <li >
-    <a href="cookies-sessions/">Cookies & Sessions</a>
+    <a href="../leopard/cookies-sessions/">Cookies & Sessions</a>
 </li>
 
                         
                             
 <li >
-    <a href="middlewares/">Middlwares</a>
+    <a href="../leopard/middlewares/">Middlwares</a>
 </li>
 
                         
                             
 <li >
-    <a href="websocket/">WebSocket</a>
+    <a href="../leopard/websocket/">WebSocket</a>
 </li>
 
                         
@@ -127,13 +127,13 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Utility <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li >
-    <a href="../schrodinger/">Schrodinger</a>
+<li class="active">
+    <a href="./">Schrodinger</a>
 </li>
 
                         
@@ -152,12 +152,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="..">
+                        <a rel="next" href="../leopard/websocket/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="advanced-routing/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -173,18 +173,19 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#leopard-basics">Leopard basics</a></li>
+        <li class="first-level active"><a href="#schrodinger">Schrodinger</a></li>
         
-            <li class="second-level"><a href="#spm-packageswift">SPM - Package.swift</a></li>
+            <li class="second-level"><a href="#examples">Examples</a></li>
             
-        
-            <li class="second-level"><a href="#a-basic-synchronous-http-server">A basic (synchronous) HTTP server</a></li>
+                <li class="third-level"><a href="#heavy-operations-on-a-separate-thread">Heavy operations on a separate thread</a></li>
             
-        
-            <li class="second-level"><a href="#a-basic-asynchronous-http-server">A basic asynchronous HTTP server</a></li>
+                <li class="third-level"><a href="#working-with-value-containing-futures">Working with value containing futures</a></li>
             
-        
-            <li class="second-level"><a href="#combining-sync-and-async">Combining Sync and Async</a></li>
+                <li class="third-level"><a href="#handling-futures-asynchronously">Handling futures asynchronously</a></li>
+            
+                <li class="third-level"><a href="#multiple-handlers">Multiple handlers</a></li>
+            
+                <li class="third-level"><a href="#future-mapping-and-replacing">Future mapping and replacing</a></li>
             
         
     
@@ -192,99 +193,157 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="leopard-basics">Leopard basics</h1>
-<p>Leopard is a high performance web framework, built 100% in Swift. It provides an easy to use sync and async API.</p>
-<p>This guide will help you set up Leopard from your terminal. It assumed Swift 4 has been set up.</p>
-<h2 id="spm-packageswift">SPM - Package.swift</h2>
-<p>When creating a project using <code>swift package init --type=executable</code>, you'll notice that a set of files and directories have appeared in the current directory. One of these files is <code>Package.swift</code>, the project definition.</p>
-<p>In here, a basic template will be shown. Let's add Leopard to that using:</p>
-<pre><code class="swift">.package(url: &quot;https://github.com/OpenKitten/Leopard.git&quot;, .revision(&quot;master&quot;)),
+<h1 id="schrodinger">Schrodinger</h1>
+<p>Schrodinger is a library built for asynchronous programming. It works around a couple of simple concepts.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="heavy-operations-on-a-separate-thread">Heavy operations on a separate thread</h3>
+<p>The following Future spawns a separate thread that handles these heavy operations.</p>
+<p>The resulting future is a <code>Future&lt;Void&gt;</code> since there's no value being returned from the closure.</p>
+<p>Whenever you need to wait for the completion of the future, you can <code>.await()</code> it. Awaiting a future means you block the thread until it's complete.</p>
+<p>Await will throw an error when the wait time has expired or if the executed closure had an error while executing. It will re-throw the captured error.</p>
+<pre><code class="swift">let future = Future {
+  heavyOperation0()
+  heavyOperation1()
+  heavyOperation2()
+}
+
+lightOperation0()
+lightOperation1()
+lightOperation2()
+lightOperation3()
+
+// We need the heavy operations to be complete before continuing
+// Throws an error if this doesn't complete in 30 seconds
+try future.await(for: .seconds(30))
 </code></pre>
 
-<p>And by adding <code>"Leopard"</code> to your target's dependencies.</p>
-<pre><code class="swift">// swift-tools-version:4.0
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+<h3 id="working-with-value-containing-futures">Working with value containing futures</h3>
+<p>More often than not, you need to pass a result from the operation. This means that awaiting the value will return the returned value. Any errors thrown within the future</p>
+<pre><code class="swift">// This future will contain a string
+let future = Future&lt;String&gt; {
+  return try heavyOperationWithResult()
+}
 
-import PackageDescription
+lightOperation0()
+lightOperation1()
+lightOperation2()
+lightOperation3()
 
-let package = Package(
-    name: &quot;Example&quot;,
-    dependencies: [
-        .package(url: &quot;https://github.com/OpenKitten/Leopard.git&quot;, .revision(&quot;master&quot;)),
-    ],
-    targets: [
-        .target(
-            name: &quot;Example&quot;,
-            dependencies: [&quot;Leopard&quot;]),
-    ]
-)
+let heavyOperationResult = try future.await(for: .seconds(10))
 </code></pre>
 
-<h2 id="a-basic-synchronous-http-server">A basic (synchronous) HTTP server</h2>
-<p>First you'll need to import the framework on top of your <code>main.swift</code>, like so:</p>
-<pre><code class="swift">import Leopard
-</code></pre>
+<h3 id="handling-futures-asynchronously">Handling futures asynchronously</h3>
+<p>Sometimes, awaiting the thread is unnecessary and an asynchronous handler can be used instead.</p>
+<pre><code class="swift">let future: Future&lt;[User]&gt; = try findUsersAsync()
 
-<p>This includes all necessary classes, structs and functions to get started.</p>
-<p>In Leopard, there are three APIs to chose from. The Synchronous, Asynchronous and combined API.</p>
-<pre><code class="swift">// Create an HTTP server at port `80`
-let server = try SyncWebServer()
+future.onSuccess { users in
+  // process the `[User]` (users)
+  ...
+}
 
-// TODO: Set up routes
-
-// start the server
-try server.start()
-</code></pre>
-
-<p>The above will start a webserver without routes. So let's put some routes in the place of the <code>TODO:</code></p>
-<pre><code class="swift">server.get(&quot;path&quot;, &quot;to&quot;, &quot;route&quot;) { request in
-  return &quot;Hello world&quot;
+future.onError { error in
+  // handle error
+  // for example `Application.logger?.log(error)` in Leopard
 }
 </code></pre>
 
-<p>The following creates a <code>GET /path/to/route</code> handler that always returns <code>"Hello world"</code>.</p>
-<h2 id="a-basic-asynchronous-http-server">A basic asynchronous HTTP server</h2>
-<p>After <code>import Leopard</code> has been put on top of your <code>main.swift</code>, you'll need to create an <code>AsyncWebServer</code> like so:</p>
-<pre><code class="swift">// Create an HTTP server at port `80`
-let server = try AsyncWebServer()
+<p>If you want more fine-grained control over both situations you can place a handler on both successful completions and errors.</p>
+<pre><code class="swift">let future: Future&lt;[User]&gt; = try findUsersAsync()
 
-// TODO: Set up routes
-
-// start the server
-try server.start()
-</code></pre>
-
-<p>This is almost identical to the sync webserver.</p>
-<p>Basic routes are more complex than sync routes and provide no benefit with plaintext requests.</p>
-<p>Async requests always require a future to be returned as a response.</p>
-<pre><code class="swift">server.get(&quot;path&quot;, &quot;to&quot;, &quot;route&quot;) { request in
-  return Future { &quot;Hello world&quot; }
+// result contains an enum
+future.then { result in
+  switch result {
+  case .success(let users):
+    // TODO: process users
+  case .error(let error):
+    // TODO: handle error
+  }
 }
 </code></pre>
 
-<p>The following also creates a <code>GET /path/to/route</code> handler that always returns <code>"Hello world"</code>.</p>
-<h2 id="combining-sync-and-async">Combining Sync and Async</h2>
-<p>For basic (plain) operations, synchronous is slightly faster than async, due to the overhead of the futures. However, when you mix external sources like databases and API calls into the formula, asynchronous requests not only become much lighter, but they reduce the impact on simultaneous requests by not blocking the thread.</p>
-<p>For this reason, we support synchronous and asynchronous requests in harmony, side by side.</p>
-<pre><code class="swift">// Create an HTTP server at port `80`
-let server = try WebServer()
+<p>Sometimes you want to assert the success of a result, that will let Schrodinger throw the error if an error occurred, or give you the successful result if the result was captured successfully.</p>
+<pre><code class="swift">let future: Future&lt;[User]&gt; = try findUsersAsync()
 
-// TODO: Set up routes
+// result contains an enum
+future.then { result in
+  do {
+    let users = try result.assertSuccess()
 
-// start the server
-try server.start()
-</code></pre>
-
-<p>To create a synchronous route in place of the <code>TODO:</code> you simply select the <code>sync</code> scope getter.</p>
-<pre><code class="swift">server.sync.get(&quot;path&quot;, &quot;to&quot;, &quot;route&quot;) { request in
-  return &quot;Hello world&quot;
+    // TODO: handle users
+  } catch { error in
+    // handle error
+    // for example `Application.logger?.log(error)` in Leopard
+  }
 }
 </code></pre>
 
-<p>And when you need asynchronous behaviour for heavier operations:</p>
-<pre><code class="swift">server.async.get(&quot;path&quot;, &quot;to&quot;, &quot;route&quot;) { request in
-  return Future { &quot;Hello world&quot; }
+<h3 id="multiple-handlers">Multiple handlers</h3>
+<p>Sometimes you'll want to watch for a result using multiple handlers. For example, a chat room with 5 users. One user sends a message and the other 4 await it's result.</p>
+<p>That means the following is completely fine:</p>
+<pre><code class="swift">let future: Future&lt;ChatMessage&gt; = awaitForChatMessage()
+
+// first handler
+future.then { result in
+  ...
 }
+
+// second handler
+future.then { result in
+  ...
+}
+
+// third handler
+future.then { result in
+  ...
+}
+
+// fourth handler
+future.then { result in
+  ...
+}
+</code></pre>
+
+<h3 id="future-mapping-and-replacing">Future mapping and replacing</h3>
+<p>Whenever you're working asynchronously, awaiting a result alone can fall too short.</p>
+<p>Sometimes you'll need to convert the result. Like a database result conversion to a model.</p>
+<p>For this case, future mapping is useful.</p>
+<pre><code class="swift">let future: Future&lt;DatabaseData&gt; = try database.fetch(from: &quot;users&quot;)
+
+// maps the future asynchronously
+let model: Future&lt;Model&gt; = try future.map { data in
+  return try MyModel(from: data)
+}
+</code></pre>
+
+<p>And in some scenarios, completing one future means starting another.</p>
+<p>The following code results in a code pyramid:</p>
+<pre><code class="swift">let future: Future&lt;DatabaseData&gt; = try database.fetch(from: &quot;users&quot;)
+
+// maps the future asynchronously
+let model: Future&lt;Future&lt;ProfileModel&gt;&gt; = try future.map { data in
+  let model = try UserModel(from: data)
+
+  let profile = Future&lt;ProfileModel&gt; = try model.getProfile()
+
+  return profile
+}
+
+let profile = try model.await().await()
+</code></pre>
+
+<p>Which can be simplified using <code>replace</code>.</p>
+<pre><code class="swift">let future: Future&lt;DatabaseData&gt; = try database.fetch(from: &quot;users&quot;)
+
+// maps the future asynchronously
+let model: Future&lt;ProfileModel&gt; = try future.replace { data in
+  let model = try UserModel(from: data)
+
+  let profile = Future&lt;ProfileModel&gt; = try model.getProfile()
+
+  return profile
+}
+
+let profile = try model.await()
 </code></pre></div>
         
     </div>

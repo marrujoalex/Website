@@ -11,3 +11,5 @@ pages:
   - 'Cookies & Sessions': 'leopard/cookies-sessions.md'
   - Middlwares: 'leopard/middlewares.md'
   - WebSocket: 'leopard/websocket.md'
+- Utility:
+  - Schrodinger: 'schrodinger/index.md'
