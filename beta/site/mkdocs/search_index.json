@@ -304,6 +304,41 @@
             "location": "/schrodinger/#future-mapping-and-replacing", 
             "text": "Whenever you're working asynchronously, awaiting a result alone can fall too short.  Sometimes you'll need to convert the result. Like a database result conversion to a model.  For this case, future mapping is useful.  let future: Future DatabaseData  = try database.fetch(from:  users )\n\n// maps the future asynchronously\nlet model: Future Model  = try future.map { data in\n  return try MyModel(from: data)\n}  And in some scenarios, completing one future means starting another.  The following code results in a code pyramid:  let future: Future DatabaseData  = try database.fetch(from:  users )\n\n// maps the future asynchronously\nlet model: Future Future ProfileModel  = try future.map { data in\n  let model = try UserModel(from: data)\n\n  let profile = Future ProfileModel  = try model.getProfile()\n\n  return profile\n}\n\n// NOTE: `until: DispatchTime.distantFuture` waits indefinitely\nlet profile = try model.await(until: DispatchTime.distantFuture).await(until: DispatchTime.distantFuture)  Which can be simplified using  replace .  let future: Future DatabaseData  = try database.fetch(from:  users )\n\n// maps the future asynchronously\nlet model: Future ProfileModel  = try future.replace { data in\n  let model = try UserModel(from: data)\n\n  let profile = Future ProfileModel  = try model.getProfile()\n\n  return profile\n}\n\nlet profile = try model.await(until: DispatchTime.distantFuture)", 
             "title": "Future mapping and replacing"
+        }, 
+        {
+            "location": "/lynx/", 
+            "text": "Lynx\n\n\nLynx is a very basic HTTP server. It, optionally, has some basic routing functionality and by default routes all request to a single handler so it can be used in any way without enforcing limitations.\n\n\nCreating a webserver\n\n\nCreating a basic webserver is simple. You provide a closure that handles all requests and clients.\n\n\nThe handler may not throw errors. Instead, errors should be passed to the client.\n\n\nlet server = try HTTPServer { request, client in\n  // handle the request and respond to the client\n}\n\n\n\n\nWhen ready, you can start the server using \nstart()\n\n\ntry server.start()\n\n\n\n\nRouting\n\n\nlet router = TrieRouter()\n\n\n\n\nThe router can be hooked up to a webserver simply.\n\n\nlet server = try HTTPServer(handler: router.handle)\n\n\n\n\nRegistering routes should only be done during set up. I \ncan\n be used while serving, however, it \nmay\n crash the server if a request is being handled during the addition of a route. A custom router can with a lock can be used to solve this problem.\n\n\nRegistering a route\n\n\n// Registers to `GET /path/to/route`\nrouter.register(at: [\npath\n, \nto\n, \nroute\n], method: .get) { request, client in\n  // handle the request and respond to the client\n}\n\n\n\n\nResponding\n\n\nlet response = Response(status: .ok)\n\ndo {\n  try client.send(response)\n} catch {\n  client.error(error)\n}\n\n\n\n\nOther information\n\n\nHTTP Request and responses\n is a useful place to learn more about the two main objects in HTTP.\n\n\nLynx does not support basic web framework features, it is designed to be simple.", 
+            "title": "Plain HTTP using Lynx"
+        }, 
+        {
+            "location": "/lynx/#lynx", 
+            "text": "Lynx is a very basic HTTP server. It, optionally, has some basic routing functionality and by default routes all request to a single handler so it can be used in any way without enforcing limitations.", 
+            "title": "Lynx"
+        }, 
+        {
+            "location": "/lynx/#creating-a-webserver", 
+            "text": "Creating a basic webserver is simple. You provide a closure that handles all requests and clients.  The handler may not throw errors. Instead, errors should be passed to the client.  let server = try HTTPServer { request, client in\n  // handle the request and respond to the client\n}  When ready, you can start the server using  start()  try server.start()", 
+            "title": "Creating a webserver"
+        }, 
+        {
+            "location": "/lynx/#routing", 
+            "text": "let router = TrieRouter()  The router can be hooked up to a webserver simply.  let server = try HTTPServer(handler: router.handle)  Registering routes should only be done during set up. I  can  be used while serving, however, it  may  crash the server if a request is being handled during the addition of a route. A custom router can with a lock can be used to solve this problem.", 
+            "title": "Routing"
+        }, 
+        {
+            "location": "/lynx/#registering-a-route", 
+            "text": "// Registers to `GET /path/to/route`\nrouter.register(at: [ path ,  to ,  route ], method: .get) { request, client in\n  // handle the request and respond to the client\n}", 
+            "title": "Registering a route"
+        }, 
+        {
+            "location": "/lynx/#responding", 
+            "text": "let response = Response(status: .ok)\n\ndo {\n  try client.send(response)\n} catch {\n  client.error(error)\n}", 
+            "title": "Responding"
+        }, 
+        {
+            "location": "/lynx/#other-information", 
+            "text": "HTTP Request and responses  is a useful place to learn more about the two main objects in HTTP.  Lynx does not support basic web framework features, it is designed to be simple.", 
+            "title": "Other information"
         }
     ]
 }
