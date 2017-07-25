@@ -27,3 +27,19 @@ The libraries can be categorized into 3 categories.
 [Ocelot](/ocelot/index.md) is a JWT library that also supports codables for decoding JWTs. It leans on [Cheetah](/cheetah/index.md) for JSON data.
 
 [Schrodinger](/schrodinger/index.md) is the promise library, used for asynchronous data flow.
+
+## Requirements
+
+These projects require the Swift 4 06-19 snapshot or the Xcode 9 build for macOS.
+
+[Linux - Ubuntu 16.04](https://swift.org/builds/swift-4.0-branch/ubuntu1604/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a-ubuntu16.04.tar.gz)
+
+[Linux - Ubuntu 14.04](https://swift.org/builds/swift-4.0-branch/ubuntu1404/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a-ubuntu14.04.tar.gz)
+
+[macOS - Manual download](https://swift.org/builds/swift-4.0-branch/xcode/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a-osx.pkg)
+
+Or just install the Xcode 9 beta.
+
+### Linux
+
+For SSL, Linux requires the installation of `libssl-dev`, `openssl` and Swift 4.
