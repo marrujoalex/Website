@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to OpenKitten\n\n\nOpenKitten is a Server Side Swift ecosystem. It contains many libraries for creating backends and full stack swift applications.\n\n\nThe libraries\n\n\nThe libraries can be categorized into 3 categories.\n\n\nHTTP\n\n\nLeopard\n is a high performance web framework based on \nLynx\n.\n\n\nPuma\n is a \nLynx\n based HTTP client. Designed to work seamlessly with \nLeopard\n .\n\n\nLynx\n is the HTTP core, containing an HTTP server and all basic features of HTTP messages. It relies on \nSchrodinger\n to provide clean asynchronous data flows.\n\n\nMongoDB\n\n\nMongoKitten\n is the fastest MongoDB driver. It's also the only pure-swift MongoDB driver. It relies heavily upon \nBSON\n and assumes familiarity with \nBSON\n.\n\n\nMeow\n is a codable ORM based on \nMongoKitten\n. It's flexible and boilerplate-free, allowing your models to stay clean.\n\n\nUtility\n\n\nCheetah\n is a JSON library that supports Swift 4 codables. In addition to that, it shares an API that fits right in with Swift and other OpenKitten libraries.\n\n\nOcelot\n is a JWT library that also supports codables for decoding JWTs. It leans on \nCheetah\n for JSON data.\n\n\nSchrodinger\n is the promise library, used for asynchronous data flow.", 
+            "text": "Welcome to OpenKitten\n\n\nOpenKitten is a Server Side Swift ecosystem. It contains many libraries for creating backends and full stack swift applications.\n\n\nThe libraries\n\n\nThe libraries can be categorized into 3 categories.\n\n\nHTTP\n\n\nLeopard\n is a high performance web framework based on \nLynx\n.\n\n\nPuma\n is a \nLynx\n based HTTP client. Designed to work seamlessly with \nLeopard\n .\n\n\nLynx\n is the HTTP core, containing an HTTP server and all basic features of HTTP messages. It relies on \nSchrodinger\n to provide clean asynchronous data flows.\n\n\nMongoDB\n\n\nMongoKitten\n is the fastest MongoDB driver. It's also the only pure-swift MongoDB driver. It relies heavily upon \nBSON\n and assumes familiarity with \nBSON\n.\n\n\nMeow\n is a codable ORM based on \nMongoKitten\n. It's flexible and boilerplate-free, allowing your models to stay clean.\n\n\nUtility\n\n\nCheetah\n is a JSON library that supports Swift 4 codables. In addition to that, it shares an API that fits right in with Swift and other OpenKitten libraries.\n\n\nOcelot\n is a JWT library that also supports codables for decoding JWTs. It leans on \nCheetah\n for JSON data.\n\n\nSchrodinger\n is the promise library, used for asynchronous data flow.\n\n\nRequirements\n\n\nThese projects require the Swift 4 06-19 snapshot or the Xcode 9 build for macOS.\n\n\nLinux - Ubuntu 16.04\n\n\nLinux - Ubuntu 14.04\n\n\nmacOS - Manual download\n\n\nOr just install the Xcode 9 beta.\n\n\nLinux\n\n\nFor SSL, Linux requires the installation of \nlibssl-dev\n, \nopenssl\n and Swift 4.", 
             "title": "Home"
         }, 
         {
@@ -29,6 +29,16 @@
             "location": "/#utility", 
             "text": "Cheetah  is a JSON library that supports Swift 4 codables. In addition to that, it shares an API that fits right in with Swift and other OpenKitten libraries.  Ocelot  is a JWT library that also supports codables for decoding JWTs. It leans on  Cheetah  for JSON data.  Schrodinger  is the promise library, used for asynchronous data flow.", 
             "title": "Utility"
+        }, 
+        {
+            "location": "/#requirements", 
+            "text": "These projects require the Swift 4 06-19 snapshot or the Xcode 9 build for macOS.  Linux - Ubuntu 16.04  Linux - Ubuntu 14.04  macOS - Manual download  Or just install the Xcode 9 beta.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/#linux", 
+            "text": "For SSL, Linux requires the installation of  libssl-dev ,  openssl  and Swift 4.", 
+            "title": "Linux"
         }, 
         {
             "location": "/leopard/", 
