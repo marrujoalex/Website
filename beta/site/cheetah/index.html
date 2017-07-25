@@ -196,6 +196,13 @@
             <li class="second-level"><a href="#de-serializing-json">(de-)serializing JSON</a></li>
             
         
+            <li class="second-level"><a href="#codable">Codable</a></li>
+            
+                <li class="third-level"><a href="#encoding">Encoding</a></li>
+            
+                <li class="third-level"><a href="#decoding">Decoding</a></li>
+            
+        
     
     </ul>
 </div></div>
@@ -254,6 +261,36 @@ let arrayBytes: [UInt8] = array.serialize()
 
 let objectString: String = object.serializedString()
 let arrayString: String = array.serializedString()
+</code></pre>
+
+<h2 id="codable">Codable</h2>
+<p>Cheetah supports Codable, meaning you can conform any struct or class to <code>Encodable</code> for serializing, <code>Decodable</code> for deserializing and <code>Codable</code> for both.</p>
+<h3 id="encoding">Encoding</h3>
+<pre><code class="swift">import Cheetah
+
+struct LoginResponse : Encodable {
+  let token: String
+  let success: Bool
+}
+
+let response = LoginResponse(token: &quot;my-t0k3n&quot;, success: true)
+
+let jsonObject = try Cheetah.JSONEncoder().encode(response)
+print(jsonObject.serializedString()) // prints `{&quot;token&quot;:&quot;my-t0k3n&quot;,&quot;success&quot;:true}`
+</code></pre>
+
+<h3 id="decoding">Decoding</h3>
+<pre><code class="swift">import Cheetah
+
+struct LoginRequest : Decodable {
+  let username: String
+  let password: String
+}
+
+let request = try Cheetah.JSONDecoder().decode(LoginRequest.self, from: &quot;{\&quot;username\&quot;:\&quot;test\&quot;,\&quot;password\&quot;:\&quot;hunter2\&quot;}&quot;)
+
+print(request.username) // prints &quot;test&quot;
+print(request.password) // prints &quot;hunter2&quot;
 </code></pre></div>
         
     </div>

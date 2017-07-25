@@ -67,3 +67,39 @@ let arrayBytes: [UInt8] = array.serialize()
 let objectString: String = object.serializedString()
 let arrayString: String = array.serializedString()
 ```
+
+## Codable
+
+Cheetah supports Codable, meaning you can conform any struct or class to `Encodable` for serializing, `Decodable` for deserializing and `Codable` for both.
+
+### Encoding
+
+```swift
+import Cheetah
+
+struct LoginResponse : Encodable {
+  let token: String
+  let success: Bool
+}
+
+let response = LoginResponse(token: "my-t0k3n", success: true)
+
+let jsonObject = try Cheetah.JSONEncoder().encode(response)
+print(jsonObject.serializedString()) // prints `{"token":"my-t0k3n","success":true}`
+```
+
+### Decoding
+
+```swift
+import Cheetah
+
+struct LoginRequest : Decodable {
+  let username: String
+  let password: String
+}
+
+let request = try Cheetah.JSONDecoder().decode(LoginRequest.self, from: "{\"username\":\"test\",\"password\":\"hunter2\"}")
+
+print(request.username) // prints "test"
+print(request.password) // prints "hunter2"
+```
