@@ -64,6 +64,12 @@
     
         
     <url>
+     <loc>/cheetah/</loc>
+     <lastmod>2017-07-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>/schrodinger/</loc>
      <lastmod>2017-07-25</lastmod>
      <changefreq>daily</changefreq>

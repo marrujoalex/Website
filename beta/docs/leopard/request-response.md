@@ -66,6 +66,8 @@ guard let object = request.jsonObject else {
 }
 ```
 
+[More about JSON here.](../cheetah/index.md)
+
 ### BodyRepresentable
 
 The other way around is useful, too. Converting your own type of data to a Body can be useful when you're writing your own templating tool, for example.

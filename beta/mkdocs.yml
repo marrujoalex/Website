@@ -2,8 +2,8 @@ site_name: OpenKitten Docs
 theme: cinder
 pages:
 - Home: index.md
-- Leopard:
-  - Basics: 'leopard/index.md'
+- 'Web':
+  - 'Leopard Basics': 'leopard/index.md'
   - 'Advanced routing': 'leopard/advanced-routing.md'
   - 'Errors': 'leopard/errors.md'
   - 'Configuration': 'leopard/config.md'
@@ -12,4 +12,5 @@ pages:
   - Middlwares: 'leopard/middlewares.md'
   - WebSocket: 'leopard/websocket.md'
 - Utility:
-  - Schrodinger: 'schrodinger/index.md'
+  - 'JSON using Cheetah': 'cheetah/index.md'
+  - 'Async using Schrodinger': 'schrodinger/index.md'

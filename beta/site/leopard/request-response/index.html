@@ -71,12 +71,12 @@
                 
                 
                     <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Leopard <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../">Basics</a>
+    <a href="../">Leopard Basics</a>
 </li>
 
                         
@@ -133,7 +133,13 @@
                         
                             
 <li >
-    <a href="../../schrodinger/">Schrodinger</a>
+    <a href="../../cheetah/">JSON using Cheetah</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../schrodinger/">Async using Schrodinger</a>
 </li>
 
                         
@@ -253,6 +259,7 @@ let customEntity = try request.body.convertToCustomType()
 }
 </code></pre>
 
+<p><a href="../../cheetah/">More about JSON here.</a></p>
 <h3 id="bodyrepresentable">BodyRepresentable</h3>
 <p>The other way around is useful, too. Converting your own type of data to a Body can be useful when you're writing your own templating tool, for example.</p>
 <pre><code class="swift">extension CustomType : BodyRepresentable {
