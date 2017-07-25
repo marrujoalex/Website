@@ -2,6 +2,8 @@
 
 OpenKitten is a Server Side Swift ecosystem. It contains many libraries for creating backends and full stack swift applications.
 
+We're active on [Slack](https://slackpass.io/openkitten) and [Github](https://github.com/OpenKitten/).
+
 ## The libraries
 
 The libraries can be categorized into 3 categories.
