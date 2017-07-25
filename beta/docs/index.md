@@ -1,10 +1,10 @@
 # Welcome to OpenKitten
 
-OpenKitten is a Server Side Swift ecosystem. It contains many libraries for creating backends and full stack swift applications.
+OpenKitten is a server side Swift ecosystem for creating backends and full stack Swift applications.
 
 ## The libraries
 
-The libraries can be categorized into 3 categories.
+The libraries that make up OpenKitten can be categorized into 3 categories.
 
 ### HTTP
 
@@ -16,7 +16,7 @@ The libraries can be categorized into 3 categories.
 
 ### MongoDB
 
-[MongoKitten](/mongokitten/index.md) is the fastest MongoDB driver. It's also the only pure-swift MongoDB driver. It relies heavily upon [BSON](/bson/index.md) and assumes familiarity with [BSON](/bson/index.md).
+[MongoKitten](/mongokitten/index.md) is the fastest MongoDB driver. It's also the only pure-swift MongoDB driver. It relies heavily upon [BSON](/bson/index.md).
 
 [Meow](/meow/index.md) is a codable ORM based on [MongoKitten](/mongokitten/index.md). It's flexible and boilerplate-free, allowing your models to stay clean.
 
@@ -24,7 +24,7 @@ The libraries can be categorized into 3 categories.
 
 [Cheetah](/cheetah/index.md) is a JSON library that supports Swift 4 codables. In addition to that, it shares an API that fits right in with Swift and other OpenKitten libraries.
 
-[Ocelot](/ocelot/index.md) is a JWT library that also supports codables for decoding JWTs. It leans on [Cheetah](/cheetah/index.md) for JSON data.
+[Ocelot](/ocelot/index.md) is a JWT library that also supports codables for decoding JWTs, leaning on [Cheetah](/cheetah/index.md) for JSON data.
 
 [Schrodinger](/schrodinger/index.md) is the promise library, used for asynchronous data flow.
 
