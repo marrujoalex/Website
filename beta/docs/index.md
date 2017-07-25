@@ -12,7 +12,7 @@ The libraries can be categorized into 3 categories.
 
 [Puma](/puma/index.md) is a [Lynx](/lynx/index.md) based HTTP client. Designed to work seamlessly with [Leopard](/leopard/index.md) .
 
-[Lynx](/lynx/index.md) is the HTTP core, containing an HTTP server and all basic features of HTTP messages. It relies on [Schrodingner](/schrodinger/index.md) to provide clean asynchronous data flows.
+[Lynx](/lynx/index.md) is the HTTP core, containing an HTTP server and all basic features of HTTP messages. It relies on [Schrodinger](/schrodinger/index.md) to provide clean asynchronous data flows.
 
 ### MongoDB
 
@@ -26,4 +26,4 @@ The libraries can be categorized into 3 categories.
 
 [Ocelot](/ocelot/index.md) is a JWT library that also supports codables for decoding JWTs. It leans on [Cheetah](/cheetah/index.md) for JSON data.
 
-[Schrodigner](/schrodinger/index.md) is the promise library, used for asynchronous data flow.
+[Schrodinger](/schrodinger/index.md) is the promise library, used for asynchronous data flow.
