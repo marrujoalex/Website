@@ -2,6 +2,49 @@
 
 Cheetah is a fast library JSON. It's designed to read and write to strings and bytes. It's designed to have a familiar API for OpenKitten users.
 
+Cheetah supports all Swift platforms (macOS, Linux, iOS, watchOS and tvOS) using Swift 3.0, 3.1, 3.2 and 4.0.
+
+## SPM - Package.swift
+
+When creating a project using `swift package init --type=executable`, you'll notice that a set of files and directories have appeared in the current directory. One of these files is `Package.swift`, the project definition.
+
+### Swift 4.0
+
+For Swift 4.0, use the following syntax for adding a dependency.
+
+```swift
+.package(url: "https://github.com/OpenKitten/Cheetah.git", .revision("framework"))
+```
+
+And by adding `"Leopard"` to your target's dependencies.
+
+```swift
+// swift-tools-version:4.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "Example",
+    dependencies: [
+        .package(url: "https://github.com/OpenKitten/Cheetah.git", .revision("framework")),
+    ],
+    targets: [
+        .target(
+            name: "Example",
+            dependencies: ["Cheetah"]),
+    ]
+)
+```
+
+### Swift 3.x
+
+For Swift 3.x, use the following syntax for adding a dependency.
+
+```swift
+.Package(url: "https://github.com/OpenKitten/Cheetah.git", Version(2,0,0))
+```
+
 ## Creating a JSON Object or Array
 
 ```swift
