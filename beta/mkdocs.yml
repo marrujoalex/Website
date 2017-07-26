@@ -11,6 +11,7 @@ pages:
   - 'Cookies & Sessions': 'leopard/cookies-sessions.md'
   - Middlwares: 'leopard/middlewares.md'
   - WebSocket: 'leopard/websocket.md'
+  - 'HTTP client': 'puma/index.md'
 - Utility:
   - 'JSON using Cheetah': 'cheetah/index.md'
   - 'Async using Schrodinger': 'schrodinger/index.md'

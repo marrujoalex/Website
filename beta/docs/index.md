@@ -32,15 +32,15 @@ The libraries can be categorized into 3 categories.
 
 ## Requirements
 
-These projects require the Swift 4 06-19 snapshot or the Xcode 9 build for macOS.
+These projects require the Swift 4 07-20 snapshot or the Xcode 9 build for macOS.
 
-[Linux - Ubuntu 16.04](https://swift.org/builds/swift-4.0-branch/ubuntu1604/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a-ubuntu16.04.tar.gz)
+[Linux - Ubuntu 16.04](https://swift.org/builds/swift-4.0-branch/ubuntu1604/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a-ubuntu16.04.tar.gz)
 
-[Linux - Ubuntu 14.04](https://swift.org/builds/swift-4.0-branch/ubuntu1404/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a-ubuntu14.04.tar.gz)
+[Linux - Ubuntu 14.04](https://swift.org/builds/swift-4.0-branch/ubuntu1404/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a-ubuntu14.04.tar.gz)
 
-[macOS - Manual download](https://swift.org/builds/swift-4.0-branch/xcode/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-06-19-a-osx.pkg)
+[macOS - Manual download](https://swift.org/builds/swift-4.0-branch/xcode/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a-osx.pkg)
 
-Or just install the Xcode 9 beta.
+Or just install the latest Xcode 9 beta (beta 4 or greater).
 
 ### Linux
 
