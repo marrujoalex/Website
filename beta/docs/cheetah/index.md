@@ -40,13 +40,6 @@ let admin = Bool(object["admin"]) ?? false
 let number: Double? = Double(object["number"])
 ```
 
-Accessing nested types can be simply chained:
-
-```swift
-object["subObject"]["subSubObject"]["test"] = true
-let test = Bool(object["subObject"]["subSubObject"]["test"])
-```
-
 ## (de-)serializing JSON
 
 You can easily create a JSONObject or JSONArray from a buffer.
@@ -68,9 +61,31 @@ let objectString: String = object.serializedString()
 let arrayString: String = array.serializedString()
 ```
 
+## Nested objects
+
+### Swift 3.1 or greater
+
+Accessing nested types can be simply chained:
+
+```swift
+object["subObject"]["subSubObject"]["test"] = true
+let test = Bool(object["subObject"]["subSubObject"]["test"])
+```
+
+### Swift 3.0
+
+Swift 3.0 doesn't allow us to add the chaining descibed above. Instead, you'll have to unwrap and chain the subscripts manually.
+
+```swift
+JSONObject(JSONObject(object["subObject"])?["subSubObject"])?["test"] = true
+let test = Bool(JSONObject(JSONObject(object["subObject"])?["subSubObject"])?["test"])
+```
+
 ## Codable
 
 Cheetah supports Codable, meaning you can conform any struct or class to `Encodable` for serializing, `Decodable` for deserializing and `Codable` for both.
+
+This requires Swift 4.
 
 ### Encoding
 
