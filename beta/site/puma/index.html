@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <link rel="shortcut icon" href="./img/favicon.ico">
+    <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>OpenKitten Docs</title>
+    <title>HTTP client - OpenKitten Docs</title>
 
-    <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
     <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/cinder.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/highlight.css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -36,7 +36,7 @@
     
 </head>
 
-<body class="homepage" >
+<body>
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -54,7 +54,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href=".">OpenKitten Docs</a>
+            <a class="navbar-brand" href="..">OpenKitten Docs</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -64,67 +64,67 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="active">
-                        <a href=".">Home</a>
+                    <li >
+                        <a href="..">Home</a>
                     </li>
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="leopard/">Leopard Basics</a>
+    <a href="../leopard/">Leopard Basics</a>
 </li>
 
                         
                             
 <li >
-    <a href="leopard/advanced-routing/">Advanced routing</a>
+    <a href="../leopard/advanced-routing/">Advanced routing</a>
 </li>
 
                         
                             
 <li >
-    <a href="leopard/errors/">Errors</a>
+    <a href="../leopard/errors/">Errors</a>
 </li>
 
                         
                             
 <li >
-    <a href="leopard/config/">Configuration</a>
+    <a href="../leopard/config/">Configuration</a>
 </li>
 
                         
                             
 <li >
-    <a href="leopard/request-response/">Request & Response</a>
+    <a href="../leopard/request-response/">Request & Response</a>
 </li>
 
                         
                             
 <li >
-    <a href="leopard/cookies-sessions/">Cookies & Sessions</a>
+    <a href="../leopard/cookies-sessions/">Cookies & Sessions</a>
 </li>
 
                         
                             
 <li >
-    <a href="leopard/middlewares/">Middlwares</a>
+    <a href="../leopard/middlewares/">Middlwares</a>
 </li>
 
                         
                             
 <li >
-    <a href="leopard/websocket/">WebSocket</a>
+    <a href="../leopard/websocket/">WebSocket</a>
 </li>
 
                         
                             
-<li >
-    <a href="puma/">HTTP client</a>
+<li class="active">
+    <a href="./">HTTP client</a>
 </li>
 
                         
@@ -139,19 +139,19 @@
                         
                             
 <li >
-    <a href="cheetah/">JSON using Cheetah</a>
+    <a href="../cheetah/">JSON using Cheetah</a>
 </li>
 
                         
                             
 <li >
-    <a href="schrodinger/">Async using Schrodinger</a>
+    <a href="../schrodinger/">Async using Schrodinger</a>
 </li>
 
                         
                             
 <li >
-    <a href="lynx/">Plain HTTP using Lynx</a>
+    <a href="../lynx/">Plain HTTP using Lynx</a>
 </li>
 
                         
@@ -169,13 +169,13 @@
                     </a>
                 </li>
                 
-                    <li class="disabled">
-                        <a rel="next" >
+                    <li >
+                        <a rel="next" href="../leopard/websocket/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="leopard/">
+                        <a rel="prev" href="../cheetah/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -191,51 +191,11 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#welcome-to-openkitten">Welcome to OpenKitten</a></li>
-        
-            <li class="second-level"><a href="#the-libraries">The libraries</a></li>
-            
-                <li class="third-level"><a href="#http">HTTP</a></li>
-            
-                <li class="third-level"><a href="#mongodb">MongoDB</a></li>
-            
-                <li class="third-level"><a href="#utility">Utility</a></li>
-            
-        
-            <li class="second-level"><a href="#requirements">Requirements</a></li>
-            
-                <li class="third-level"><a href="#linux">Linux</a></li>
-            
-        
-    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-openkitten">Welcome to OpenKitten</h1>
-<p>OpenKitten is a Server Side Swift ecosystem. It contains many libraries for creating backends and full stack swift applications.</p>
-<p>We're active on <a href="https://slackpass.io/openkitten">Slack</a> and <a href="https://github.com/OpenKitten/">Github</a>.</p>
-<h2 id="the-libraries">The libraries</h2>
-<p>The libraries can be categorized into 3 categories.</p>
-<h3 id="http">HTTP</h3>
-<p><a href="leopard/">Leopard</a> is a high performance web framework based on <a href="lynx/">Lynx</a>.</p>
-<p><a href="puma/">Puma</a> is a <a href="lynx/">Lynx</a> based HTTP client. Designed to work seamlessly with <a href="leopard/">Leopard</a> .</p>
-<p><a href="lynx/">Lynx</a> is the HTTP core, containing an HTTP server and all basic features of HTTP messages. It relies on <a href="schrodinger/">Schrodinger</a> to provide clean asynchronous data flows.</p>
-<h3 id="mongodb">MongoDB</h3>
-<p><a href="/mongokitten/index.md">MongoKitten</a> is the fastest MongoDB driver. It's also the only pure-swift MongoDB driver. It relies heavily upon <a href="/bson/index.md">BSON</a> and assumes familiarity with <a href="/bson/index.md">BSON</a>.</p>
-<p><a href="/meow/index.md">Meow</a> is a codable ORM based on <a href="/mongokitten/index.md">MongoKitten</a>. It's flexible and boilerplate-free, allowing your models to stay clean.</p>
-<h3 id="utility">Utility</h3>
-<p><a href="cheetah/">Cheetah</a> is a JSON library that supports Swift 4 codables. In addition to that, it shares an API that fits right in with Swift and other OpenKitten libraries.</p>
-<p><a href="/ocelot/index.md">Ocelot</a> is a JWT library that also supports codables for decoding JWTs. It leans on <a href="cheetah/">Cheetah</a> for JSON data.</p>
-<p><a href="schrodinger/">Schrodinger</a> is the promise library, used for asynchronous data flow.</p>
-<h2 id="requirements">Requirements</h2>
-<p>These projects require the Swift 4 07-20 snapshot or the Xcode 9 build for macOS.</p>
-<p><a href="https://swift.org/builds/swift-4.0-branch/ubuntu1604/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a-ubuntu16.04.tar.gz">Linux - Ubuntu 16.04</a></p>
-<p><a href="https://swift.org/builds/swift-4.0-branch/ubuntu1404/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a-ubuntu14.04.tar.gz">Linux - Ubuntu 14.04</a></p>
-<p><a href="https://swift.org/builds/swift-4.0-branch/xcode/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a/swift-4.0-DEVELOPMENT-SNAPSHOT-2017-07-20-a-osx.pkg">macOS - Manual download</a></p>
-<p>Or just install the latest Xcode 9 beta (beta 4 or greater).</p>
-<h3 id="linux">Linux</h3>
-<p>For SSL, Linux requires the installation of <code>libssl-dev</code>, <code>openssl</code> and Swift 4.</p></div>
+</div>
         
     </div>
 
@@ -245,15 +205,15 @@
         <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
     </footer>
 
-    <script src="./js/jquery-1.10.2.min.js"></script>
-    <script src="./js/bootstrap-3.0.3.min.js"></script>
-    <script src="./js/highlight.pack.js"></script>
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script>
-    var base_url = '.';
+    var base_url = '..';
     </script>
-    <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
-    <script src="./js/base.js"></script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
@@ -285,8 +245,3 @@
     </body>
 
 </html>
-
-<!--
-MkDocs version : 0.16.3
-Build Date UTC : 2017-07-26 14:48:03
--->
