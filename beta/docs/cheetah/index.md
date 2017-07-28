@@ -47,6 +47,10 @@ For Swift 3.x, use the following syntax for adding a dependency.
 
 ## Creating a JSON Object or Array
 
+### Swift 3.1 or greater
+
+For objects and arrays you can just use the literals.
+
 ```swift
 let object: JSONObject = [
   "username": "Joannis",
@@ -63,6 +67,26 @@ let object: JSONObject = [
 ]
 
 let array: JSONArray = [object, object, object]
+```
+
+### Swift 3.0
+
+For Swift 3.0, literals need to be specified a bit more explicitly. They require explicit definition of the type of literal.
+
+```swift
+let object: JSONObject = [
+  "username": "Joannis",
+  "age": 21,
+  "admin": true,
+  "number": 6.28,
+  "powersOfTwo": [0, 2, 4, 6, 8, 10, 12, 14, 16] as JSONArray,
+  "subObject": [
+    "test": true,
+    "subSubObject": [
+      "test": true
+    ] as JSONObject
+  ] as JSONObject
+]
 ```
 
 ## Working with objects
@@ -138,15 +162,14 @@ let test = Bool(object["subObject"]["subSubObject"]["test"])
 Swift 3.0 doesn't allow us to add the chaining descibed above. Instead, you'll have to unwrap and chain the subscripts manually.
 
 ```swift
-JSONObject(JSONObject(object["subObject"])?["subSubObject"])?["test"] = true
-let test = Bool(JSONObject(JSONObject(object["subObject"])?["subSubObject"])?["test"])
+// TODO: Describe after the API has been revised
 ```
 
 ## Codable
 
 Cheetah supports Codable, meaning you can conform any struct or class to `Encodable` for serializing, `Decodable` for deserializing and `Codable` for both.
 
-This requires Swift 4.
+This requires at least Swift 3.2 or it's equivalent Swift 4.
 
 ### Encoding
 

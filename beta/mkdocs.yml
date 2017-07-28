@@ -16,3 +16,5 @@ pages:
   - 'JSON using Cheetah': 'cheetah/index.md'
   - 'Async using Schrodinger': 'schrodinger/index.md'
   - 'Plain HTTP using Lynx': 'lynx/index.md'
+- 'Third Party':
+  - 'Jobs': 'third-party/jobs.md'
