@@ -104,6 +104,24 @@ let objectString: String = object.serializedString()
 let arrayString: String = array.serializedString()
 ```
 
+## Deserializing arrays
+
+Sometimes you need an array of a specific type. `JSONArray` helps when the array contains generic JSON, but, sometimes you need an array of `String`s.
+
+In this case, we recommend flatMapping the JSONArray using the String initializer like so:
+
+```swift
+let blogPost: JSONObject = [
+  "title": "How to use Cheetah",
+  "contents": "...",
+  "tags": [
+    "cheetah", "swift", "json", "tutorial"
+  ]
+]
+
+let tags = JSONArray(blogPost["tags"])?.flatMap(String.init)
+```
+
 ## Nested objects
 
 ### Swift 3.1 or greater
