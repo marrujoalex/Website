@@ -2,7 +2,7 @@
 
 Leopard is a high performance web framework, built 100% in Swift. It provides an easy to use sync and async API.
 
-This guide will help you set up Leopard from your terminal. It assumed Swift 4 has been set up.
+This guide will help you set up Leopard from your terminal. It assumes Swift 4 has been set up.
 
 ## SPM - Package.swift
 

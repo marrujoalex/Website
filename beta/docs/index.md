@@ -30,6 +30,14 @@ The libraries can be categorized into 3 categories.
 
 [Schrodinger](/schrodinger/index.md) is the promise library, used for asynchronous data flow.
 
+## Third party
+
+We're happy to work with the community and assist writing good libraries. Some problems are already solved by a third party without much room for improvement. These are such libraries.
+
+The following libraries are not supported by us directly, although we advice using them if they're useful to you.
+
+[Jobs](/third-party/jobs.md) is a minimalistic job system in Swift. It doesn't store jobs on application exit/restart.
+
 ## Requirements
 
 These projects require the Swift 4 07-20 snapshot or the Xcode 9 build for macOS.
