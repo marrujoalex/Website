@@ -122,7 +122,30 @@ guard let username: String = query["username"] else {
 
 ### Multipart forms
 
-*TODO: File uploading needs to be fixed before continueing documentation here*
+*TODO: File uploading needs to be fixed before continuing documentation here*
+
+### Creating a request
+
+Creating a request requires at least a methodana path.
+
+This might end up like one of the following:
+
+```swift
+let request0 = Request(method: .get, path: "/users/test", headers: [
+  "Host": "example.com"
+])
+
+let request1 = Request(method: "DELETE", path: "/", headers: [
+  "Host": "example.com"
+])
+
+let json: JSONObject = [
+  "username": "JoannisO",
+  "password": "op3nkitt3n"
+]
+
+let request2 = Request(method: .post, path: "/users/register", body: try json.makeBody())
+```
 
 ## Only Response
 
@@ -139,3 +162,17 @@ HTTP status codes indicate one of five things.
 * `5xx` A server-side error occurred
 
 [More information on status codes is available here](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+
+### Creating a response
+
+Responses only require a status code, but usually also provide headers and a body.
+
+```swift
+let response0 = Response(status: .ok)
+
+let response1 = Response(status: .notFound, body: "Not Found")
+
+let response2 = Response(status: 500, headers: [
+  "HeaderKey": "Value"
+])
+```
