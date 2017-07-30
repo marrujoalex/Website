@@ -1,6 +1,6 @@
 # Middlewares
 
-Leopard middlewares are exclusively asynchronous, since Leopard's synchronous API is built on of the asynchronous one. This ensures quality between all middleware consumers.
+Leopard middlewares are exclusively asynchronous. This ensures quality between all middleware consumers.
 
 ## Creating a basic middleware
 
