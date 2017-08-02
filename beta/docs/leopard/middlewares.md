@@ -2,29 +2,9 @@
 
 Leopard middlewares are exclusively asynchronous. This ensures quality between all middleware consumers.
 
-## Creating a basic middleware
+## Middlewares
 
-The following demonstrates the bearer token being compared against a hardcoded token. If this fails, an error is thrown.
-
-If the bearer token is correct, the chain will be continued by calling `handle()`.
-
-```swift
-import Leopard
-
-class MyMiddleware : BasicMiddleware {
-  func handle(_ request: Request, chainingTo handle: (() -> (Future<ResponseRepresentable>))) throws -> Future<ResponseRepresentable> {
-    guard request.headers.bearer == "my-hardcoded-token" else {
-      throw InvalidBearerError()
-    }
-
-    return handle()
-  }
-}
-```
-
-## Complex middlewares
-
-Alternatively you can create a normal, more complex Middleware which gives you direct control over the connection. This way you can implement protocol upgrades such as WebSocket. WebSocket, however, is included as part of Leopard.
+Alternatively you can create a normal, more complex Middleware which gives you direct control over the connection. This way you can implement protocol upgrades such as the included WebSocket implementation.
 
 ```swift
 class MyComplexMiddleware : Middlware {
@@ -38,3 +18,6 @@ class MyComplexMiddleware : Middlware {
   }
 }
 ```
+
+This function does not allow you to throw errors. Instead, the HTTPRemote should be sent the Error so it can deal with it appropriately.
+More about [HTTPRemote here.](../lynx/remote.md)

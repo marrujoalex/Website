@@ -1,5 +1,5 @@
 site_name: OpenKitten Docs
-theme: cinder
+theme: 'material'
 pages:
 - Home: index.md
 - 'Web':

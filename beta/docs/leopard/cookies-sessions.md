@@ -16,4 +16,6 @@ guard let sessionToken = String(cookies["session"]) else {
 
 ## Sessions
 
-*TODO: Not implemented yet*
+Session are currently supported through [JWT using Ocelot.](../ocelot/index.md)
+
+JWT has proven to be flexible, easy and powerful at the same time. If you want simple token based sessions, we currently recommend managing the session in the [in-memory cache](cache.md) or the database of your choice.

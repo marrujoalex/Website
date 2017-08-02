@@ -24,6 +24,3 @@ router.websocket("api", "v1", "websocket") { client in
   }
 }
 ```
-
-## Tips and tricks
-The above example will deallocate and close the connection almost immediately. A better idea is to use a global cache to store the WebSocket client in, so you can receive messages asynchronously and have a handle for sending events from other sessions/threads, too.
