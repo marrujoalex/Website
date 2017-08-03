@@ -9,12 +9,15 @@ pages:
   - 'Configuration': 'leopard/config.md'
   - 'Request & Response': 'leopard/request-response.md'
   - 'Cookies & Sessions': 'leopard/cookies-sessions.md'
-  - Middlwares: 'leopard/middlewares.md'
-  - WebSocket: 'leopard/websocket.md'
+  - 'Middlwares': 'leopard/middlewares.md'
+  - 'WebSocket': 'leopard/websocket.md'
   - 'HTTP client': 'puma/index.md'
+  - 'Forms and file uploading': 'leopard/Multipart.md'
 - Utility:
   - 'JSON using Cheetah': 'cheetah/index.md'
   - 'Async using Schrodinger': 'schrodinger/index.md'
   - 'Plain HTTP using Lynx': 'lynx/index.md'
+  - 'JWT using Ocelot': 'ocelot/index.md'
+  - 'TCP/SSL using Lynx': 'lynx/TCP.md'
 - 'Third Party':
   - 'Jobs': 'third-party/jobs.md'
