@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to OpenKitten\n\n\nOpenKitten is a Server Side Swift ecosystem. It contains many libraries for creating backends and full stack swift applications.\n\n\nWe're active on \nSlack\n and \nGithub\n.\n\n\nThe libraries\n\n\nThe libraries can be categorized into 3 categories.\n\n\nHTTP\n\n\nLeopard\n is a high performance web framework based on \nLynx\n.\n\n\nPuma\n is a \nLynx\n based HTTP client. Designed to work seamlessly with \nLeopard\n .\n\n\nLynx\n is the HTTP core, containing an HTTP server and all basic features of HTTP messages. It relies on \nSchrodinger\n to provide clean asynchronous data flows.\n\n\nMongoDB\n\n\nMongoKitten\n is the fastest MongoDB driver. It's also the only pure-swift MongoDB driver. It relies heavily upon \nBSON\n and assumes familiarity with \nBSON\n.\n\n\nMeow\n is a codable ORM based on \nMongoKitten\n. It's flexible and boilerplate-free, allowing your models to stay clean.\n\n\nUtility\n\n\nCheetah\n is a JSON library that supports Swift 4 codables. In addition to that, it shares an API that fits right in with Swift and other OpenKitten libraries.\n\n\nOcelot\n is a JWT library that also supports codables for decoding JWTs. It leans on \nCheetah\n for JSON data.\n\n\nSchrodinger\n is the promise library, used for asynchronous data flow.\n\n\nRequirements\n\n\nThese projects require the Swift 4 07-20 snapshot or the Xcode 9 build for macOS.\n\n\nLinux - Ubuntu 16.04\n\n\nLinux - Ubuntu 14.04\n\n\nmacOS - Manual download\n\n\nOr just install the latest Xcode 9 beta (beta 4 or greater).\n\n\nLinux\n\n\nFor SSL, Linux requires the installation of \nlibssl-dev\n, \nopenssl\n and Swift 4.", 
+            "text": "Welcome to OpenKitten\n\n\nOpenKitten is a Server Side Swift ecosystem. It contains many libraries for creating backends and full stack swift applications.\n\n\nWe're active on \nSlack\n and \nGithub\n.\n\n\nThe libraries\n\n\nThe libraries can be categorized into 3 categories.\n\n\nHTTP\n\n\nLeopard\n is a high performance web framework based on \nLynx\n.\n\n\nPuma\n is a \nLynx\n based HTTP client. Designed to work seamlessly with \nLeopard\n .\n\n\nLynx\n is the HTTP core, containing an HTTP server and all basic features of HTTP messages. It relies on \nSchrodinger\n to provide clean asynchronous data flows.\n\n\nMongoDB\n\n\nMongoKitten\n is the fastest MongoDB driver. It's also the only pure-swift MongoDB driver. It relies heavily upon \nBSON\n and assumes familiarity with \nBSON\n.\n\n\nMeow\n is a codable ORM based on \nMongoKitten\n. It's flexible and boilerplate-free, allowing your models to stay clean.\n\n\nUtility\n\n\nCheetah\n is a JSON library that supports Swift 4 codables. In addition to that, it shares an API that fits right in with Swift and other OpenKitten libraries.\n\n\nOcelot\n is a JWT library that also supports codables for decoding JWTs. It leans on \nCheetah\n for JSON data.\n\n\nSchrodinger\n is the promise library, used for asynchronous data flow.\n\n\nThird party\n\n\nWe're happy to work with the community and assist writing good libraries. Some problems are already solved by a third party without much room for improvement. These are such libraries.\n\n\nThe following libraries are not supported by us directly, although we advice using them if they're useful to you.\n\n\nJobs\n is a minimalistic job system in Swift. It doesn't store jobs on application exit/restart.\n\n\nRequirements\n\n\nThese projects require the Swift 4 07-20 snapshot or the Xcode 9 build for macOS.\n\n\nLinux - Ubuntu 16.04\n\n\nLinux - Ubuntu 14.04\n\n\nmacOS - Manual download\n\n\nOr just install the latest Xcode 9 beta (beta 4 or greater).\n\n\nLinux\n\n\nFor SSL, Linux requires the installation of \nlibssl-dev\n, \nopenssl\n and Swift 4.", 
             "title": "Home"
         }, 
         {
@@ -31,6 +31,11 @@
             "title": "Utility"
         }, 
         {
+            "location": "/#third-party", 
+            "text": "We're happy to work with the community and assist writing good libraries. Some problems are already solved by a third party without much room for improvement. These are such libraries.  The following libraries are not supported by us directly, although we advice using them if they're useful to you.  Jobs  is a minimalistic job system in Swift. It doesn't store jobs on application exit/restart.", 
+            "title": "Third party"
+        }, 
+        {
             "location": "/#requirements", 
             "text": "These projects require the Swift 4 07-20 snapshot or the Xcode 9 build for macOS.  Linux - Ubuntu 16.04  Linux - Ubuntu 14.04  macOS - Manual download  Or just install the latest Xcode 9 beta (beta 4 or greater).", 
             "title": "Requirements"
@@ -42,12 +47,12 @@
         }, 
         {
             "location": "/leopard/", 
-            "text": "Leopard basics\n\n\nLeopard is a high performance web framework, built 100% in Swift. It provides an easy to use sync and async API.\n\n\nThis guide will help you set up Leopard from your terminal. It assumed Swift 4 has been set up.\n\n\nSPM - Package.swift\n\n\nWhen creating a project using \nswift package init --type=executable\n, you'll notice that a set of files and directories have appeared in the current directory. One of these files is \nPackage.swift\n, the project definition.\n\n\nIn here, a basic template will be shown. Let's add Leopard to that using:\n\n\n.package(url: \nhttps://github.com/OpenKitten/Leopard.git\n, .revision(\nmaster\n)),\n\n\n\n\nAnd by adding \n\"Leopard\"\n to your target's dependencies.\n\n\n// swift-tools-version:4.0\n// The swift-tools-version declares the minimum version of Swift required to build this package.\n\nimport PackageDescription\n\nlet package = Package(\n    name: \nExample\n,\n    dependencies: [\n        .package(url: \nhttps://github.com/OpenKitten/Leopard.git\n, .revision(\nmaster\n)),\n    ],\n    targets: [\n        .target(\n            name: \nExample\n,\n            dependencies: [\nLeopard\n]),\n    ]\n)\n\n\n\n\nA basic (synchronous) HTTP server\n\n\nFirst you'll need to import the framework on top of your \nmain.swift\n, like so:\n\n\nimport Leopard\n\n\n\n\nThis includes all necessary classes, structs and functions to get started.\n\n\nIn Leopard, there are three APIs to chose from. The Synchronous, Asynchronous and combined API.\n\n\n// Create an HTTP server at port `80`\nlet server = try SyncWebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()\n\n\n\n\nThe above will start a webserver without routes. So let's put some routes in the place of the \nTODO:\n\n\nserver.get(\npath\n, \nto\n, \nroute\n) { request in\n  return \nHello world\n\n}\n\n\n\n\nThe following creates a \nGET /path/to/route\n handler that always returns \n\"Hello world\"\n.\n\n\nA basic asynchronous HTTP server\n\n\nAfter \nimport Leopard\n has been put on top of your \nmain.swift\n, you'll need to create an \nAsyncWebServer\n like so:\n\n\n// Create an HTTP server at port `80`\nlet server = try AsyncWebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()\n\n\n\n\nThis is almost identical to the sync webserver.\n\n\nBasic routes are more complex than sync routes and provide no benefit with plaintext requests.\n\n\nAsync requests always require a future to be returned as a response.\n\n\nserver.get(\npath\n, \nto\n, \nroute\n) { request in\n  return Future { \nHello world\n }\n}\n\n\n\n\nThe following also creates a \nGET /path/to/route\n handler that always returns \n\"Hello world\"\n.\n\n\nCombining Sync and Async\n\n\nFor basic (plain) operations, synchronous is slightly faster than async, due to the overhead of the futures. However, when you mix external sources like databases and API calls into the formula, asynchronous requests not only become much lighter, but they reduce the impact on simultaneous requests by not blocking the thread.\n\n\nFor this reason, we support synchronous and asynchronous requests in harmony, side by side.\n\n\n// Create an HTTP server at port `80`\nlet server = try WebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()\n\n\n\n\nTo create a synchronous route in place of the \nTODO:\n you simply select the \nsync\n scope getter.\n\n\nserver.sync.get(\npath\n, \nto\n, \nroute\n) { request in\n  return \nHello world\n\n}\n\n\n\n\nAnd when you need asynchronous behaviour for heavier operations:\n\n\nserver.async.get(\npath\n, \nto\n, \nroute\n) { request in\n  return Future { \nHello world\n }\n}", 
+            "text": "Leopard basics\n\n\nLeopard is a high performance web framework, built 100% in Swift. It provides an easy to use async API.\n\n\nThis guide will help you set up Leopard from your terminal. It assumes Swift 4 has been set up.\n\n\nSPM - Package.swift\n\n\nWhen creating a project using \nswift package init --type=executable\n, you'll notice that a set of files and directories have appeared in the current directory. One of these files is \nPackage.swift\n, the project definition.\n\n\nIn here, a basic template will be shown. Let's add Leopard to that using:\n\n\n.package(url: \nhttps://github.com/OpenKitten/Leopard.git\n, .revision(\nmaster\n)),\n\n\n\n\nAnd by adding \n\"Leopard\"\n to your target's dependencies.\n\n\n// swift-tools-version:4.0\n// The swift-tools-version declares the minimum version of Swift required to build this package.\n\nimport PackageDescription\n\nlet package = Package(\n    name: \nExample\n,\n    dependencies: [\n        .package(url: \nhttps://github.com/OpenKitten/Leopard.git\n, .revision(\nmaster\n)),\n    ],\n    targets: [\n        .target(\n            name: \nExample\n,\n            dependencies: [\nLeopard\n]),\n    ]\n)\n\n\n\n\nA basic HTTP server\n\n\nAfter \nimport Leopard\n has been put on top of your \nmain.swift\n, you'll need to create an \nAsyncWebServer\n like so:\n\n\n// Create an HTTP server at port `80`\nlet server = try AsyncWebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()\n\n\n\n\nThis is almost identical to the sync webserver.\n\n\nBasic routes are more complex than sync routes and provide no benefit with plaintext requests.\n\n\nAsync requests always require a future to be returned as a response.\n\n\nserver.get(\npath\n, \nto\n, \nroute\n) { request in\n  return Future { \nHello world\n }\n}\n\n\n\n\nThe following also creates a \nGET /path/to/route\n handler that always returns \n\"Hello world\"\n.", 
             "title": "Leopard Basics"
         }, 
         {
             "location": "/leopard/#leopard-basics", 
-            "text": "Leopard is a high performance web framework, built 100% in Swift. It provides an easy to use sync and async API.  This guide will help you set up Leopard from your terminal. It assumed Swift 4 has been set up.", 
+            "text": "Leopard is a high performance web framework, built 100% in Swift. It provides an easy to use async API.  This guide will help you set up Leopard from your terminal. It assumes Swift 4 has been set up.", 
             "title": "Leopard basics"
         }, 
         {
@@ -56,23 +61,13 @@
             "title": "SPM - Package.swift"
         }, 
         {
-            "location": "/leopard/#a-basic-synchronous-http-server", 
-            "text": "First you'll need to import the framework on top of your  main.swift , like so:  import Leopard  This includes all necessary classes, structs and functions to get started.  In Leopard, there are three APIs to chose from. The Synchronous, Asynchronous and combined API.  // Create an HTTP server at port `80`\nlet server = try SyncWebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()  The above will start a webserver without routes. So let's put some routes in the place of the  TODO:  server.get( path ,  to ,  route ) { request in\n  return  Hello world \n}  The following creates a  GET /path/to/route  handler that always returns  \"Hello world\" .", 
-            "title": "A basic (synchronous) HTTP server"
-        }, 
-        {
-            "location": "/leopard/#a-basic-asynchronous-http-server", 
+            "location": "/leopard/#a-basic-http-server", 
             "text": "After  import Leopard  has been put on top of your  main.swift , you'll need to create an  AsyncWebServer  like so:  // Create an HTTP server at port `80`\nlet server = try AsyncWebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()  This is almost identical to the sync webserver.  Basic routes are more complex than sync routes and provide no benefit with plaintext requests.  Async requests always require a future to be returned as a response.  server.get( path ,  to ,  route ) { request in\n  return Future {  Hello world  }\n}  The following also creates a  GET /path/to/route  handler that always returns  \"Hello world\" .", 
-            "title": "A basic asynchronous HTTP server"
-        }, 
-        {
-            "location": "/leopard/#combining-sync-and-async", 
-            "text": "For basic (plain) operations, synchronous is slightly faster than async, due to the overhead of the futures. However, when you mix external sources like databases and API calls into the formula, asynchronous requests not only become much lighter, but they reduce the impact on simultaneous requests by not blocking the thread.  For this reason, we support synchronous and asynchronous requests in harmony, side by side.  // Create an HTTP server at port `80`\nlet server = try WebServer()\n\n// TODO: Set up routes\n\n// start the server\ntry server.start()  To create a synchronous route in place of the  TODO:  you simply select the  sync  scope getter.  server.sync.get( path ,  to ,  route ) { request in\n  return  Hello world \n}  And when you need asynchronous behaviour for heavier operations:  server.async.get( path ,  to ,  route ) { request in\n  return Future {  Hello world  }\n}", 
-            "title": "Combining Sync and Async"
+            "title": "A basic HTTP server"
         }, 
         {
             "location": "/leopard/advanced-routing/", 
-            "text": "Advanced routing\n\n\nRouting can become more complex the more your application grows, so grouping routes and handlers is an essential part of any web framework.\n\n\nWe also support middlewares with the requirement of them being asynchronous.\n\n\nGrouping\n\n\nCreating a group is similar to creating a route, only the route group get's returned.\n\n\nlet apiV1group = syncwebserver.grouped(\napi\n, \nv1\n)\n\n// GET `/api/v1/users`\napiV1Group.get(\nusers\n) { request in\n  ...\n}\n\n\n\n\nYou can chain groups indefinitely.\n\n\nlet api = syncwebserver.grouped(\napi\n)\n\n// `/api/v1/...`\nlet v1 = api.grouped(\nv1\n)\n\n// `/api/v2/...`\nlet v2 = api.grouped(\nv2\n)\n\n// `/api/v3/...`\nlet v3 = api.grouped(\nv3\n)\n\n\n\n\nTo improve the syntax, we also implement the \ngroup\n function with a trailing closure.\n\n\nsyncwebserver.group(\napi\n) { api in\n  api.group(\nv1\n) { v1 in\n    v1.get(\nusers\n) { request in\n      ...\n    }\n  }\n}", 
+            "text": "Advanced routing\n\n\nRouting can become more complex the more your application grows, so grouping routes and handlers is an essential part of any web framework.\n\n\nWe also support middlewares with the requirement of them being asynchronous.\n\n\nGrouping\n\n\nCreating a group is similar to creating a route, only the route group get's returned.\n\n\nlet apiV1group = webserver.grouped(\napi\n, \nv1\n)\n\n// GET `/api/v1/users`\napiV1Group.get(\nusers\n) { request in\n  ...\n}\n\n\n\n\nYou can chain groups indefinitely.\n\n\nlet api = webserver.grouped(\napi\n)\n\n// `/api/v1/...`\nlet v1 = api.grouped(\nv1\n)\n\n// `/api/v2/...`\nlet v2 = api.grouped(\nv2\n)\n\n// `/api/v3/...`\nlet v3 = api.grouped(\nv3\n)\n\n\n\n\nTo improve the syntax, we also implement the \ngroup\n function with a trailing closure.\n\n\nwebserver.group(\napi\n) { api in\n  api.group(\nv1\n) { v1 in\n    v1.get(\nusers\n) { request in\n      ...\n    }\n  }\n}", 
             "title": "Advanced routing"
         }, 
         {
@@ -82,7 +77,7 @@
         }, 
         {
             "location": "/leopard/advanced-routing/#grouping", 
-            "text": "Creating a group is similar to creating a route, only the route group get's returned.  let apiV1group = syncwebserver.grouped( api ,  v1 )\n\n// GET `/api/v1/users`\napiV1Group.get( users ) { request in\n  ...\n}  You can chain groups indefinitely.  let api = syncwebserver.grouped( api )\n\n// `/api/v1/...`\nlet v1 = api.grouped( v1 )\n\n// `/api/v2/...`\nlet v2 = api.grouped( v2 )\n\n// `/api/v3/...`\nlet v3 = api.grouped( v3 )  To improve the syntax, we also implement the  group  function with a trailing closure.  syncwebserver.group( api ) { api in\n  api.group( v1 ) { v1 in\n    v1.get( users ) { request in\n      ...\n    }\n  }\n}", 
+            "text": "Creating a group is similar to creating a route, only the route group get's returned.  let apiV1group = webserver.grouped( api ,  v1 )\n\n// GET `/api/v1/users`\napiV1Group.get( users ) { request in\n  ...\n}  You can chain groups indefinitely.  let api = webserver.grouped( api )\n\n// `/api/v1/...`\nlet v1 = api.grouped( v1 )\n\n// `/api/v2/...`\nlet v2 = api.grouped( v2 )\n\n// `/api/v3/...`\nlet v3 = api.grouped( v3 )  To improve the syntax, we also implement the  group  function with a trailing closure.  webserver.group( api ) { api in\n  api.group( v1 ) { v1 in\n    v1.get( users ) { request in\n      ...\n    }\n  }\n}", 
             "title": "Grouping"
         }, 
         {
@@ -122,7 +117,7 @@
         }, 
         {
             "location": "/leopard/request-response/", 
-            "text": "Request \n Response\n\n\nRequest and response are at the heart of HTTP, therefore they are extremely important. They've got two things in common: Headers and Body.\n\n\nBoth Request and Response\n\n\nBoth Request and Response share similarities. One is the sender and the other the receiver. Requests get sent, responses get sent back.\n\n\nHeaders\n\n\nHeaders contain metadata such as the timestamp, name and MIME-type of a file. Or such as the cookies carried over from previous sessions.\n\n\nThey can be instantiated with a literal or using an empty initializer.\n\n\nlet emptyHeaders = Headers()\nlet emptyHeaders2: Headers = [:]\n\n\n\n\nHeaders can be read and written.\n\n\nlet headers = Headers()\n\nheaders[\nAuthorization\n] = \nbearer dasdwqjrnajdfnasdsiwq\n\nprint(String(headers[\nAuthorization\n]))\n\nlet otherHeaders: Headers = [\n  \nAuthorization\n: \nbearer dasdwqjrnajdfnasdsiwq\n\n]\n\n\n\n\nBody\n\n\nBodies are a blob of undefined information. It may contain any kind of data, including but not limited to HTML, plain text, CSS, images, videos.\n\n\nWriting to a body using a previously supported object is easy:\n\n\nlet testBody = try \ntest\n.makeBody()\n\n\n\n\nSome of the supported body types are:\n\n\nCheetah.JSONObject\n, \nCheetah.JSONArray\n, \nString\n, \nBody\n\n\nConverting from a body to an existing type is simple to implement:\n\n\nextension BodyRepresentable {\n  func convertToCustomType() throws -\n CustomType {\n    let buffer = try self.makeBody().buffer\n\n    return CustomType(from: buffer)\n  }\n}\n\nlet customEntity = try request.body.convertToCustomType()\n\n\n\n\nJSONObject is already implemented for you, so you can try to read that from a Body using:\n\n\nguard let object = request.jsonObject else {\n  ... // handle data isn't a JSONObject\n}\n\n\n\n\nMore about JSON here.\n\n\nBodyRepresentable\n\n\nThe other way around is useful, too. Converting your own type of data to a Body can be useful when you're writing your own templating tool, for example.\n\n\nextension CustomType : BodyRepresentable {\n  public func makeBody() throws -\n Body {\n    return Body(self.makeBytes()) // serialize this entity to binary\n  }\n}\n\n\n\n\nOnly Request\n\n\nRequests are unique in them carrying a method and a path. The path can contain query parameters in the URL. All of this allows for very specfic queries to be made.\n\n\nMethod\n\n\nMethod is an enum. It exists of a specific type of action.\n\n\nGET\n is used for fetching entities' their data.\n\n\nHEAD\n is used for fetching entities' their metadata.\n\n\nPOST\n is used to create entities\n\n\nPUT\n is used to replace created entities with a new entity\n\n\nPATCH\n is used to update part of an entity\n\n\nDELETE\n is used to delete an entity\n\n\nBesides this, custom methods are also possible, or less commonly used methods.\n\n\nPath\n\n\nThe path describes the requested URL. It doesn't have many features publically available yet.\n\n\nQuery parameters and Forms\n\n\nBoth query parameters and simple HTML forms use query encoding. This means that their API is equal.\n\n\nguard let query: Query = request.body?.query else {\n  // handle invalid body\n}\n\nguard let username: String = query[\nusername\n] else {\n  // handle invalid request\n}\n\n\n\n\nMultipart forms\n\n\nTODO: File uploading needs to be fixed before continueing documentation here\n\n\nOnly Response\n\n\nResponses are unique in their response status codes. They're used to indicate the successfull execution of a request, or it's failure.\n\n\nStatus code\n\n\nHTTP status codes indicate one of five things.\n\n\n\n\n1xx\n an informational response\n\n\n2xx\n The operation was successfull\n\n\n3xx\n Redirecting is necessary\n\n\n4xx\n A client-side error occurred\n\n\n5xx\n A server-side error occurred\n\n\n\n\nMore information on status codes is available here", 
+            "text": "Request \n Response\n\n\nRequest and response are at the heart of HTTP, therefore they are extremely important. They've got two things in common: Headers and Body.\n\n\nBoth Request and Response\n\n\nBoth Request and Response share similarities. One is the sender and the other the receiver. Requests get sent, responses get sent back.\n\n\nHeaders\n\n\nHeaders contain metadata such as the timestamp, name and MIME-type of a file. Or such as the cookies carried over from previous sessions.\n\n\nThey can be instantiated with a literal or using an empty initializer.\n\n\nlet emptyHeaders = Headers()\nlet emptyHeaders2: Headers = [:]\n\n\n\n\nHeaders can be read and written.\n\n\nlet headers = Headers()\n\nheaders[\nAuthorization\n] = \nbearer dasdwqjrnajdfnasdsiwq\n\nprint(String(headers[\nAuthorization\n]))\n\nlet otherHeaders: Headers = [\n  \nAuthorization\n: \nbearer dasdwqjrnajdfnasdsiwq\n\n]\n\n\n\n\nBody\n\n\nBodies are a blob of undefined information. It may contain any kind of data, including but not limited to HTML, plain text, CSS, images, videos.\n\n\nWriting to a body using a previously supported object is easy:\n\n\nlet testBody = try \ntest\n.makeBody()\n\n\n\n\nSome of the supported body types are:\n\n\nCheetah.JSONObject\n, \nCheetah.JSONArray\n, \nString\n, \nBody\n\n\nConverting from a body to an existing type is simple to implement:\n\n\nextension BodyRepresentable {\n  func convertToCustomType() throws -\n CustomType {\n    let buffer = try self.makeBody().buffer\n\n    return CustomType(from: buffer)\n  }\n}\n\nlet customEntity = try request.body.convertToCustomType()\n\n\n\n\nJSONObject is already implemented for you, so you can try to read that from a Body using:\n\n\nguard let object = request.jsonObject else {\n  ... // handle data isn't a JSONObject\n}\n\n\n\n\nMore about JSON here.\n\n\nBodyRepresentable\n\n\nThe other way around is useful, too. Converting your own type of data to a Body can be useful when you're writing your own templating tool, for example.\n\n\nextension CustomType : BodyRepresentable {\n  public func makeBody() throws -\n Body {\n    return Body(self.makeBytes()) // serialize this entity to binary\n  }\n}\n\n\n\n\nOnly Request\n\n\nRequests are unique in them carrying a method and a path. The path can contain query parameters in the URL. All of this allows for very specfic queries to be made.\n\n\nMethod\n\n\nMethod is an enum. It exists of a specific type of action.\n\n\nGET\n is used for fetching entities' their data.\n\n\nHEAD\n is used for fetching entities' their metadata.\n\n\nPOST\n is used to create entities\n\n\nPUT\n is used to replace created entities with a new entity\n\n\nPATCH\n is used to update part of an entity\n\n\nDELETE\n is used to delete an entity\n\n\nBesides this, custom methods are also possible, or less commonly used methods.\n\n\nPath\n\n\nThe path describes the requested URL. It doesn't have many features publically available yet.\n\n\nQuery parameters and Forms\n\n\nBoth query parameters and simple HTML forms use query encoding. This means that their API is equal.\n\n\nguard let query: Query = request.body?.query else {\n  // handle invalid body\n}\n\nguard let username: String = query[\nusername\n] else {\n  // handle invalid request\n}\n\n\n\n\nMultipart forms\n\n\nTODO: File uploading needs to be fixed before continuing documentation here\n\n\nCreating a request\n\n\nCreating a request requires at least a methodana path.\n\n\nThis might end up like one of the following:\n\n\nlet request0 = Request(method: .get, path: \n/users/test\n, headers: [\n  \nHost\n: \nexample.com\n\n])\n\nlet request1 = Request(method: \nDELETE\n, path: \n/\n, headers: [\n  \nHost\n: \nexample.com\n\n])\n\nlet json: JSONObject = [\n  \nusername\n: \nJoannisO\n,\n  \npassword\n: \nop3nkitt3n\n\n]\n\nlet request2 = Request(method: .post, path: \n/users/register\n, body: try json.makeBody())\n\n\n\n\nOnly Response\n\n\nResponses are unique in their response status codes. They're used to indicate the successfull execution of a request, or it's failure.\n\n\nStatus code\n\n\nHTTP status codes indicate one of five things.\n\n\n\n\n1xx\n an informational response\n\n\n2xx\n The operation was successfull\n\n\n3xx\n Redirecting is necessary\n\n\n4xx\n A client-side error occurred\n\n\n5xx\n A server-side error occurred\n\n\n\n\nMore information on status codes is available here\n\n\nCreating a response\n\n\nResponses only require a status code, but usually also provide headers and a body.\n\n\nlet response0 = Response(status: .ok)\n\nlet response1 = Response(status: .notFound, body: \nNot Found\n)\n\nlet response2 = Response(status: 500, headers: [\n  \nHeaderKey\n: \nValue\n\n])", 
             "title": "Request & Response"
         }, 
         {
@@ -172,8 +167,13 @@
         }, 
         {
             "location": "/leopard/request-response/#multipart-forms", 
-            "text": "TODO: File uploading needs to be fixed before continueing documentation here", 
+            "text": "TODO: File uploading needs to be fixed before continuing documentation here", 
             "title": "Multipart forms"
+        }, 
+        {
+            "location": "/leopard/request-response/#creating-a-request", 
+            "text": "Creating a request requires at least a methodana path.  This might end up like one of the following:  let request0 = Request(method: .get, path:  /users/test , headers: [\n   Host :  example.com \n])\n\nlet request1 = Request(method:  DELETE , path:  / , headers: [\n   Host :  example.com \n])\n\nlet json: JSONObject = [\n   username :  JoannisO ,\n   password :  op3nkitt3n \n]\n\nlet request2 = Request(method: .post, path:  /users/register , body: try json.makeBody())", 
+            "title": "Creating a request"
         }, 
         {
             "location": "/leopard/request-response/#only-response", 
@@ -186,8 +186,13 @@
             "title": "Status code"
         }, 
         {
+            "location": "/leopard/request-response/#creating-a-response", 
+            "text": "Responses only require a status code, but usually also provide headers and a body.  let response0 = Response(status: .ok)\n\nlet response1 = Response(status: .notFound, body:  Not Found )\n\nlet response2 = Response(status: 500, headers: [\n   HeaderKey :  Value \n])", 
+            "title": "Creating a response"
+        }, 
+        {
             "location": "/leopard/cookies-sessions/", 
-            "text": "Cookies \n Sessions\n\n\nCookies play an important role in persistence. They allow the server and client to share a storage that can be modified by either party.\n\n\nCookies are often used for managing sessions.\n\n\nReading a request's Cookies\n\n\nlet cookies = request.cookies\n\nguard let sessionToken = String(cookies[\nsession\n]) else {\n  ...\n}\n\n\n\n\nSessions\n\n\nTODO: Not implemented yet", 
+            "text": "Cookies \n Sessions\n\n\nCookies play an important role in persistence. They allow the server and client to share a storage that can be modified by either party.\n\n\nCookies are often used for managing sessions.\n\n\nReading a request's Cookies\n\n\nlet cookies = request.cookies\n\nguard let sessionToken = String(cookies[\nsession\n]) else {\n  ...\n}\n\n\n\n\nSessions\n\n\nSession are currently supported through \nJWT using Ocelot.\n\n\nJWT has proven to be flexible, easy and powerful at the same time. If you want simple token based sessions, we currently recommend managing the session in the \nin-memory cache\n or the database of your choice.", 
             "title": "Cookies & Sessions"
         }, 
         {
@@ -202,32 +207,27 @@
         }, 
         {
             "location": "/leopard/cookies-sessions/#sessions", 
-            "text": "TODO: Not implemented yet", 
+            "text": "Session are currently supported through  JWT using Ocelot.  JWT has proven to be flexible, easy and powerful at the same time. If you want simple token based sessions, we currently recommend managing the session in the  in-memory cache  or the database of your choice.", 
             "title": "Sessions"
         }, 
         {
             "location": "/leopard/middlewares/", 
-            "text": "Middlewares\n\n\nLeopard middlewares are exclusively asynchronous, since Leopard's synchronous API is built on of the asynchronous one. This ensures quality between all middleware consumers.\n\n\nCreating a basic middleware\n\n\nThe following demonstrates the bearer token being compared against a hardcoded token. If this fails, an error is thrown.\n\n\nIf the bearer token is correct, the chain will be continued by calling \nhandle()\n.\n\n\nimport Leopard\n\nclass MyMiddleware : BasicMiddleware {\n  func handle(_ request: Request, chainingTo handle: (() -\n (Future\nResponseRepresentable\n))) throws -\n Future\nResponseRepresentable\n {\n    guard request.headers.bearer == \nmy-hardcoded-token\n else {\n      throw InvalidBearerError()\n    }\n\n    return handle()\n  }\n}\n\n\n\n\nComplex middlewares\n\n\nAlternatively you can create a normal, more complex Middleware which gives you direct control over the connection. This way you can implement protocol upgrades such as WebSocket. WebSocket, however, is included as part of Leopard.\n\n\nclass MyComplexMiddleware : Middlware {\n  func handle(_ request: Request, for remote: HTTPRemote, chainingTo handler: RequestHandler) {\n    guard request.headers.bearer == \nmy-hardcoded-token\n else {\n      remote.send(Response(status: .internalServerError))\n      return\n    }\n\n    handler(request, remote)\n  }\n}", 
+            "text": "Middlewares\n\n\nLeopard middlewares are exclusively asynchronous. This ensures quality between all middleware consumers.\n\n\nMiddlewares\n\n\nAlternatively you can create a normal, more complex Middleware which gives you direct control over the connection. This way you can implement protocol upgrades such as the included WebSocket implementation.\n\n\nclass MyComplexMiddleware : Middlware {\n  func handle(_ request: Request, for remote: HTTPRemote, chainingTo handler: RequestHandler) {\n    guard request.headers.bearer == \nmy-hardcoded-token\n else {\n      remote.send(Response(status: .internalServerError))\n      return\n    }\n\n    handler(request, remote)\n  }\n}\n\n\n\n\nThis function does not allow you to throw errors. Instead, the HTTPRemote should be sent the Error so it can deal with it appropriately.\nMore about \nHTTPRemote here.", 
             "title": "Middlwares"
         }, 
         {
             "location": "/leopard/middlewares/#middlewares", 
-            "text": "Leopard middlewares are exclusively asynchronous, since Leopard's synchronous API is built on of the asynchronous one. This ensures quality between all middleware consumers.", 
+            "text": "Leopard middlewares are exclusively asynchronous. This ensures quality between all middleware consumers.", 
             "title": "Middlewares"
         }, 
         {
-            "location": "/leopard/middlewares/#creating-a-basic-middleware", 
-            "text": "The following demonstrates the bearer token being compared against a hardcoded token. If this fails, an error is thrown.  If the bearer token is correct, the chain will be continued by calling  handle() .  import Leopard\n\nclass MyMiddleware : BasicMiddleware {\n  func handle(_ request: Request, chainingTo handle: (() -  (Future ResponseRepresentable ))) throws -  Future ResponseRepresentable  {\n    guard request.headers.bearer ==  my-hardcoded-token  else {\n      throw InvalidBearerError()\n    }\n\n    return handle()\n  }\n}", 
-            "title": "Creating a basic middleware"
-        }, 
-        {
-            "location": "/leopard/middlewares/#complex-middlewares", 
-            "text": "Alternatively you can create a normal, more complex Middleware which gives you direct control over the connection. This way you can implement protocol upgrades such as WebSocket. WebSocket, however, is included as part of Leopard.  class MyComplexMiddleware : Middlware {\n  func handle(_ request: Request, for remote: HTTPRemote, chainingTo handler: RequestHandler) {\n    guard request.headers.bearer ==  my-hardcoded-token  else {\n      remote.send(Response(status: .internalServerError))\n      return\n    }\n\n    handler(request, remote)\n  }\n}", 
-            "title": "Complex middlewares"
+            "location": "/leopard/middlewares/#middlewares_1", 
+            "text": "Alternatively you can create a normal, more complex Middleware which gives you direct control over the connection. This way you can implement protocol upgrades such as the included WebSocket implementation.  class MyComplexMiddleware : Middlware {\n  func handle(_ request: Request, for remote: HTTPRemote, chainingTo handler: RequestHandler) {\n    guard request.headers.bearer ==  my-hardcoded-token  else {\n      remote.send(Response(status: .internalServerError))\n      return\n    }\n\n    handler(request, remote)\n  }\n}  This function does not allow you to throw errors. Instead, the HTTPRemote should be sent the Error so it can deal with it appropriately.\nMore about  HTTPRemote here.", 
+            "title": "Middlewares"
         }, 
         {
             "location": "/leopard/websocket/", 
-            "text": "WebSocket\n\n\nWebSockets are useful when you want a real-time connection between client and server. WebSockets allow both parties to send each other information at any time. And support text as well as binary messages.\n\n\nCreating a websocket route\n\n\nThis example assumes you've got a variable \nrouter\n that is a \nWebSocketRouter\n.\n\n\nrouter.websocket(\napi\n, \nv1\n, \nwebsocket\n) { client in\n  // set up handlers\n}\n\n\n\n\nThe handler will be called only when a successful WebSocket connection has been instantiated at this route. It doesn't do anything yet and will disconnect almost immediately.\n\n\nAdding a listener\n\n\nrouter.websocket(\napi\n, \nv1\n, \nwebsocket\n) { client in\n  client.onText { message in\n    // echo the message back\n    try client.send(message)\n  }\n}\n\n\n\n\nTips and tricks\n\n\nThe above example will deallocate and close the connection almost immediately. A better idea is to use a global cache to store the WebSocket client in, so you can receive messages asynchronously and have a handle for sending events from other sessions/threads, too.", 
+            "text": "WebSocket\n\n\nWebSockets are useful when you want a real-time connection between client and server. WebSockets allow both parties to send each other information at any time. And support text as well as binary messages.\n\n\nCreating a websocket route\n\n\nThis example assumes you've got a variable \nrouter\n that is a \nWebSocketRouter\n.\n\n\nrouter.websocket(\napi\n, \nv1\n, \nwebsocket\n) { client in\n  // set up handlers\n}\n\n\n\n\nThe handler will be called only when a successful WebSocket connection has been instantiated at this route. It doesn't do anything yet and will disconnect almost immediately.\n\n\nAdding a listener\n\n\nrouter.websocket(\napi\n, \nv1\n, \nwebsocket\n) { client in\n  client.onText { message in\n    // echo the message back\n    try client.send(message)\n  }\n}", 
             "title": "WebSocket"
         }, 
         {
@@ -246,33 +246,58 @@
             "title": "Adding a listener"
         }, 
         {
-            "location": "/leopard/websocket/#tips-and-tricks", 
-            "text": "The above example will deallocate and close the connection almost immediately. A better idea is to use a global cache to store the WebSocket client in, so you can receive messages asynchronously and have a handle for sending events from other sessions/threads, too.", 
-            "title": "Tips and tricks"
-        }, 
-        {
             "location": "/puma/", 
             "text": "", 
             "title": "HTTP client"
         }, 
         {
+            "location": "/leopard/Multipart/", 
+            "text": "", 
+            "title": "Forms and file uploading"
+        }, 
+        {
             "location": "/cheetah/", 
-            "text": "Cheetah (JSON)\n\n\nCheetah is a fast library JSON. It's designed to read and write to strings and bytes. It's designed to have a familiar API for OpenKitten users.\n\n\nCreating a JSON Object or Array\n\n\nlet object: JSONObject = [\n  \nusername\n: \nJoannis\n,\n  \nage\n: 21,\n  \nadmin\n: true,\n  \nnumber\n: 6.28,\n  \npowersOfTwo\n: [0, 2, 4, 6, 8, 10, 12, 14, 16],\n  \nsubObject\n: [\n    \ntest\n: true,\n    \nsubSubObject\n: [\n      \ntest\n: true\n    ]\n  ]\n]\n\nlet array: JSONArray = [object, object, object]\n\n\n\n\nWorking with objects\n\n\nObjects are accessed using subscripts. Extracting a specific type is done by that type's initializer.\n\n\nvar object = JSONObject()\n\nobject[\nusername\n] = \nJoannis\n\nobject[\nage\n] = 21\nobject[\nadmin\n] = true\nobject[\nnumber\n] = 8.28\n\nlet username = String(object[\nusername\n]) ?? \n\nlet age: Int? = Int(object[\nage\n])\nlet admin = Bool(object[\nadmin\n]) ?? false\nlet number: Double? = Double(object[\nnumber\n])\n\n\n\n\nAccessing nested types can be simply chained:\n\n\nobject[\nsubObject\n][\nsubSubObject\n][\ntest\n] = true\nlet test = Bool(object[\nsubObject\n][\nsubSubObject\n][\ntest\n])\n\n\n\n\n(de-)serializing JSON\n\n\nYou can easily create a JSONObject or JSONArray from a buffer.\n\n\nlet object = try JSONObject(from: buffer)\nlet array = try JSONArray(from: buffer)\n\n\n\n\nThe buffer can be \n[UInt8]\n, \nData\n or \nString\n.\n\n\nSerializing is equally easy:\n\n\nlet objectBytes: [UInt8] = object.serialize()\nlet arrayBytes: [UInt8] = array.serialize()\n\nlet objectString: String = object.serializedString()\nlet arrayString: String = array.serializedString()\n\n\n\n\nCodable\n\n\nCheetah supports Codable, meaning you can conform any struct or class to \nEncodable\n for serializing, \nDecodable\n for deserializing and \nCodable\n for both.\n\n\nEncoding\n\n\nimport Cheetah\n\nstruct LoginResponse : Encodable {\n  let token: String\n  let success: Bool\n}\n\nlet response = LoginResponse(token: \nmy-t0k3n\n, success: true)\n\nlet jsonObject = try Cheetah.JSONEncoder().encode(response)\nprint(jsonObject.serializedString()) // prints `{\ntoken\n:\nmy-t0k3n\n,\nsuccess\n:true}`\n\n\n\n\nDecoding\n\n\nimport Cheetah\n\nstruct LoginRequest : Decodable {\n  let username: String\n  let password: String\n}\n\nlet request = try Cheetah.JSONDecoder().decode(LoginRequest.self, from: \n{\\\nusername\\\n:\\\ntest\\\n,\\\npassword\\\n:\\\nhunter2\\\n}\n)\n\nprint(request.username) // prints \ntest\n\nprint(request.password) // prints \nhunter2", 
+            "text": "Cheetah (JSON)\n\n\nCheetah is a fast library JSON. It's designed to read and write to strings and bytes. It's designed to have a familiar API for OpenKitten users.\n\n\nCheetah supports all Swift platforms (macOS, Linux, iOS, watchOS and tvOS) using Swift 3.0, 3.1, 3.2 and 4.0.\n\n\nSPM - Package.swift\n\n\nWhen creating a project using \nswift package init --type=executable\n, you'll notice that a set of files and directories have appeared in the current directory. One of these files is \nPackage.swift\n, the project definition.\n\n\nSwift 4.0\n\n\nFor Swift 4.0, use the following syntax for adding a dependency.\n\n\n.package(url: \nhttps://github.com/OpenKitten/Cheetah.git\n, .revision(\nframework\n))\n\n\n\n\nAnd by adding \n\"Leopard\"\n to your target's dependencies.\n\n\n// swift-tools-version:4.0\n// The swift-tools-version declares the minimum version of Swift required to build this package.\n\nimport PackageDescription\n\nlet package = Package(\n    name: \nExample\n,\n    dependencies: [\n        .package(url: \nhttps://github.com/OpenKitten/Cheetah.git\n, .revision(\nframework\n)),\n    ],\n    targets: [\n        .target(\n            name: \nExample\n,\n            dependencies: [\nCheetah\n]),\n    ]\n)\n\n\n\n\nSwift 3.x\n\n\nFor Swift 3.x, use the following syntax for adding a dependency.\n\n\n.Package(url: \nhttps://github.com/OpenKitten/Cheetah.git\n, Version(2,0,0))\n\n\n\n\nCreating a JSON Object or Array\n\n\nSwift 3.1 or greater\n\n\nFor objects and arrays you can just use the literals.\n\n\nlet object: JSONObject = [\n  \nusername\n: \nJoannis\n,\n  \nage\n: 21,\n  \nadmin\n: true,\n  \nnumber\n: 6.28,\n  \npowersOfTwo\n: [0, 2, 4, 6, 8, 10, 12, 14, 16],\n  \nsubObject\n: [\n    \ntest\n: true,\n    \nsubSubObject\n: [\n      \ntest\n: true\n    ]\n  ]\n]\n\nlet array: JSONArray = [object, object, object]\n\n\n\n\nSwift 3.0\n\n\nFor Swift 3.0, literals need to be specified a bit more explicitly. They require explicit definition of the type of literal.\n\n\nlet object: JSONObject = [\n  \nusername\n: \nJoannis\n,\n  \nage\n: 21,\n  \nadmin\n: true,\n  \nnumber\n: 6.28,\n  \npowersOfTwo\n: [0, 2, 4, 6, 8, 10, 12, 14, 16] as JSONArray,\n  \nsubObject\n: [\n    \ntest\n: true,\n    \nsubSubObject\n: [\n      \ntest\n: true\n    ] as JSONObject\n  ] as JSONObject\n]\n\n\n\n\nWorking with objects\n\n\nObjects are accessed using subscripts. Extracting a specific type is done by that type's initializer.\n\n\nvar object = JSONObject()\n\nobject[\nusername\n] = \nJoannis\n\nobject[\nage\n] = 21\nobject[\nadmin\n] = true\nobject[\nnumber\n] = 8.28\n\nlet username = String(object[\nusername\n]) ?? \n\nlet age: Int? = Int(object[\nage\n])\nlet admin = Bool(object[\nadmin\n]) ?? false\nlet number: Double? = Double(object[\nnumber\n])\n\n\n\n\n(de-)serializing JSON\n\n\nYou can easily create a JSONObject or JSONArray from a buffer.\n\n\nlet object = try JSONObject(from: buffer)\nlet array = try JSONArray(from: buffer)\n\n\n\n\nThe buffer can be \n[UInt8]\n, \nData\n or \nString\n.\n\n\nSerializing is equally easy:\n\n\nlet objectBytes: [UInt8] = object.serialize()\nlet arrayBytes: [UInt8] = array.serialize()\n\nlet objectString: String = object.serializedString()\nlet arrayString: String = array.serializedString()\n\n\n\n\nDeserializing arrays\n\n\nSometimes you need an array of a specific type. \nJSONArray\n helps when the array contains generic JSON, but, sometimes you need an array of \nString\ns.\n\n\nIn this case, we recommend flatMapping the JSONArray using the String initializer like so:\n\n\nlet blogPost: JSONObject = [\n  \ntitle\n: \nHow to use Cheetah\n,\n  \ncontents\n: \n...\n,\n  \ntags\n: [\n    \ncheetah\n, \nswift\n, \njson\n, \ntutorial\n\n  ]\n]\n\nlet tags = JSONArray(blogPost[\ntags\n])?.flatMap(String.init)\n\n\n\n\nNested objects\n\n\nSwift 3.1 or greater\n\n\nAccessing nested types can be simply chained:\n\n\nobject[\nsubObject\n][\nsubSubObject\n][\ntest\n] = true\nlet test = Bool(object[\nsubObject\n][\nsubSubObject\n][\ntest\n])\n\n\n\n\nSwift 3.0\n\n\nSwift 3.0 doesn't allow us to add the chaining descibed above. Instead, you'll have to unwrap and chain the subscripts manually.\n\n\n// TODO: Describe after the API has been revised\n\n\n\n\nCodable\n\n\nCheetah supports Codable, meaning you can conform any struct or class to \nEncodable\n for serializing, \nDecodable\n for deserializing and \nCodable\n for both.\n\n\nThis requires at least Swift 3.2 or it's equivalent Swift 4.\n\n\nEncoding\n\n\nimport Cheetah\n\nstruct LoginResponse : Encodable {\n  let token: String\n  let success: Bool\n}\n\nlet response = LoginResponse(token: \nmy-t0k3n\n, success: true)\n\nlet jsonObject = try Cheetah.JSONEncoder().encode(response)\nprint(jsonObject.serializedString()) // prints `{\ntoken\n:\nmy-t0k3n\n,\nsuccess\n:true}`\n\n\n\n\nDecoding\n\n\nimport Cheetah\n\nstruct LoginRequest : Decodable {\n  let username: String\n  let password: String\n}\n\nlet request = try Cheetah.JSONDecoder().decode(LoginRequest.self, from: \n{\\\nusername\\\n:\\\ntest\\\n,\\\npassword\\\n:\\\nhunter2\\\n}\n)\n\nprint(request.username) // prints \ntest\n\nprint(request.password) // prints \nhunter2", 
             "title": "JSON using Cheetah"
         }, 
         {
             "location": "/cheetah/#cheetah-json", 
-            "text": "Cheetah is a fast library JSON. It's designed to read and write to strings and bytes. It's designed to have a familiar API for OpenKitten users.", 
+            "text": "Cheetah is a fast library JSON. It's designed to read and write to strings and bytes. It's designed to have a familiar API for OpenKitten users.  Cheetah supports all Swift platforms (macOS, Linux, iOS, watchOS and tvOS) using Swift 3.0, 3.1, 3.2 and 4.0.", 
             "title": "Cheetah (JSON)"
         }, 
         {
+            "location": "/cheetah/#spm-packageswift", 
+            "text": "When creating a project using  swift package init --type=executable , you'll notice that a set of files and directories have appeared in the current directory. One of these files is  Package.swift , the project definition.", 
+            "title": "SPM - Package.swift"
+        }, 
+        {
+            "location": "/cheetah/#swift-40", 
+            "text": "For Swift 4.0, use the following syntax for adding a dependency.  .package(url:  https://github.com/OpenKitten/Cheetah.git , .revision( framework ))  And by adding  \"Leopard\"  to your target's dependencies.  // swift-tools-version:4.0\n// The swift-tools-version declares the minimum version of Swift required to build this package.\n\nimport PackageDescription\n\nlet package = Package(\n    name:  Example ,\n    dependencies: [\n        .package(url:  https://github.com/OpenKitten/Cheetah.git , .revision( framework )),\n    ],\n    targets: [\n        .target(\n            name:  Example ,\n            dependencies: [ Cheetah ]),\n    ]\n)", 
+            "title": "Swift 4.0"
+        }, 
+        {
+            "location": "/cheetah/#swift-3x", 
+            "text": "For Swift 3.x, use the following syntax for adding a dependency.  .Package(url:  https://github.com/OpenKitten/Cheetah.git , Version(2,0,0))", 
+            "title": "Swift 3.x"
+        }, 
+        {
             "location": "/cheetah/#creating-a-json-object-or-array", 
-            "text": "let object: JSONObject = [\n   username :  Joannis ,\n   age : 21,\n   admin : true,\n   number : 6.28,\n   powersOfTwo : [0, 2, 4, 6, 8, 10, 12, 14, 16],\n   subObject : [\n     test : true,\n     subSubObject : [\n       test : true\n    ]\n  ]\n]\n\nlet array: JSONArray = [object, object, object]", 
+            "text": "", 
             "title": "Creating a JSON Object or Array"
         }, 
         {
+            "location": "/cheetah/#swift-31-or-greater", 
+            "text": "For objects and arrays you can just use the literals.  let object: JSONObject = [\n   username :  Joannis ,\n   age : 21,\n   admin : true,\n   number : 6.28,\n   powersOfTwo : [0, 2, 4, 6, 8, 10, 12, 14, 16],\n   subObject : [\n     test : true,\n     subSubObject : [\n       test : true\n    ]\n  ]\n]\n\nlet array: JSONArray = [object, object, object]", 
+            "title": "Swift 3.1 or greater"
+        }, 
+        {
+            "location": "/cheetah/#swift-30", 
+            "text": "For Swift 3.0, literals need to be specified a bit more explicitly. They require explicit definition of the type of literal.  let object: JSONObject = [\n   username :  Joannis ,\n   age : 21,\n   admin : true,\n   number : 6.28,\n   powersOfTwo : [0, 2, 4, 6, 8, 10, 12, 14, 16] as JSONArray,\n   subObject : [\n     test : true,\n     subSubObject : [\n       test : true\n    ] as JSONObject\n  ] as JSONObject\n]", 
+            "title": "Swift 3.0"
+        }, 
+        {
             "location": "/cheetah/#working-with-objects", 
-            "text": "Objects are accessed using subscripts. Extracting a specific type is done by that type's initializer.  var object = JSONObject()\n\nobject[ username ] =  Joannis \nobject[ age ] = 21\nobject[ admin ] = true\nobject[ number ] = 8.28\n\nlet username = String(object[ username ]) ??  \nlet age: Int? = Int(object[ age ])\nlet admin = Bool(object[ admin ]) ?? false\nlet number: Double? = Double(object[ number ])  Accessing nested types can be simply chained:  object[ subObject ][ subSubObject ][ test ] = true\nlet test = Bool(object[ subObject ][ subSubObject ][ test ])", 
+            "text": "Objects are accessed using subscripts. Extracting a specific type is done by that type's initializer.  var object = JSONObject()\n\nobject[ username ] =  Joannis \nobject[ age ] = 21\nobject[ admin ] = true\nobject[ number ] = 8.28\n\nlet username = String(object[ username ]) ??  \nlet age: Int? = Int(object[ age ])\nlet admin = Bool(object[ admin ]) ?? false\nlet number: Double? = Double(object[ number ])", 
             "title": "Working with objects"
         }, 
         {
@@ -281,8 +306,28 @@
             "title": "(de-)serializing JSON"
         }, 
         {
+            "location": "/cheetah/#deserializing-arrays", 
+            "text": "Sometimes you need an array of a specific type.  JSONArray  helps when the array contains generic JSON, but, sometimes you need an array of  String s.  In this case, we recommend flatMapping the JSONArray using the String initializer like so:  let blogPost: JSONObject = [\n   title :  How to use Cheetah ,\n   contents :  ... ,\n   tags : [\n     cheetah ,  swift ,  json ,  tutorial \n  ]\n]\n\nlet tags = JSONArray(blogPost[ tags ])?.flatMap(String.init)", 
+            "title": "Deserializing arrays"
+        }, 
+        {
+            "location": "/cheetah/#nested-objects", 
+            "text": "", 
+            "title": "Nested objects"
+        }, 
+        {
+            "location": "/cheetah/#swift-31-or-greater_1", 
+            "text": "Accessing nested types can be simply chained:  object[ subObject ][ subSubObject ][ test ] = true\nlet test = Bool(object[ subObject ][ subSubObject ][ test ])", 
+            "title": "Swift 3.1 or greater"
+        }, 
+        {
+            "location": "/cheetah/#swift-30_1", 
+            "text": "Swift 3.0 doesn't allow us to add the chaining descibed above. Instead, you'll have to unwrap and chain the subscripts manually.  // TODO: Describe after the API has been revised", 
+            "title": "Swift 3.0"
+        }, 
+        {
             "location": "/cheetah/#codable", 
-            "text": "Cheetah supports Codable, meaning you can conform any struct or class to  Encodable  for serializing,  Decodable  for deserializing and  Codable  for both.", 
+            "text": "Cheetah supports Codable, meaning you can conform any struct or class to  Encodable  for serializing,  Decodable  for deserializing and  Codable  for both.  This requires at least Swift 3.2 or it's equivalent Swift 4.", 
             "title": "Codable"
         }, 
         {
@@ -369,6 +414,116 @@
             "location": "/lynx/#other-information", 
             "text": "HTTP Request and responses  is a useful place to learn more about the two main objects in HTTP.  Lynx does not support basic web framework features, it is designed to be simple.", 
             "title": "Other information"
+        }, 
+        {
+            "location": "/ocelot/", 
+            "text": "Ocelot\n\n\nOcelot is a \nCheetah\n based JWT implementation. It only covers JWS (JSON Web Signature), meaning all tokens are \nsigned, not encrypted\n.\n\n\nAny data in the JWT is readable but not writable by the client.\n\n\nSPM\n\n\nOcelot requires Swift 4 and the following dependency to be added:\n\n\n.package(url: \nhttps://github.com/OpenKitten/Cheetah.git\n, .revision(\nframework\n))\n\n\n\n\nCreating a JSON Web Token\n\n\nCreating a token is as simple as creating a \nstruct\n and making it \nCodable\n.\n\n\nstruct AuthenticationToken : Codable {\n  var username: String\n}\n\n\n\n\nOnce you create an instance of this token, you can sign it using \nJWSEncoder\n. You'll need a (globally) defined secret in order to sign this JWT.\n\n\nPlease choose a random, high entropy, high amount of characters string for encoding the token.\n\n\nimport Ocelot\n\n// Random, secure, private\n// May not be known to anyone else\nlet secret = \nDOn0tus3th1sPL3453\n\n\n// Create a new instance of the above codable token struct\nlet token = AuthenticationToken(username: \nJoannisO\n)\n\n// Signed using HMAC SHA512 and the above secret\nlet signedToken = try JWSEncoder.sign(token, signedBy: secret, using: .hs512())\n\n\n\n\nThe \nsignedToken\n can then be given to the user, who can then carry this in a authorization bearer header, cookie or any other method you prefer for receiving the token.\n\n\nDeserializing the JSON Web Token to a struct\n\n\nJWSDecoder\n can take the above \nsignedToken\n and restore it back to a type-safe \nstruct\n.\n\n\n// Verifies the token, too, using the secet. If the token is invalid, an error will be thrown\nlet token = try JWSDecoder.decode(AuthenticationToken.self, from: signedToken, verifying: secret)\n\nlet works = token.username == \nJoannisO\n // true", 
+            "title": "JWT using Ocelot"
+        }, 
+        {
+            "location": "/ocelot/#ocelot", 
+            "text": "Ocelot is a  Cheetah  based JWT implementation. It only covers JWS (JSON Web Signature), meaning all tokens are  signed, not encrypted .  Any data in the JWT is readable but not writable by the client.", 
+            "title": "Ocelot"
+        }, 
+        {
+            "location": "/ocelot/#spm", 
+            "text": "Ocelot requires Swift 4 and the following dependency to be added:  .package(url:  https://github.com/OpenKitten/Cheetah.git , .revision( framework ))", 
+            "title": "SPM"
+        }, 
+        {
+            "location": "/ocelot/#creating-a-json-web-token", 
+            "text": "Creating a token is as simple as creating a  struct  and making it  Codable .  struct AuthenticationToken : Codable {\n  var username: String\n}  Once you create an instance of this token, you can sign it using  JWSEncoder . You'll need a (globally) defined secret in order to sign this JWT.  Please choose a random, high entropy, high amount of characters string for encoding the token.  import Ocelot\n\n// Random, secure, private\n// May not be known to anyone else\nlet secret =  DOn0tus3th1sPL3453 \n\n// Create a new instance of the above codable token struct\nlet token = AuthenticationToken(username:  JoannisO )\n\n// Signed using HMAC SHA512 and the above secret\nlet signedToken = try JWSEncoder.sign(token, signedBy: secret, using: .hs512())  The  signedToken  can then be given to the user, who can then carry this in a authorization bearer header, cookie or any other method you prefer for receiving the token.", 
+            "title": "Creating a JSON Web Token"
+        }, 
+        {
+            "location": "/ocelot/#deserializing-the-json-web-token-to-a-struct", 
+            "text": "JWSDecoder  can take the above  signedToken  and restore it back to a type-safe  struct .  // Verifies the token, too, using the secet. If the token is invalid, an error will be thrown\nlet token = try JWSDecoder.decode(AuthenticationToken.self, from: signedToken, verifying: secret)\n\nlet works = token.username ==  JoannisO  // true", 
+            "title": "Deserializing the JSON Web Token to a struct"
+        }, 
+        {
+            "location": "/lynx/TCP/", 
+            "text": "TCP\n\n\nLynx also handles the implementation of the TCP sockets. This supports clients sockets with and without SSL.\n\n\nThis makes Lynx a solid basis for common web libraries, since many principles (such as MIME, headers, body and Multipart) are reused.\n\n\nClient\n\n\nThe plain and SSL TCP clients are almost identical in their API.\n\n\nPlain Client\n\n\nOpening a simple socket using \nTCPClient\n is done by providing a hostname and port.\n\n\n// Sets up the connection\nlet exampleClient = try TCPClient(hostname: \nexample.com\n, port: 127) { pointer, length in\n  // process input\n}\n\n// Starts the connection, allowing read/write operations\nexampleClient.connect()\n\n\n\n\nThe connection cleans up on deinitialization, meaning you don't need to close it manually.\n\n\nSSL Client\n\n\nSSLClients are opened and used the same was as a \nTCPClient\n. SSLClient will use the Security framework on macOS, and OpenSSL on Linux.\n\n\n// Sets up the connection\nlet exampleSSLClient = try TCPSSLClient(hostname: \nexample.com\n, port: 127) { pointer, length in\n  // process input\n}\n\n// Starts the connection, allowing read/write operations\nexampleSSLClient.connect()\n\n\n\n\nReceiving data\n\n\nThe trailing closure behind the \nTCPClient\n or \nTCPSSLClient\n is the on-read function. Since the sockets are built entirely in async, as our libraries do, input needs to be processed in the closure.\n\n\nSending data\n\n\nWe currently accept 3 forms of sending data, which all boil down to the same.\n\n\nlet pointer: UnsafePointer\nUInt8\n\nlet length: Int\n\ntry client.send(data: pointer, withLengthOf: length)\n\n\n\n\nlet buffer: UnsafeBufferPointer\nUInt8\n\n\ntry client.send(buffer: buffer)\n\n\n\n\nlet bytes: [UInt8]\n\ntry client.send(bytes)", 
+            "title": "TCP/SSL using Lynx"
+        }, 
+        {
+            "location": "/lynx/TCP/#tcp", 
+            "text": "Lynx also handles the implementation of the TCP sockets. This supports clients sockets with and without SSL.  This makes Lynx a solid basis for common web libraries, since many principles (such as MIME, headers, body and Multipart) are reused.", 
+            "title": "TCP"
+        }, 
+        {
+            "location": "/lynx/TCP/#client", 
+            "text": "The plain and SSL TCP clients are almost identical in their API.", 
+            "title": "Client"
+        }, 
+        {
+            "location": "/lynx/TCP/#plain-client", 
+            "text": "Opening a simple socket using  TCPClient  is done by providing a hostname and port.  // Sets up the connection\nlet exampleClient = try TCPClient(hostname:  example.com , port: 127) { pointer, length in\n  // process input\n}\n\n// Starts the connection, allowing read/write operations\nexampleClient.connect()  The connection cleans up on deinitialization, meaning you don't need to close it manually.", 
+            "title": "Plain Client"
+        }, 
+        {
+            "location": "/lynx/TCP/#ssl-client", 
+            "text": "SSLClients are opened and used the same was as a  TCPClient . SSLClient will use the Security framework on macOS, and OpenSSL on Linux.  // Sets up the connection\nlet exampleSSLClient = try TCPSSLClient(hostname:  example.com , port: 127) { pointer, length in\n  // process input\n}\n\n// Starts the connection, allowing read/write operations\nexampleSSLClient.connect()", 
+            "title": "SSL Client"
+        }, 
+        {
+            "location": "/lynx/TCP/#receiving-data", 
+            "text": "The trailing closure behind the  TCPClient  or  TCPSSLClient  is the on-read function. Since the sockets are built entirely in async, as our libraries do, input needs to be processed in the closure.", 
+            "title": "Receiving data"
+        }, 
+        {
+            "location": "/lynx/TCP/#sending-data", 
+            "text": "We currently accept 3 forms of sending data, which all boil down to the same.  let pointer: UnsafePointer UInt8 \nlet length: Int\n\ntry client.send(data: pointer, withLengthOf: length)  let buffer: UnsafeBufferPointer UInt8 \n\ntry client.send(buffer: buffer)  let bytes: [UInt8]\n\ntry client.send(bytes)", 
+            "title": "Sending data"
+        }, 
+        {
+            "location": "/third-party/jobs/", 
+            "text": "Jobs by \nBrett Toomey\n\n\nJobs is a minimalistic job system. It doesn't store the jobs cross-application, and doesn't allow restarting jobs after application exit.\n\n\nIt is, however, extremely useful for simple tasks such as sending a notification, ping or other non-critical jobs.\n\n\nSPM\n\n\nAdd the following dependency to your \nPackage.swift\n\n\nSwift 4\n\n\n.package(url: \nhttps://github.com/BrettRToomey/Jobs.git\n, from: Version(1,0,0)),\n\n\n\n\nSwift 3\n\n\n.Package(url: \nhttps://github.com/BrettRToomey/Jobs.git\n, majorVersion: 1),\n\n\n\n\nUsage\n\n\nWhenever you have a source file that needs to execute a Job, add the following import.\n\n\nimport Jobs\n\n\n\n\nSpecifying time\n\n\nAll specified time is specified as a \nDuration\n.\n\n\nDurations come in three types, \n.seconds\n, \n.days\n and \n.weeks\n.\nAlternatively you can access them as properties on an int.\n\n\n// The same\nlet oneMinute = 60.seconds\nlet alsoOneMinute = Duration.seconds(60)\n\n// The same\nlet twoDays = 2.days\nlet alsoTwoDays = Duration.days(60)\n\n// The same\nlet fiftyWeeks = 50.weeks\nlet alsoFiftyWeeks = Duration.weeks(50)\n\n\n\n\nRunning a job\n\n\nRunning a repeating job can be useful, even if it's only used temporarily.\n\n\nA job might send an update to a user over WebSocket every 30 seconds.\n\n\n// Creates a job that executes every 30 seconds\nlet job = Jobs.add(interval: 30.seconds) {\n  // execute job\n}\n\n\n\n\nStopping a job\n\n\nStopping a job is as simple as this:\n\n\njob.stop()\n\n\n\n\nAutostart versus manual starting\n\n\nJobs start automatically by default, sometimes you need to start them when an event happens.\n\n\nFor example; a job might update clients over WebSocket only after the client sends a message requesting updates. But the job can be created in advance. It can also be stopped and restarted again.\n\n\n// Creates a job that executes every 30 seconds\nlet job = Jobs.add(interval: 30.seconds, autoStart: false) {\n  // execute job\n}\n\njob.start()", 
+            "title": "Jobs"
+        }, 
+        {
+            "location": "/third-party/jobs/#jobs-by-brett-toomey", 
+            "text": "Jobs is a minimalistic job system. It doesn't store the jobs cross-application, and doesn't allow restarting jobs after application exit.  It is, however, extremely useful for simple tasks such as sending a notification, ping or other non-critical jobs.", 
+            "title": "Jobs by Brett Toomey"
+        }, 
+        {
+            "location": "/third-party/jobs/#spm", 
+            "text": "Add the following dependency to your  Package.swift", 
+            "title": "SPM"
+        }, 
+        {
+            "location": "/third-party/jobs/#swift-4", 
+            "text": ".package(url:  https://github.com/BrettRToomey/Jobs.git , from: Version(1,0,0)),", 
+            "title": "Swift 4"
+        }, 
+        {
+            "location": "/third-party/jobs/#swift-3", 
+            "text": ".Package(url:  https://github.com/BrettRToomey/Jobs.git , majorVersion: 1),", 
+            "title": "Swift 3"
+        }, 
+        {
+            "location": "/third-party/jobs/#usage", 
+            "text": "Whenever you have a source file that needs to execute a Job, add the following import.  import Jobs", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/third-party/jobs/#specifying-time", 
+            "text": "All specified time is specified as a  Duration .  Durations come in three types,  .seconds ,  .days  and  .weeks .\nAlternatively you can access them as properties on an int.  // The same\nlet oneMinute = 60.seconds\nlet alsoOneMinute = Duration.seconds(60)\n\n// The same\nlet twoDays = 2.days\nlet alsoTwoDays = Duration.days(60)\n\n// The same\nlet fiftyWeeks = 50.weeks\nlet alsoFiftyWeeks = Duration.weeks(50)", 
+            "title": "Specifying time"
+        }, 
+        {
+            "location": "/third-party/jobs/#running-a-job", 
+            "text": "Running a repeating job can be useful, even if it's only used temporarily.  A job might send an update to a user over WebSocket every 30 seconds.  // Creates a job that executes every 30 seconds\nlet job = Jobs.add(interval: 30.seconds) {\n  // execute job\n}", 
+            "title": "Running a job"
+        }, 
+        {
+            "location": "/third-party/jobs/#stopping-a-job", 
+            "text": "Stopping a job is as simple as this:  job.stop()", 
+            "title": "Stopping a job"
+        }, 
+        {
+            "location": "/third-party/jobs/#autostart-versus-manual-starting", 
+            "text": "Jobs start automatically by default, sometimes you need to start them when an event happens.  For example; a job might update clients over WebSocket only after the client sends a message requesting updates. But the job can be created in advance. It can also be stopped and restarted again.  // Creates a job that executes every 30 seconds\nlet job = Jobs.add(interval: 30.seconds, autoStart: false) {\n  // execute job\n}\n\njob.start()", 
+            "title": "Autostart versus manual starting"
         }
     ]
 }

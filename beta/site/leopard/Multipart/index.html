@@ -16,7 +16,7 @@
     
     
       
-        <title>Advanced routing - OpenKitten Docs</title>
+        <title>Forms and file uploading - OpenKitten Docs</title>
       
     
     
@@ -77,7 +77,7 @@
                 </span>
               
             
-            Advanced routing
+            Forms and file uploading
           
         </span>
       </div>
@@ -181,47 +181,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Advanced routing
-      </label>
-    
-    <a href="./" title="Advanced routing" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../advanced-routing/" title="Advanced routing" class="md-nav__link">
       Advanced routing
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#grouping" title="Grouping" class="md-nav__link">
-    Grouping
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -313,11 +277,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../Multipart/" title="Forms and file uploading" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="Forms and file uploading" class="md-nav__link md-nav__link--active">
       Forms and file uploading
     </a>
+    
   </li>
 
         
@@ -460,22 +431,6 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#grouping" title="Grouping" class="md-nav__link">
-    Grouping
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
   
 </nav>
                   </div>
@@ -488,41 +443,9 @@
               
                 
                 
-                <h1 id="advanced-routing">Advanced routing</h1>
-<p>Routing can become more complex the more your application grows, so grouping routes and handlers is an essential part of any web framework.</p>
-<p>We also support middlewares with the requirement of them being asynchronous.</p>
-<h2 id="grouping">Grouping</h2>
-<p>Creating a group is similar to creating a route, only the route group get's returned.</p>
-<pre><code class="swift">let apiV1group = webserver.grouped(&quot;api&quot;, &quot;v1&quot;)
-
-// GET `/api/v1/users`
-apiV1Group.get(&quot;users&quot;) { request in
-  ...
-}
-</code></pre>
-
-<p>You can chain groups indefinitely.</p>
-<pre><code class="swift">let api = webserver.grouped(&quot;api&quot;)
-
-// `/api/v1/...`
-let v1 = api.grouped(&quot;v1&quot;)
-
-// `/api/v2/...`
-let v2 = api.grouped(&quot;v2&quot;)
-
-// `/api/v3/...`
-let v3 = api.grouped(&quot;v3&quot;)
-</code></pre>
-
-<p>To improve the syntax, we also implement the <code>group</code> function with a trailing closure.</p>
-<pre><code class="swift">webserver.group(&quot;api&quot;) { api in
-  api.group(&quot;v1&quot;) { v1 in
-    v1.get(&quot;users&quot;) { request in
-      ...
-    }
-  }
-}
-</code></pre>
+                  <h1>Forms and file uploading</h1>
+                
+                
                 
                   
                 
@@ -541,7 +464,7 @@ let v3 = api.grouped(&quot;v3&quot;)
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../" title="Leopard Basics" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../puma/" title="HTTP client" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -550,19 +473,19 @@ let v3 = api.grouped(&quot;v3&quot;)
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Leopard Basics
+                HTTP client
               </span>
             </div>
           </a>
         
         
-          <a href="../errors/" title="Errors" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../cheetah/" title="JSON using Cheetah" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Errors
+                JSON using Cheetah
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
