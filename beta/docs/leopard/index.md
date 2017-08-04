@@ -41,7 +41,7 @@ After `import Leopard` has been put on top of your `main.swift`, you'll need to 
 
 ```swift
 // Create an HTTP server at port `80`
-let server = try AsyncWebServer()
+let server = try WebServer()
 
 // TODO: Set up routes
 
