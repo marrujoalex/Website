@@ -9,7 +9,7 @@ Any data in the JWT is readable but not writable by the client.
 Ocelot requires Swift 4 and the following dependency to be added:
 
 ```swift
-.package(url: "https://github.com/OpenKitten/Cheetah.git", .revision("framework"))
+.package(url: "https://github.com/OpenKitten/Cheetah.git", from: "2.0.0")
 ```
 
 ## Creating a JSON Web Token

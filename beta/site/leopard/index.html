@@ -520,7 +520,7 @@ import PackageDescription
 let package = Package(
     name: &quot;Example&quot;,
     dependencies: [
-        .package(url: &quot;https://github.com/OpenKitten/Leopard.git&quot;, .revision(&quot;master&quot;)),
+        .package(url: &quot;https://github.com/OpenKitten/Leopard.git&quot;, .exact(&quot;1.0.0-beta1&quot;)),
     ],
     targets: [
         .target(

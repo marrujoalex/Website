@@ -25,7 +25,7 @@ import PackageDescription
 let package = Package(
     name: "Example",
     dependencies: [
-        .package(url: "https://github.com/OpenKitten/Leopard.git", .revision("master")),
+        .package(url: "https://github.com/OpenKitten/Leopard.git", .exact("1.0.0-beta1")),
     ],
     targets: [
         .target(

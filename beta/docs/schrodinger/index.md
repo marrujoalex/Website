@@ -5,7 +5,7 @@ Schrodinger is a library built for asynchronous programming. It works around a c
 It can be included using:
 
 ```swift
-.package(url: "https://github.com/OpenKitten/Schrodinger.git", .revision("framework")),
+.package(url: "https://github.com/OpenKitten/Schrodinger.git", .exact("1.0.0-beta1")),
 ```
 
 ## Examples
