@@ -19,5 +19,6 @@ pages:
   - 'Plain HTTP using Lynx': 'lynx/index.md'
   - 'JWT using Ocelot': 'ocelot/index.md'
   - 'TCP/SSL using Lynx': 'lynx/TCP.md'
+  - 'Hashing using CryptoKitten': 'cryptokitten/hash.md'
 - 'Third Party':
   - 'Jobs': 'third-party/jobs.md'
