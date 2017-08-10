@@ -13,12 +13,14 @@ pages:
   - 'WebSocket': 'leopard/websocket.md'
   - 'HTTP client': 'puma/index.md'
   - 'Forms and file uploading': 'leopard/Multipart.md'
+  - 'Caching': 'leopard/cache.md'
 - Utility:
   - 'JSON using Cheetah': 'cheetah/index.md'
   - 'Async using Schrodinger': 'schrodinger/index.md'
   - 'Plain HTTP using Lynx': 'lynx/index.md'
   - 'JWT using Ocelot': 'ocelot/index.md'
-  - 'TCP/SSL using Lynx': 'lynx/TCP.md'
   - 'Hashing using CryptoKitten': 'cryptokitten/hash.md'
+  - 'TCP/SSL using Lynx': 'lynx/TCP.md'
+  - 'Testing remotes using Lynx': 'lynx/remote.md'
 - 'Third Party':
   - 'Jobs': 'third-party/jobs.md'

@@ -284,11 +284,80 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Forms and file uploading
+      </label>
     
     <a href="./" title="Forms and file uploading" class="md-nav__link md-nav__link--active">
       Forms and file uploading
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-multipart-form-html" title="Creating a multipart form (HTML)" class="md-nav__link">
+    Creating a multipart form (HTML)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsing-a-requests-multipart" title="Parsing a request's multipart" class="md-nav__link">
+    Parsing a request's multipart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-named-parts" title="Accessing named parts" class="md-nav__link">
+    Accessing named parts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-all-parts" title="Accessing all parts" class="md-nav__link">
+    Accessing all parts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-the-html-form-on-the-server" title="Handling the HTML form on the server" class="md-nav__link">
+    Handling the HTML form on the server
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cache/" title="Caching" class="md-nav__link">
+      Caching
+    </a>
   </li>
 
         
@@ -370,8 +439,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../../cryptokitten/hash/" title="Hashing using CryptoKitten" class="md-nav__link">
+      Hashing using CryptoKitten
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../lynx/TCP/" title="TCP/SSL using Lynx" class="md-nav__link">
       TCP/SSL using Lynx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lynx/remote/" title="Testing remotes using Lynx" class="md-nav__link">
+      Testing remotes using Lynx
     </a>
   </li>
 
@@ -431,6 +524,50 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-multipart-form-html" title="Creating a multipart form (HTML)" class="md-nav__link">
+    Creating a multipart form (HTML)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsing-a-requests-multipart" title="Parsing a request's multipart" class="md-nav__link">
+    Parsing a request's multipart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-named-parts" title="Accessing named parts" class="md-nav__link">
+    Accessing named parts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-all-parts" title="Accessing all parts" class="md-nav__link">
+    Accessing all parts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-the-html-form-on-the-server" title="Handling the HTML form on the server" class="md-nav__link">
+    Handling the HTML form on the server
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
   
 </nav>
                   </div>
@@ -443,9 +580,69 @@
               
                 
                 
-                  <h1>Forms and file uploading</h1>
-                
-                
+                <h1 id="multipart">Multipart</h1>
+<p>Multipart is used for uploading complex forms, for example, those containing files.</p>
+<h2 id="creating-a-multipart-form-html">Creating a multipart form (HTML)</h2>
+<p>Forms require the addition of the "enctype" as displayed below.</p>
+<pre><code class="HTML">&lt;form method=&quot;post&quot; action=&quot;/path/to/handler&quot; enctype=&quot;multipart/form-data&quot;&gt;
+  Favourite food: &lt;input type=&quot;text&quot; name=&quot;favouriteFood&quot; /&gt;&lt;br /&gt;
+  File upload: &lt;input type=&quot;file&quot; /&gt;
+  &lt;button&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+<h2 id="parsing-a-requests-multipart">Parsing a request's multipart</h2>
+<p>We don't parse anything it until it's necessary, including Multipart.</p>
+<pre><code class="swift">guard let multipart = request.multipart else {
+  ...
+}
+</code></pre>
+
+<h2 id="accessing-named-parts">Accessing named parts</h2>
+<p>In the above HTML form, the text input box had a 'name'.
+You can use this name to easily access that part.</p>
+<pre><code class="swift">guard let favouriteFood = multipart[&quot;favouriteFood&quot;] else {
+
+}
+</code></pre>
+
+<h2 id="accessing-all-parts">Accessing all parts</h2>
+<p>Unnamed parts can also be accessed. Multipart has a <code>parts</code> variable where you can find all parts.</p>
+<pre><code class="swift">for part in multipart.parts {
+
+}
+</code></pre>
+
+<p>Every part has data and a type. The type can be either a value or a file.</p>
+<p>Files carry their filename and MIME type with them.</p>
+<h2 id="handling-the-html-form-on-the-server">Handling the HTML form on the server</h2>
+<pre><code class="swift">webserver.get(&quot;/path/to/handler&quot;) { request in
+  return Future {
+    // First, the multipart needs to be parsed
+    guard let multipart = request.multipart else {
+      return Response(status: 400)
+    }
+
+    // Food has a 'name', thus it's easily accessible
+    guard let food = multipart[&quot;favouriteFood&quot;]?.string else {
+      return Response(status: 400)
+    }
+
+    // the file doesn't have a name, let's handle all files
+    for part in multipart.parts {
+      // if it's not a file, continue the loop
+      guard case .file(let mime, let filename) = part.type else {
+        continue
+      }
+
+      // The binary blob, or, contents of the file
+      let body = try part.data.makeBody()
+
+      // TODO: process file
+    }
+  }
+}
+</code></pre>
                 
                   
                 
@@ -479,13 +676,13 @@
           </a>
         
         
-          <a href="../../cheetah/" title="JSON using Cheetah" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../cache/" title="Caching" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                JSON using Cheetah
+                Caching
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

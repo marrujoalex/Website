@@ -272,10 +272,39 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        HTTP client
+      </label>
     
     <a href="./" title="HTTP client" class="md-nav__link md-nav__link--active">
       HTTP client
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-single-requestresponse" title="A single request/response" class="md-nav__link">
+    A single request/response
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -288,6 +317,18 @@
   <li class="md-nav__item">
     <a href="../leopard/Multipart/" title="Forms and file uploading" class="md-nav__link">
       Forms and file uploading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../leopard/cache/" title="Caching" class="md-nav__link">
+      Caching
     </a>
   </li>
 
@@ -370,8 +411,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../cryptokitten/hash/" title="Hashing using CryptoKitten" class="md-nav__link">
+      Hashing using CryptoKitten
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../lynx/TCP/" title="TCP/SSL using Lynx" class="md-nav__link">
       TCP/SSL using Lynx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lynx/remote/" title="Testing remotes using Lynx" class="md-nav__link">
+      Testing remotes using Lynx
     </a>
   </li>
 
@@ -431,6 +496,22 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-single-requestresponse" title="A single request/response" class="md-nav__link">
+    A single request/response
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
   
 </nav>
                   </div>
@@ -443,9 +524,15 @@
               
                 
                 
-                  <h1>HTTP client</h1>
-                
-                
+                <h1 id="puma">Puma</h1>
+<p>Puma is an HTTP Client based on Lynx. Because it's build on Lynx it integrates with any extensions and features added on top o Lynx, such as JSON and file uploading.</p>
+<h2 id="a-single-requestresponse">A single request/response</h2>
+<p>Puma is designed asynchronously, we only exposed the synchronous API so far.</p>
+<p>A request is made the same way any of our requests are made <a href="../leopard/request-response/">as described here.</a></p>
+<p>You can then create an HTTP client:</p>
+<pre><code class="swift">// Creates a client for https://example.com
+let response = SyncHTTPClient.send(request, toHost: &quot;example.com&quot;, securely: true)
+</code></pre>
                 
                   
                 

@@ -247,13 +247,58 @@
         }, 
         {
             "location": "/puma/", 
-            "text": "", 
+            "text": "Puma\n\n\nPuma is an HTTP Client based on Lynx. Because it's build on Lynx it integrates with any extensions and features added on top o Lynx, such as JSON and file uploading.\n\n\nA single request/response\n\n\nPuma is designed asynchronously, we only exposed the synchronous API so far.\n\n\nA request is made the same way any of our requests are made \nas described here.\n\n\nYou can then create an HTTP client:\n\n\n// Creates a client for https://example.com\nlet response = SyncHTTPClient.send(request, toHost: \nexample.com\n, securely: true)", 
             "title": "HTTP client"
         }, 
         {
+            "location": "/puma/#puma", 
+            "text": "Puma is an HTTP Client based on Lynx. Because it's build on Lynx it integrates with any extensions and features added on top o Lynx, such as JSON and file uploading.", 
+            "title": "Puma"
+        }, 
+        {
+            "location": "/puma/#a-single-requestresponse", 
+            "text": "Puma is designed asynchronously, we only exposed the synchronous API so far.  A request is made the same way any of our requests are made  as described here.  You can then create an HTTP client:  // Creates a client for https://example.com\nlet response = SyncHTTPClient.send(request, toHost:  example.com , securely: true)", 
+            "title": "A single request/response"
+        }, 
+        {
             "location": "/leopard/Multipart/", 
-            "text": "", 
+            "text": "Multipart\n\n\nMultipart is used for uploading complex forms, for example, those containing files.\n\n\nCreating a multipart form (HTML)\n\n\nForms require the addition of the \"enctype\" as displayed below.\n\n\nform method=\npost\n action=\n/path/to/handler\n enctype=\nmultipart/form-data\n\n  Favourite food: \ninput type=\ntext\n name=\nfavouriteFood\n /\nbr /\n\n  File upload: \ninput type=\nfile\n /\n\n  \nbutton\nSend\n/button\n\n\n/form\n\n\n\n\n\nParsing a request's multipart\n\n\nWe don't parse anything it until it's necessary, including Multipart.\n\n\nguard let multipart = request.multipart else {\n  ...\n}\n\n\n\n\nAccessing named parts\n\n\nIn the above HTML form, the text input box had a 'name'.\nYou can use this name to easily access that part.\n\n\nguard let favouriteFood = multipart[\nfavouriteFood\n] else {\n\n}\n\n\n\n\nAccessing all parts\n\n\nUnnamed parts can also be accessed. Multipart has a \nparts\n variable where you can find all parts.\n\n\nfor part in multipart.parts {\n\n}\n\n\n\n\nEvery part has data and a type. The type can be either a value or a file.\n\n\nFiles carry their filename and MIME type with them.\n\n\nHandling the HTML form on the server\n\n\nwebserver.get(\n/path/to/handler\n) { request in\n  return Future {\n    // First, the multipart needs to be parsed\n    guard let multipart = request.multipart else {\n      return Response(status: 400)\n    }\n\n    // Food has a 'name', thus it's easily accessible\n    guard let food = multipart[\nfavouriteFood\n]?.string else {\n      return Response(status: 400)\n    }\n\n    // the file doesn't have a name, let's handle all files\n    for part in multipart.parts {\n      // if it's not a file, continue the loop\n      guard case .file(let mime, let filename) = part.type else {\n        continue\n      }\n\n      // The binary blob, or, contents of the file\n      let body = try part.data.makeBody()\n\n      // TODO: process file\n    }\n  }\n}", 
             "title": "Forms and file uploading"
+        }, 
+        {
+            "location": "/leopard/Multipart/#multipart", 
+            "text": "Multipart is used for uploading complex forms, for example, those containing files.", 
+            "title": "Multipart"
+        }, 
+        {
+            "location": "/leopard/Multipart/#creating-a-multipart-form-html", 
+            "text": "Forms require the addition of the \"enctype\" as displayed below.  form method= post  action= /path/to/handler  enctype= multipart/form-data \n  Favourite food:  input type= text  name= favouriteFood  / br / \n  File upload:  input type= file  / \n   button Send /button  /form", 
+            "title": "Creating a multipart form (HTML)"
+        }, 
+        {
+            "location": "/leopard/Multipart/#parsing-a-requests-multipart", 
+            "text": "We don't parse anything it until it's necessary, including Multipart.  guard let multipart = request.multipart else {\n  ...\n}", 
+            "title": "Parsing a request's multipart"
+        }, 
+        {
+            "location": "/leopard/Multipart/#accessing-named-parts", 
+            "text": "In the above HTML form, the text input box had a 'name'.\nYou can use this name to easily access that part.  guard let favouriteFood = multipart[ favouriteFood ] else {\n\n}", 
+            "title": "Accessing named parts"
+        }, 
+        {
+            "location": "/leopard/Multipart/#accessing-all-parts", 
+            "text": "Unnamed parts can also be accessed. Multipart has a  parts  variable where you can find all parts.  for part in multipart.parts {\n\n}  Every part has data and a type. The type can be either a value or a file.  Files carry their filename and MIME type with them.", 
+            "title": "Accessing all parts"
+        }, 
+        {
+            "location": "/leopard/Multipart/#handling-the-html-form-on-the-server", 
+            "text": "webserver.get( /path/to/handler ) { request in\n  return Future {\n    // First, the multipart needs to be parsed\n    guard let multipart = request.multipart else {\n      return Response(status: 400)\n    }\n\n    // Food has a 'name', thus it's easily accessible\n    guard let food = multipart[ favouriteFood ]?.string else {\n      return Response(status: 400)\n    }\n\n    // the file doesn't have a name, let's handle all files\n    for part in multipart.parts {\n      // if it's not a file, continue the loop\n      guard case .file(let mime, let filename) = part.type else {\n        continue\n      }\n\n      // The binary blob, or, contents of the file\n      let body = try part.data.makeBody()\n\n      // TODO: process file\n    }\n  }\n}", 
+            "title": "Handling the HTML form on the server"
+        }, 
+        {
+            "location": "/leopard/cache/", 
+            "text": "", 
+            "title": "Caching"
         }, 
         {
             "location": "/cheetah/", 
@@ -441,6 +486,46 @@
             "title": "Deserializing the JSON Web Token to a struct"
         }, 
         {
+            "location": "/cryptokitten/hash/", 
+            "text": "Hashing\n\n\nHashing is the process of one-way encryption. It's an encryption that can't be reverted.\n\n\nThis is particularly useful for verifying information. One way hashes are employed is by hashing a message and verifying the message to output the same resulting hash on arrival. If the hash and/or message were tampered with or have been modified during transport, the results of hashing the file would not result in the same hash, making the information invalid.\n\n\nThe same is used for password hashing. The original password is not important, it poses a security risk on the user in case of data theft, for example, on a security breach of the information system (like a website).\n\n\nHeavily and securely hashing a password is necessary to prevent brute forces.\n\n\nSupport\n\n\nCryptoKitten currently supports the following hashes:\n\n\n\n\nMD5\n\n\nSHA1\n\n\nSHA224\n\n\nSHA256\n\n\nSHA384\n\n\nSHA512\n\n\n\n\nIt also supports HMAC and PBKDF2 for message authentication and password hashing.\n\n\nUsing a hash\n\n\nAll of the hashes described above have the same API and support two methods of hashing.\n\n\n'Bulk' hashing\n\n\nHashing the entire message in one go is simple and natural, it doesn't require extra work. You'll need to enter the data as binary. This means Strings also need to be converted to binary. A common method of converting a string to binary is this:\n\n\nlet binaryMessage = [UInt8](binaryMessage.utf8)\n\n\n\n\nTo bulk hash binary data:\n\n\nlet hashedMessage0 = MD5.hash(binaryMessage)\nlet hashedMessage1 = SHA1.hash(binaryMessage)\nlet hashedMessage2 = SHA224.hash(binaryMessage)\nlet hashedMessage3 = SHA256.hash(binaryMessage)\nlet hashedMessage4 = SHA384.hash(binaryMessage)\nlet hashedMessage5 = SHA512.hash(binaryMessage)\n\n\n\n\nDo \nnot\n use basic hashes for passwords. They will be easily \nbrute-forced\n.\n\n\nIncremental\n\n\nLarger messages need to be copied around a lot. In a 1GB video, it means copying around 1GB of data. This makes the process unnecessarily really heavy. Instead of hashing the whole 1GB in one go, which would cost 2-3GB, you could pass around the buffer, for example, as a pointer.\n\n\nWhen working with streams of incoming/outgoing data, you can also stream the data chunk by chunk to the hashing algorithm.\n\n\nBefore getting the hash, you'll need to finalize the hash, which will finish calculating the hash. This is \nrequired\n. Once you know the final block, you can pass it to finalize entirely.\n\n\n// Create the context first\nlet context = MD5()\n\nfor fileData in file {\n  context.update(fileData)\n}\n\n// The data to hash\nlet lastBlock: UnsafeBufferPointer\nUInt8\n = ...\n\n// Hash the block of data\ncontext.finalize(fileData)\n\n// the hash as hexadecimal\nlet hash = context.hash.hexString\n\n\n\n\nIf the final block is already hashed, you still need to finalize it by calling finalize, even if there's an empty buffer of data to hash.\n\n\nPassword hashing\n\n\nFor password hashing we currently only support PBKDF2 with HMAC.\n\n\nPBKDF2_HMAC\n\n\nHashing a password using PBKDF2 requires a hashing algorithm. You can select one generically like this:\n\n\n// with MD5\nPBKDF2_HMAC\nMD5\n\n\n// with SHA1\nPBKDF2_HMAC\nSHA1\n\n\n// with SHA512\nPBKDF2_HMAC\nSHA512\n\n\n\n\n\nYou can derive a key from the PBKDF2_HMAC. This requires three parameters.\n\n\nThe password is needed in binary. You can get the binary data from a string like below:\n\n\nlet binaryPassword = [UInt8](password.utf8)\n\n\n\n\nAdditionally, a \nrandom\n salt is needed. This salt \nmust\n be randomly generated, \nmust\n not be static and \nmust\n be stored with the password in the database. Losing the salt means it's impossible to validate the stored (encrypted) password.\n\n\nlet hash = PBKDF2_HMAC\nSHA512\n.derive(fromPassword: binaryPassword, saltedWith: randomSalt).hexString\n\n\n\n\nTo validate it you can repeat the process.\n\n\nlet verifiedHash = PBKDF2_HMAC\nSHA512\n.derive(fromPassword: binaryPassword, saltedWith: randomSalt).hexString\n\nlet passwordCorrect = (hash == verifiedHash)", 
+            "title": "Hashing using CryptoKitten"
+        }, 
+        {
+            "location": "/cryptokitten/hash/#hashing", 
+            "text": "Hashing is the process of one-way encryption. It's an encryption that can't be reverted.  This is particularly useful for verifying information. One way hashes are employed is by hashing a message and verifying the message to output the same resulting hash on arrival. If the hash and/or message were tampered with or have been modified during transport, the results of hashing the file would not result in the same hash, making the information invalid.  The same is used for password hashing. The original password is not important, it poses a security risk on the user in case of data theft, for example, on a security breach of the information system (like a website).  Heavily and securely hashing a password is necessary to prevent brute forces.", 
+            "title": "Hashing"
+        }, 
+        {
+            "location": "/cryptokitten/hash/#support", 
+            "text": "CryptoKitten currently supports the following hashes:   MD5  SHA1  SHA224  SHA256  SHA384  SHA512   It also supports HMAC and PBKDF2 for message authentication and password hashing.", 
+            "title": "Support"
+        }, 
+        {
+            "location": "/cryptokitten/hash/#using-a-hash", 
+            "text": "All of the hashes described above have the same API and support two methods of hashing.", 
+            "title": "Using a hash"
+        }, 
+        {
+            "location": "/cryptokitten/hash/#bulk-hashing", 
+            "text": "Hashing the entire message in one go is simple and natural, it doesn't require extra work. You'll need to enter the data as binary. This means Strings also need to be converted to binary. A common method of converting a string to binary is this:  let binaryMessage = [UInt8](binaryMessage.utf8)  To bulk hash binary data:  let hashedMessage0 = MD5.hash(binaryMessage)\nlet hashedMessage1 = SHA1.hash(binaryMessage)\nlet hashedMessage2 = SHA224.hash(binaryMessage)\nlet hashedMessage3 = SHA256.hash(binaryMessage)\nlet hashedMessage4 = SHA384.hash(binaryMessage)\nlet hashedMessage5 = SHA512.hash(binaryMessage)  Do  not  use basic hashes for passwords. They will be easily  brute-forced .", 
+            "title": "'Bulk' hashing"
+        }, 
+        {
+            "location": "/cryptokitten/hash/#incremental", 
+            "text": "Larger messages need to be copied around a lot. In a 1GB video, it means copying around 1GB of data. This makes the process unnecessarily really heavy. Instead of hashing the whole 1GB in one go, which would cost 2-3GB, you could pass around the buffer, for example, as a pointer.  When working with streams of incoming/outgoing data, you can also stream the data chunk by chunk to the hashing algorithm.  Before getting the hash, you'll need to finalize the hash, which will finish calculating the hash. This is  required . Once you know the final block, you can pass it to finalize entirely.  // Create the context first\nlet context = MD5()\n\nfor fileData in file {\n  context.update(fileData)\n}\n\n// The data to hash\nlet lastBlock: UnsafeBufferPointer UInt8  = ...\n\n// Hash the block of data\ncontext.finalize(fileData)\n\n// the hash as hexadecimal\nlet hash = context.hash.hexString  If the final block is already hashed, you still need to finalize it by calling finalize, even if there's an empty buffer of data to hash.", 
+            "title": "Incremental"
+        }, 
+        {
+            "location": "/cryptokitten/hash/#password-hashing", 
+            "text": "For password hashing we currently only support PBKDF2 with HMAC.", 
+            "title": "Password hashing"
+        }, 
+        {
+            "location": "/cryptokitten/hash/#pbkdf2_hmac", 
+            "text": "Hashing a password using PBKDF2 requires a hashing algorithm. You can select one generically like this:  // with MD5\nPBKDF2_HMAC MD5 \n\n// with SHA1\nPBKDF2_HMAC SHA1 \n\n// with SHA512\nPBKDF2_HMAC SHA512   You can derive a key from the PBKDF2_HMAC. This requires three parameters.  The password is needed in binary. You can get the binary data from a string like below:  let binaryPassword = [UInt8](password.utf8)  Additionally, a  random  salt is needed. This salt  must  be randomly generated,  must  not be static and  must  be stored with the password in the database. Losing the salt means it's impossible to validate the stored (encrypted) password.  let hash = PBKDF2_HMAC SHA512 .derive(fromPassword: binaryPassword, saltedWith: randomSalt).hexString  To validate it you can repeat the process.  let verifiedHash = PBKDF2_HMAC SHA512 .derive(fromPassword: binaryPassword, saltedWith: randomSalt).hexString\n\nlet passwordCorrect = (hash == verifiedHash)", 
+            "title": "PBKDF2_HMAC"
+        }, 
+        {
             "location": "/lynx/TCP/", 
             "text": "TCP\n\n\nLynx also handles the implementation of the TCP sockets. This supports clients sockets with and without SSL.\n\n\nThis makes Lynx a solid basis for common web libraries, since many principles (such as MIME, headers, body and Multipart) are reused.\n\n\nClient\n\n\nThe plain and SSL TCP clients are almost identical in their API.\n\n\nPlain Client\n\n\nOpening a simple socket using \nTCPClient\n is done by providing a hostname and port.\n\n\n// Sets up the connection\nlet exampleClient = try TCPClient(hostname: \nexample.com\n, port: 127) { pointer, length in\n  // process input\n}\n\n// Starts the connection, allowing read/write operations\nexampleClient.connect()\n\n\n\n\nThe connection cleans up on deinitialization, meaning you don't need to close it manually.\n\n\nSSL Client\n\n\nSSLClients are opened and used the same was as a \nTCPClient\n. SSLClient will use the Security framework on macOS, and OpenSSL on Linux.\n\n\n// Sets up the connection\nlet exampleSSLClient = try TCPSSLClient(hostname: \nexample.com\n, port: 127) { pointer, length in\n  // process input\n}\n\n// Starts the connection, allowing read/write operations\nexampleSSLClient.connect()\n\n\n\n\nReceiving data\n\n\nThe trailing closure behind the \nTCPClient\n or \nTCPSSLClient\n is the on-read function. Since the sockets are built entirely in async, as our libraries do, input needs to be processed in the closure.\n\n\nSending data\n\n\nWe currently accept 3 forms of sending data, which all boil down to the same.\n\n\nlet pointer: UnsafePointer\nUInt8\n\nlet length: Int\n\ntry client.send(data: pointer, withLengthOf: length)\n\n\n\n\nlet buffer: UnsafeBufferPointer\nUInt8\n\n\ntry client.send(buffer: buffer)\n\n\n\n\nlet bytes: [UInt8]\n\ntry client.send(bytes)", 
             "title": "TCP/SSL using Lynx"
@@ -474,6 +559,31 @@
             "location": "/lynx/TCP/#sending-data", 
             "text": "We currently accept 3 forms of sending data, which all boil down to the same.  let pointer: UnsafePointer UInt8 \nlet length: Int\n\ntry client.send(data: pointer, withLengthOf: length)  let buffer: UnsafeBufferPointer UInt8 \n\ntry client.send(buffer: buffer)  let bytes: [UInt8]\n\ntry client.send(bytes)", 
             "title": "Sending data"
+        }, 
+        {
+            "location": "/lynx/remote/", 
+            "text": "HTTPRemote\n\n\nHTTPRemote is a protocol that handles HTTP Responses. It can be implemented using a custom implementation to levarage testability.\n\n\nClient\n\n\nClient is the default remote TCP Client implementation. It handles serialization of responses and has an extension point for error handling.\n\n\nError handling\n\n\nClient.errorHandler\n is a variable that can be assigned a closure that handles errors that are \nEncodable\n. This is especially useful for responding to the Client with a JSON serialized Error.\n\n\nFor example:\n\n\n// HTTP\nimport Lynx\n\n// JSON\nimport Cheetah\n\nClient.errorHandler = { error, client in\n  dp {\n    // Attempt to encode the error\n    let jsonError = JSONEncoder().encode(error)\n    let response = Response(status: 500, body: jsonError)\n\n    // Send the error\n    try client.send(response)\n\n    // Close the connection\n    client.close()\n  } catch {\n    // If the above failed, just close the connection\n    client.close()\n  }\n}\n\n\n\n\nTestClient\n\n\nTestClient is primarily useful in unit tests.\n\n\nIt accepts both an successful response and error handler\n\n\nlet client = TestClient({ response in\n  XCTAssertEqual(response.status.code, 200)\n}, or: { error in\n  XCTFail(\n\\(error)\n)\n})\n\n\n\n\nWhen you've created a testClient, you can pass it together with a request directly in the router or HTTP server.\n\n\nlet request = Request(method: .get, path: \n/\n)\n\n// Only need one of these 2\nrouter.handle(request, for: client)\nserver.handle(request, for: client)", 
+            "title": "Testing remotes using Lynx"
+        }, 
+        {
+            "location": "/lynx/remote/#httpremote", 
+            "text": "HTTPRemote is a protocol that handles HTTP Responses. It can be implemented using a custom implementation to levarage testability.", 
+            "title": "HTTPRemote"
+        }, 
+        {
+            "location": "/lynx/remote/#client", 
+            "text": "Client is the default remote TCP Client implementation. It handles serialization of responses and has an extension point for error handling.", 
+            "title": "Client"
+        }, 
+        {
+            "location": "/lynx/remote/#error-handling", 
+            "text": "Client.errorHandler  is a variable that can be assigned a closure that handles errors that are  Encodable . This is especially useful for responding to the Client with a JSON serialized Error.  For example:  // HTTP\nimport Lynx\n\n// JSON\nimport Cheetah\n\nClient.errorHandler = { error, client in\n  dp {\n    // Attempt to encode the error\n    let jsonError = JSONEncoder().encode(error)\n    let response = Response(status: 500, body: jsonError)\n\n    // Send the error\n    try client.send(response)\n\n    // Close the connection\n    client.close()\n  } catch {\n    // If the above failed, just close the connection\n    client.close()\n  }\n}", 
+            "title": "Error handling"
+        }, 
+        {
+            "location": "/lynx/remote/#testclient", 
+            "text": "TestClient is primarily useful in unit tests.  It accepts both an successful response and error handler  let client = TestClient({ response in\n  XCTAssertEqual(response.status.code, 200)\n}, or: { error in\n  XCTFail( \\(error) )\n})  When you've created a testClient, you can pass it together with a request directly in the router or HTTP server.  let request = Request(method: .get, path:  / )\n\n// Only need one of these 2\nrouter.handle(request, for: client)\nserver.handle(request, for: client)", 
+            "title": "TestClient"
         }, 
         {
             "location": "/third-party/jobs/", 
