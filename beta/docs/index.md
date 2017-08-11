@@ -30,6 +30,8 @@ The libraries can be categorized into 3 categories.
 
 [Schrodinger](/schrodinger/index.md) is the promise library, used for asynchronous data flow.
 
+[MailKitten](/mailkitten/index.md) is used for sending emails over SMTP.
+
 ## Third party
 
 We're happy to work with the community and assist writing good libraries. Some problems are already solved by a third party without much room for improvement. These are such libraries.

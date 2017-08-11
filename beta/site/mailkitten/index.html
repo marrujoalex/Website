@@ -16,7 +16,7 @@
     
     
       
-        <title>HTTP client - OpenKitten Docs</title>
+        <title>SMTP using MailKitten - OpenKitten Docs</title>
       
     
     
@@ -73,11 +73,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  Web
+                  Utility
                 </span>
               
             
-            HTTP client
+            SMTP using MailKitten
           
         </span>
       </div>
@@ -148,12 +148,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Web
@@ -265,47 +263,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        HTTP client
-      </label>
-    
-    <a href="./" title="HTTP client" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../puma/" title="HTTP client" class="md-nav__link">
       HTTP client
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-single-requestresponse" title="A single request/response" class="md-nav__link">
-    A single request/response
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -342,10 +304,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Utility
@@ -385,11 +349,81 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../mailkitten/" title="SMTP using MailKitten" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        SMTP using MailKitten
+      </label>
+    
+    <a href="./" title="SMTP using MailKitten" class="md-nav__link md-nav__link--active">
       SMTP using MailKitten
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#spm" title="SPM" class="md-nav__link">
+    SPM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-smtp" title="Connecting to SMTP" class="md-nav__link">
+    Connecting to SMTP
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-ports" title="Custom ports" class="md-nav__link">
+    Custom ports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authenticating" title="Authenticating" class="md-nav__link">
+    Authenticating
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-email" title="Creating an email" class="md-nav__link">
+    Creating an email
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -515,8 +549,42 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-single-requestresponse" title="A single request/response" class="md-nav__link">
-    A single request/response
+  <a href="#spm" title="SPM" class="md-nav__link">
+    SPM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-smtp" title="Connecting to SMTP" class="md-nav__link">
+    Connecting to SMTP
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-ports" title="Custom ports" class="md-nav__link">
+    Custom ports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authenticating" title="Authenticating" class="md-nav__link">
+    Authenticating
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-email" title="Creating an email" class="md-nav__link">
+    Creating an email
   </a>
   
 </li>
@@ -536,15 +604,47 @@
               
                 
                 
-                <h1 id="puma">Puma</h1>
-<p>Puma is an HTTP Client based on Lynx. Because it's build on Lynx it integrates with any extensions and features added on top o Lynx, such as JSON and file uploading.</p>
-<h2 id="a-single-requestresponse">A single request/response</h2>
-<p>Puma is designed asynchronously, we only exposed the synchronous API so far.</p>
-<p>A request is made the same way any of our requests are made <a href="../leopard/request-response/">as described here.</a></p>
-<p>You can then create an HTTP client:</p>
-<pre><code class="swift">// Creates a client for https://example.com
-let response = SyncHTTPClient.send(request, toHost: &quot;example.com&quot;, securely: true)
+                <h1 id="mailkitten">MailKitten</h1>
+<p>MailKitten sends emails using SMTP.</p>
+<h2 id="spm">SPM</h2>
+<p>Add this dependency to your Package.swift</p>
+<pre><code class="swift">.package(url: &quot;https://github.com/OpenKitten/MailKitten.git&quot;, .exact(&quot;1.0.0-beta1&quot;)),
 </code></pre>
+
+<h2 id="connecting-to-smtp">Connecting to SMTP</h2>
+<p>First, create a new SMTPClient object and specify whether to connect using SSL or not. It will take the default SMTP ports for SSL and non SSL.</p>
+<pre><code class="swift">let client = try SMTPClient(to: &quot;smtp.example.com&quot;, ssl: true)
+</code></pre>
+
+<p>The SMTPClient object can only do one action at a time, do <em>not</em> use this to send multiple requests at the same time. Use multiple SMTPClients instead.</p>
+<h3 id="custom-ports">Custom ports</h3>
+<p>Custom ports can be connected with, too.</p>
+<pre><code class="swift">let client = try SMTPClient(to: &quot;smtp.example.com&quot;, at: 1234, ssl: true)
+</code></pre>
+
+<h2 id="authenticating">Authenticating</h2>
+<p>After connecting, you have to authenticate manually. This way you can re-use the client to send emails from different accounts on the same server.</p>
+<pre><code class="swift">try client.authenticate(&quot;test@example.com&quot;, withPassword: &quot;kittens&quot;)
+</code></pre>
+
+<h2 id="creating-an-email">Creating an email</h2>
+<p>Creating an email requires a subject, type of contents, the contents themselves and the recipients.</p>
+<p>The content type can be either <code>.plain</code> or <code>.html</code> for plaintext or HTML emails respectively.</p>
+<p>The contents can be any type of body. Usually a String.</p>
+<pre><code class="swift">let scamEmail = Email(subject: &quot;Bank transaction for 1 billion $$$&quot;,
+                  type: .plain,
+                  contents: &quot;&quot;&quot;
+                  I'm a nigerian prince in need of your bank account.
+                  Send me a message back and I will transfer 1 billion $$$.
+                  &quot;&quot;&quot;,
+                  recipients: &quot;receiver-email@example.com&quot;)
+</code></pre>
+
+<p>To send this <code>scamEmail</code>, you simply call the <code>client.send</code> function.</p>
+<pre><code class="swift">let future = try client.send(email, from: &quot;test@example.com&quot;)
+</code></pre>
+
+<p>The result of the <code>send</code> function is an empty future. It may contain an error, and will be completed when the email has been sent either successfully or unsuccessfully. You can <code>await()</code> this future to ensure the email has been sent correctly, or handle it otherwise <a href="../schrodinger/">as described here.</a></p>
                 
                   
                 
@@ -563,7 +663,7 @@ let response = SyncHTTPClient.send(request, toHost: &quot;example.com&quot;, sec
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../leopard/websocket/" title="WebSocket" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../schrodinger/" title="Async using Schrodinger" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -572,19 +672,19 @@ let response = SyncHTTPClient.send(request, toHost: &quot;example.com&quot;, sec
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                WebSocket
+                Async using Schrodinger
               </span>
             </div>
           </a>
         
         
-          <a href="../leopard/Multipart/" title="Forms and file uploading" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../lynx/" title="Plain HTTP using Lynx" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Forms and file uploading
+                Plain HTTP using Lynx
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

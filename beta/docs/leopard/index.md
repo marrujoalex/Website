@@ -11,7 +11,7 @@ When creating a project using `swift package init --type=executable`, you'll not
 In here, a basic template will be shown. Let's add Leopard to that using:
 
 ```swift
-.package(url: "https://github.com/OpenKitten/Leopard.git", .revision("master")),
+.package(url: "https://github.com/OpenKitten/Leopard.git", .exact("1.0.0-beta1")),
 ```
 
 And by adding `"Leopard"` to your target's dependencies.

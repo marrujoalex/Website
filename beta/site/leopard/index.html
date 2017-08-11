@@ -394,6 +394,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../mailkitten/" title="SMTP using MailKitten" class="md-nav__link">
+      SMTP using MailKitten
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../lynx/" title="Plain HTTP using Lynx" class="md-nav__link">
       Plain HTTP using Lynx
     </a>
@@ -544,7 +556,7 @@
 <h2 id="spm-packageswift">SPM - Package.swift</h2>
 <p>When creating a project using <code>swift package init --type=executable</code>, you'll notice that a set of files and directories have appeared in the current directory. One of these files is <code>Package.swift</code>, the project definition.</p>
 <p>In here, a basic template will be shown. Let's add Leopard to that using:</p>
-<pre><code class="swift">.package(url: &quot;https://github.com/OpenKitten/Leopard.git&quot;, .revision(&quot;master&quot;)),
+<pre><code class="swift">.package(url: &quot;https://github.com/OpenKitten/Leopard.git&quot;, .exact(&quot;1.0.0-beta1&quot;)),
 </code></pre>
 
 <p>And by adding <code>"Leopard"</code> to your target's dependencies.</p>
